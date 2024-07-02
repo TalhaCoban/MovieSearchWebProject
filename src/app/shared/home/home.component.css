@@ -1,0 +1,295 @@
+
+#trendings, #upcoming {
+    display: block;
+    height: 90vh;
+    width: 100%;
+    background: url("/assets/img/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.card {
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    width: 72rem;
+    height: 44rem;
+    margin: 0 10px;
+    background-color: var(--dark);
+}
+
+.left-card {
+    left: calc(0% - 36rem);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.middle-card {
+    left: calc(50% - 36rem);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.right-card {
+    left: calc(100% - 36rem);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.to_left {
+    left: calc(0% - 36rem);
+    transition: all 0.6s ease;
+}
+
+.to_middle {
+    left: calc(50% - 36rem);
+    transition: all 0.6s ease;
+}
+
+.to_right {
+    left: calc(100% - 36rem);
+    transition: all 0.6s ease;
+}
+
+.card.active {
+    z-index: 1;
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.6s ease;
+}
+
+.lost {
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.news-poster-img {
+    position: relative;
+    top: -3.4rem;
+    left: 1.5rem;
+    width: 31rem
+}
+
+.news-poster {
+    display: inline-block;
+    width: calc(34rem - 17px);
+}
+
+.news-informations {
+    display: inline-block;
+    width: 38rem;
+    height: 100%;
+    vertical-align: top;
+}
+
+.poster-title {
+    margin: 5rem 1.1rem 1.1rem;
+}
+
+.poster-votes {
+    margin: 1rem;
+}
+
+.vote-average {
+    padding-left: 0.5rem;
+}
+
+.poster-stars {
+    display: flex;
+}
+
+.poster-vote {
+    margin-top: 1rem;
+    display: flex;
+}
+
+.poster-description {
+    margin: 1.1rem;
+    font-size: 1.3rem;
+}
+
+.ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    max-width: 50ch;
+}
+
+.change-card-poster {
+    color: var(--white);
+    font-size: 3rem;
+}
+
+.change-card-poster-first,
+.change-card-poster-second {
+    position: relative;
+    top: 52%;
+}
+
+.change-card-poster-first {
+    left: calc(50% - 36rem - 1.5rem);
+    z-index: 5;
+}
+
+.change-card-poster-second {
+    left: calc(50% + 36rem + 1.5rem);
+
+    z-index: 5;
+}
+
+.change-card-poster:hover {
+    font-size: 3rem;
+    filter: blur(0.8);
+}
+
+.poster-cast-title {
+    display: flex;
+    align-items: center;
+    margin: 1rem 1.1rem;
+    font-size: 1.4rem;
+}
+
+#populars {
+    background-color: var(--dark);
+}
+
+.title-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-bottom: 0.2rem solid var(--yellow);
+    padding: 2rem 0 1rem 0;
+}
+
+.title-section * {
+    font-size: 3rem;
+    margin-right: 1rem;
+}
+
+.movies {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.movie {
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    overflow: hidden; 
+    position: relative;
+    height: 38rem;
+}
+
+.movie-poster-box {
+    overflow: hidden; 
+    position: relative;
+    width: 20rem;
+    height: 30rem;
+}
+
+.movie:hover {
+    box-shadow: 2px -1px 25px -2px rgba(0,0,0,0.86);
+    transition: box-shadow 0.4s ease-in-out 0s;
+}
+
+.movie-poster {
+    width: 20rem;
+    height: 30rem;
+    align-self: center;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: center; 
+}
+
+.movie-poster:hover {
+    transform: scale(1.2); 
+}
+
+.movie-title {
+    font-size: 1.5rem;
+    padding: 1rem 1rem 0.5rem;
+}
+
+.ellipsis2 {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    max-width: 23ch;
+}
+
+.movie-informations {
+    padding: 0.5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.vote_average {
+    padding-left: 0.5rem;
+}
+
+.movie-votes {
+    padding-left: 1.2rem;
+}
+
+/* mobile */
+@media (max-width: 566px) {    
+    .card {
+        top: 43%;
+    }
+
+    .change-card-poster-first,
+    .change-card-poster-second {
+        position: relative;
+        top: 60%;
+    }
+
+    #trendings {
+        height: 40vh;
+    }  
+
+    #upcoming {
+        height: 40vh;
+    }  
+}
+
+
+@media (max-width: 992px) {    
+
+    #trendings {
+        height: 50vh;
+    }
+
+    .movie {
+        height: 60rem;
+    }
+
+    .movie-poster-box {
+        width: 35rem;
+        height: 52.5rem;
+    }
+
+    .movie-poster {
+        width: 35rem;
+        height: 52.5rem;
+        align-self: center;
+    }
+
+    .movie-title{
+        font-size: 2.7rem;
+        padding: 1rem 1rem 0.5rem;
+    }
+
+}

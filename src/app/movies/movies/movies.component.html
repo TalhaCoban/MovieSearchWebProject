@@ -1,0 +1,101 @@
+<navbar></navbar>
+
+<!-- movies -->
+<section id="movies" class="movies" *ngIf="current_movies">
+    <ng-template [ngTemplateOutlet]="movies" [ngTemplateOutletContext]="current_movies"></ng-template>
+</section>
+
+
+<footerr></footerr>
+
+<!-- movies -->
+<ng-template #movies>
+    <div class="container">
+        <div class="movie-menu">
+            <ul class="movie-kind">
+                <li class="movie-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='now_playing'" 
+                    [class.btn-primary]="current_title=='now_playing'" 
+                    class="font-white" 
+                    (click)="changeFilmList('now_playing')">
+                        <i class="fa-solid fa-glasses font-yellow"></i> 
+                        Now Playing
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='popular'" 
+                    [class.btn-primary]="current_title=='popular'" 
+                    class="font-white" 
+                    (click)="changeFilmList('popular')">
+                        <i class="fa-solid fa-fire font-yellow"></i>
+                        Popular
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='top_rated'" 
+                    [class.btn-primary]="current_title=='top_rated'" 
+                    class="font-white" 
+                    (click)="changeFilmList('top_rated')">
+                    <i class="fa-solid fa-chess-king font-yellow"></i>
+                        Top Rated
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='Upcoming'" 
+                    [class.btn-primary]="current_title=='Upcoming'" 
+                    class="font-white" 
+                    (click)="changeFilmList('Upcoming')">
+                        <i class="fa-solid fa-terminal font-yellow"></i>
+                        Upcoming
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="movies">
+            <div *ngFor="let movie of current_movies.results" class="movie">
+                <a href="/movies/{{ movie.id }}">
+                    <div class="movie-poster-box">
+                        <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
+                    </div>
+                    <p class="movie-title font-white ellipsis2">{{ movie.title }}</p>
+                    <div class="movie-informations font-yellow">
+                        <i class="fa-solid fa-star"></i> 
+                        <p class="vote_average font-yellow">
+                            {{ getFloor(movie.vote_average) }}/10
+                        </p>
+                        <p class="movie-votes font-white">
+                            {{ movie.vote_count }} vote 
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="pages">
+            <p class="font-white">
+                Movies per page: 20
+            </p>
+            <span class="pages-side">
+                <p class="font-white">
+                    Page  {{ current_movies_page }}  of  {{ current_movies.total_pages }}
+                </p>
+                <div class="pages-box">
+                    <a (click)="PreviousPage()" class="page font-white">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </a>
+                    <div *ngFor="let page of getPagesArray()">
+                        <a [class.page-btn]="page == current_movies.page" (click)="GetPage(page)" class="page font-white">
+                            {{ page }}
+                        </a>
+                    </div>
+                    <a (click)="NextPage()" class="page font-white">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+</ng-template>

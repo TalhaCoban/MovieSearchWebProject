@@ -1,0 +1,89 @@
+
+<nav id="navbar">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo.png" alt="">
+                </a>
+            </div>
+            <div class="navbar-group">
+                <div class="search-area">
+                    <div class="search">
+                        <select name="kind" id="kind" class="search-select-kind" form="carform">
+                            <option value="volvo">movies</option>
+                            <option value="saab">Tv shows</option>
+                            <option value="opel">Celebrities</option>
+                          </select>
+                        <input class="top-bar-search" type="text">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                    <a href="#"><h2>Login</h2></a>
+                    <a href="#"><h2>Register</h2></a>
+                </div>
+                <div class="navbar-items">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/movies">Movies</a></li>
+                        <li><a href="#">Tv shows</a></li>
+                        <li><a href="#">Celebrities</a></li>
+                        <li><a href="#">Top Movies</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<nav id="navbar-phone">
+    <div class="container">
+        <div class="navbar-phone">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/assets/img/logo.png" alt="">
+                </div>
+                <div class="phone-navbar-group">
+                    <div class="navbar-group">
+                        <div class="search-area">
+                            <div class="search">
+                                <select name="kind" id="kind" class="search-select-kind" form="carform">
+                                    <option value="volvo">movies</option>
+                                    <option value="saab">Tv shows</option>
+                                    <option value="opel">Celebrities</option>
+                                </select>
+                                <input class="top-bar-search" type="text">
+                                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            </div>
+                        </div>
+                        <a (click)="toggleMenu()">
+                            <div class="menu">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-items" [class.active]="linkitems_clicked">
+                <span class="dropdown-empty-space"></span>
+                <div class="dropdown">
+                    <ul>
+                        <li class="auth"><a href="#"><h2>Login</h2></a></li>
+                        <li class="auth"><a href="#"><h2>Register</h2></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Tv shows</a></li>
+                        <li><a href="#">Celebrities</a></li>
+                        <li><a href="#">Top Movies</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                <span class="dropdown-empty-space"></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+

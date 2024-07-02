@@ -1,1 +1,169 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+
+:root {
+    --white: rgb(255, 255, 255);
+    --black: rbg(0,0,0);
+    --gray: #45474B;
+    --dark: #212529;
+    --yellow: #F4CE14;
+    --pink: #E90074;
+    --dark-pink: #D80032;
+    --soft-pink: #F78CA2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bg-dark {
+    background-color: var(--dark);
+}
+
+.font-white {
+    color: var(--white);
+}
+
+.font-black {
+    color: var(--black);
+}
+
+.font-gray {
+    color: var(--gray);
+}
+
+.font-dark {
+    color: var(--dark);
+}
+
+.font-yellow {
+    color: var(--yellow);
+}
+
+.font-pink {
+    color: var(--pink);
+}
+
+/* buttons */
+.btn {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 1rem;
+    padding: 0.8rem 0;
+    width: 15.5rem;
+    margin: 0.5rem 0;
+    font-size: 1.4rem;
+    border: 1px solid var(--dark-pink);
+}
+
+.btn-primary {
+    background-color: var(--pink);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--soft-pink);
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
+}
+
+/* mobile */
+@media (max-width: 566px) {    
+
+    html {
+        font-size: 25%;
+    }
+
+    .container {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+
+/* landscape */
+@media (min-width: 566px) and (max-width: 800px) {    
+
+    html {
+        font-size: 35%;
+    }
+
+    .container {
+        width: 550px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 992px) {    
+
+    html {
+        font-size: 40%;
+    }
+
+    .container {
+        width: 740px;
+        margin: 0 auto;
+    }
+}
+
+/* desktop */
+@media (min-width: 992px) and (max-width: 1120px) {
+
+    html {
+        font-size: 50%;
+    }
+
+    .container {
+        width: 750px;
+        margin: 0 auto;
+    } 
+}
+
+/* desktop */
+@media (min-width: 1120px) and (max-width: 1400px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+    } 
+}
+
+/* xlarge desktop */
+@media (min-width: 1400px) {
+
+    html {
+        font-size: 65%;
+    }
+
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    } 
+}
+

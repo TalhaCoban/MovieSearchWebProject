@@ -1,0 +1,228 @@
+
+#navbar {
+    background: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 12rem;
+}
+
+#navbar-phone {
+    background: none;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    width: 100%;
+    height: 12rem;
+}
+
+#navbar .logo img {
+    width: 13rem;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .navbar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .navbar-group .search-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .navbar-group .navbar-items ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search {
+    padding: 0.8rem 3rem;
+    margin: 1rem;
+    border: 1px solid var(--white);
+    border-radius: 1.7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.search-select-kind {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 1.4rem;
+}
+
+.search-select-kind:focus {
+    background: var(--white);
+}
+
+.top-bar-search {
+    background: transparent;
+    border: none;
+    width: 24rem;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.top-bar-search:focus {
+    outline: none;
+}
+
+.search i {
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+.search-area h2 {
+    color: var(--white);
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+.navbar-items li {
+    margin: 1rem;
+    padding: 0 0 0.7rem 0;
+}
+
+.navbar-items li a:hover {
+    padding: 0 0 0.6rem 0;
+    border-bottom: 1px solid var(--white);
+}
+
+.navbar-items li a {
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.menu {
+    font-size: 3rem;
+    color: var(--white);
+    margin: 0 1rem;       
+}
+
+@media (max-width: 992px) {   
+
+    #navbar {
+        display: none;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .navbar .navbar-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search {
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        border: 1px solid var(--white);
+        border-radius: 1rem;
+    }
+
+    .top-bar-search {
+        width: 10rem;
+        font-size: 1.2rem;
+    }
+
+    #navbar-phone .logo img {
+        width: 15rem;
+    }
+
+    .navbar-phone  {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
+
+    .navbar-items.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: translate(0, 0) scale(1);
+    }
+
+    .navbar-items {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(0, -20vh) scale(0.6);
+        transition: all 0.6s ease;
+    }
+    
+    
+    .dropdown {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        width: 60vw;
+        border: 1px solid var(--gray);
+        backdrop-filter: blur(5px);
+        border-radius: 1rem;
+        box-shadow: 0px -1px 67px 13px rgba(0,0,0,0.54);    
+    }
+
+    .navbar-items li {
+        padding-right: 1rem;
+        text-align: end;
+        padding: 0 1.5rem;
+    }
+
+    .navbar-items li.auth {
+        font-size: 1rem;
+        text-align: start;
+
+    }
+    
+    .navbar-items li a:hover {
+        margin: 0.2rem 0;
+        border-bottom: 0.8px solid var(--white);
+    }
+
+}
+
+
+@media (min-width:992px) {  
+
+    .top-bar-search {
+        width: 12rem;
+        font-size: 1.2rem;
+    }
+
+    #navbar-phone {
+        display: none;
+    }
+}
+
+
+
+
+
+

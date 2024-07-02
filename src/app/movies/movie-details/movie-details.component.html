@@ -1,0 +1,43 @@
+
+<navbar></navbar>
+
+<!-- movie-details -->
+<section class="movie-details" id="movie-details" *ngIf="movieDetails">
+    <ng-template [ngTemplateOutlet]="movie_details" [ngTemplateOutletContext]="movieDetails"></ng-template>
+</section>
+
+
+<footerr></footerr>
+
+
+<!-- movie-details -->
+<ng-template #movie_details>
+    <div class="container">
+        <div class="all-details">
+            <div class="poster-image-box">
+                <img class="poster-image" src="{{ image_url }}{{ movieDetails.poster_path }}" alt="{{ movieDetails.tagline }}">
+            </div>
+            <div class="details">
+                <h1 class="movie-title font-white">
+                    {{ movieDetails.title }}
+                </h1>
+                <a href="#">
+                    <div class="icon-and-text">
+                        <div class="add-favorite-box">
+                            <i class="fa-solid fa-heart font-pink"></i>
+                        </div>
+                        <p class="add-favorite-text font-pink">
+                            Add to Favorite
+                        </p>
+                    </div>
+                </a>
+                <div class="icon-and-text">
+                    <i class="fa-solid fa-star font-yellow"></i>
+                    <p class="add-favorite-text font-white">
+                        {{ getFloor(movieDetails.vote_average) }}/10
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

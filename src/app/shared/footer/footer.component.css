@@ -1,0 +1,107 @@
+#footer {
+    display: block;
+    height: 37vh;
+    width: 100%;
+    background: url("/assets/img/footer-background.jpg");
+    background-position: center;
+    background-size: cover;
+    border-top: 3px solid var(--dark);
+}
+
+.footer-logo img {
+    width: 15rem;
+}
+
+.footer {
+    height: 90%;
+    margin: 5vh 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.footer .contact,
+.footer .legal,
+.footer .Account,
+.footer .Newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 20rem;
+    height: 20rem;
+}
+
+.footer li {
+    margin: 1.9rem 0 0 0;
+}
+
+.conctact-information p {
+    font-size: 1.3rem;
+}
+
+.footer-title {
+    font-size: 2rem;
+}
+
+.footer-link {
+    margin: 1rem 0;
+    font-size: 1.25rem;
+}
+
+.footer-input {
+    height: 3.5rem;
+    width: 18rem;
+    border: 1px solid var(--white);
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    padding-right: 1rem;
+}
+
+.back-to-top {
+    background-color: var(--pink);
+    width: 5rem;
+    height: 5rem;
+    border: 2px solid var(--dark-pink);
+    border-radius: 2.5rem;
+    position: relative;
+    bottom: 8rem;
+    left: calc(100% - 20rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top:hover {
+    background-color: var(--soft-pink);
+    transition: all 0.2s ease-in-out;
+}
+
+.ellipsis2 {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    max-width: 23ch;
+}
+
+
+.back-to-top i {
+    font-size: 3rem;
+}
+
+@media (min-width: 350px) and (max-width: 992px) {    
+
+    #footer {
+        height: 25vh;
+    }
+    
+
+}

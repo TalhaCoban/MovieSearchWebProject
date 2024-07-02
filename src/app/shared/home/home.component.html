@@ -1,0 +1,169 @@
+<navbar></navbar>
+
+<!-- upcoming movies -->
+<section id="upcoming" class="upcoming" *ngIf="upcoming_movies">
+    <ng-template [ngTemplateOutlet]="upcoming" [ngTemplateOutletContext]="upcoming_movies"></ng-template>
+</section>
+
+<!-- popular movies -->
+<section id="populars" class="populars" *ngIf="popular_movies">
+    <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="popular_movies"></ng-template>
+</section>
+
+<!-- trending movies -->
+<section id="trendings" class="trendings" *ngIf="trending_movies">
+    <ng-template [ngTemplateOutlet]="trendings" [ngTemplateOutletContext]="trending_movies"></ng-template>
+</section>
+
+
+<footerr></footerr>
+
+<!-- upcoming movies -->
+<ng-template #upcoming>
+    <a (click)="upcoming_previous()"  class="change-card-poster-first">
+        <i class="fa-solid fa-angle-left change-card-poster"></i>
+    </a>
+    <a (click)="upcoming_next()" class="change-card-poster-second">
+        <i class="fa-solid fa-chevron-right change-card-poster"></i>
+    </a>
+    <div *ngFor="let upcoming_movie of upcoming_movies.results; let i = index"
+    class="card left-card"
+    [class.lost]="popular_current_index <= (i - 1) || popular_current_index >= (i + 3)"
+    [class.to_right]="popular_current_index >= (i + 2)"
+    [class.to_middle]="popular_current_index === (i + 1)"
+    [class.active]="popular_current_index === (i + 1)"
+    [class.to_left]="popular_current_index <= i">
+        <a href="/movies/{{ upcoming_movie.id }}">
+            <div class="news-poster">
+                <img src="{{ image_url }}{{ upcoming_movie.poster_path }}" alt="{{ upcoming_movie.title }}" class="news-poster-img">
+            </div>
+            <div class="news-informations">
+                <h2 class="poster-title font-white">{{ upcoming_movie.title }}</h2>
+                <div class="poster-votes">
+                    <div class="poster-stars">
+                        <i class="fa-solid fa-star font-yellow"></i> 
+                        <p class="vote-average font-yellow">
+                            {{ getFloor(upcoming_movie.vote_average) }}/10
+                        </p>
+                    </div>
+                    <span class="poster-vote font-white">
+                        <i class="fa-solid fa-check-to-slot font-yellow"></i>
+                        <p class="vote-average">
+                            {{ upcoming_movie.vote_count }} oy
+                        </p>
+                    </span>
+                </div>
+                <div class="poster-description">
+                    <p class="font-white ellipsis">{{ upcoming_movie.overview }}</p>
+                </div>
+                <span class="poster-cast-title font-white">
+                    <i class="fa-solid fa-genderless font-yellow"></i>
+                    <p class="vote-average">
+                        {{ upcoming_movie.genre_ids }}
+                    </p>
+                </span>
+                <span class="poster-cast-title font-white">
+                    <i class="fa-solid fa-calendar-days font-yellow"></i>
+                    <p class="vote-average">
+                        {{ upcoming_movie.release_date }}
+                    </p>
+                </span>
+            </div>
+        </a>
+    </div>
+
+</ng-template>
+
+<!-- popular movies -->
+<ng-template #popular>
+    <div class="container">
+        <div class="title-section">
+            <i class="fa-solid fa-fire font-yellow"></i>
+            <h1 class="title font-white">
+                Popular Movies
+            </h1>
+        </div>
+        <div class="movies">
+            <div *ngFor="let popular_movie of popular_movies.results" class="movie">
+                <a href="/movies/{{ popular_movie.id }}">
+                    <div class="movie-poster-box">
+                        <img src="{{ image_url }}{{ popular_movie.poster_path }}" alt="{{ popular_movie.title }}" class="movie-poster">
+                    </div>
+                    <p class="movie-title font-white ellipsis2">{{ popular_movie.title }}</p>
+                    <div class="movie-informations">
+                        <i class="fa-solid fa-star font-yellow"></i> 
+                        <p class="vote_average font-yellow">
+                            {{ getFloor(popular_movie.vote_average) }}/10
+                        </p>
+                        <p class="movie-votes font-white">
+                            {{ popular_movie.vote_count }} vote 
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- trending movies -->
+<ng-template #trendings>
+    <a (click)="trending_previous()"  class="change-card-poster-first">
+        <i class="fa-solid fa-angle-left change-card-poster"></i>
+    </a>
+    <a (click)="trending_next()" class="change-card-poster-second">
+        <i class="fa-solid fa-chevron-right change-card-poster"></i>
+    </a>
+    <div class="container">
+        <div class="title-section">
+            <i class="fa-solid fa-fire font-yellow"></i>
+            <h1 class="title font-white">
+                Trending Movies
+            </h1>
+        </div>
+    </div>
+    <div *ngFor="let trending_movie of trending_movies.results; let i = index"
+    class="card left-card"
+    [class.lost]="trending_current_index <= (i - 1) || trending_current_index >= (i + 3)"
+    [class.to_right]="trending_current_index >= (i + 2)"
+    [class.to_middle]="trending_current_index === (i + 1)"
+    [class.active]="trending_current_index === (i + 1)"
+    [class.to_left]="trending_current_index <= i">
+        <a href="/movies/{{ trending_movie.id }}">
+            <div class="news-poster">
+                <img src="{{ image_url }}{{ trending_movie.poster_path }}" alt="{{ trending_movie.title }}" class="news-poster-img">
+            </div>
+            <div class="news-informations">
+                <h2 class="poster-title font-white">{{ trending_movie.title }}</h2>
+                <div class="poster-votes">
+                    <div class="poster-stars">
+                        <i class="fa-solid fa-star font-yellow"></i> 
+                        <p class="vote-average font-yellow">
+                            {{ getFloor(trending_movie.vote_average) }}/10
+                        </p>
+                    </div>
+                    <span class="poster-vote font-white">
+                        <i class="fa-solid fa-check-to-slot font-yellow"></i>
+                        <p class="vote-average">
+                            {{ trending_movie.vote_count }} oy
+                        </p>
+                    </span>
+                </div>
+                <div class="poster-description">
+                    <p class="font-white ellipsis">{{ trending_movie.overview }}</p>
+                </div>
+                <span class="poster-cast-title font-white">
+                    <i class="fa-solid fa-genderless font-yellow"></i>
+                    <p class="vote-average">
+                        {{ trending_movie.genre_ids }}
+                    </p>
+                </span>
+                <span class="poster-cast-title font-white">
+                    <i class="fa-solid fa-calendar-days font-yellow"></i>
+                    <p class="vote-average">
+                        {{ trending_movie.release_date }}
+                    </p>
+                </span>
+            </div>
+        </a>
+    </div>
+</ng-template>
