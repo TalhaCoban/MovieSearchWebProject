@@ -1,0 +1,38 @@
+<ng-template [ngTemplateOutlet]="reviews" [ngTemplateOutletContext]="movie_reviews" *ngIf="movie_reviews"></ng-template>
+
+
+<!-- reviews-section -->
+<ng-template #reviews>
+    <section class="reviews" id="reviews">
+        <div class="reviews-box">
+            <div class="review-box" *ngFor="let review of movie_reviews.results">
+                <div class="author-informations">
+                    <div class="avatar-image-box">
+                        <img src="{{ image_url }}{{ review.author_details.avatar_path }}" alt="" class="avatar-image" *ngIf="review.author_details.avatar_path">
+                        <img src="/assets/img/avatar-male.jpg" alt="" class="avatar-image" *ngIf="!review.author_details.avatar_path">
+                    </div>
+                    <div class="author">
+                        <h2 class="author-name font-pink">
+                            {{ review.author_details.name }} | {{ review.author_details.username }}
+                        </h2>
+                        <p class="created-date font-yellow">
+                            <i class="fa-solid fa-star font-yellow" *ngFor="let item of getRatingArray(review.author_details.rating)"></i>
+                            <i class="fa-regular fa-star font-yellow" *ngFor="let item of getRatingArray(10 - review.author_details.rating)"></i>
+                            {{ review.author_details.rating }}/10
+                        </p>
+                        <p class="created-date font-blue">
+                            {{ review.created_at | date:'d MMMM y, h:mm' }} tarihinde oluşturuldu.
+                        </p>
+                        <p class="updated-date font-blue" *ngIf="review.updated_at != review.created_at">
+                            {{ review.updated_at | date:'d MMMM y, h:mm' }} tarihinde güncellendi.
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="review-context">
+                    <p class="font-light" [innerText]="review.content"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

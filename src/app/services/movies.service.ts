@@ -1,13 +1,13 @@
-import { effect, Injectable, signal, WritableSignal } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { GenreRepository } from "../models/genres.repository";
 import { Movie, MoviesResponse } from "../models/movies.response.model";
 import { environment } from "src/environments/environment.development";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class MovieService {
 
@@ -16,13 +16,14 @@ export class MovieService {
     popular_url: string = environment.popular_url;
     topRated_url: string = environment.topRated_url;
     nowPlaying_url: string = environment.nowPlaying_url;
+    moviesSimilar_url: string[] = environment.moviesSimilar_url;
     api: string = environment.api;
     url: string = "";
+    movieId: number;
 
     current_movies = new Subject<MoviesResponse>;
-    private categorySignal: WritableSignal<string> = signal('now_playing');
-    private pageSignal: WritableSignal<number> = signal(1);
-    
+    private page: number;
+
     private headers = new HttpHeaders({
         'accept': 'application/json',
         'Authorization': 'Bearer ' + this.api
@@ -32,43 +33,42 @@ export class MovieService {
         private http: HttpClient,
         private genreRepository: GenreRepository,
     ) {
-        effect(() => {
-            let subscriber: Observable<MoviesResponse>;
-            if (this.categorySignal() == "now_playing") {
-                subscriber = this.getNowPlayingMovies(this.pageSignal())
-            } else if (this.categorySignal() == "popular") {
-                subscriber = this.getPopularMovies(this.pageSignal())
-            } else if (this.categorySignal() == "top_rated") {
-                subscriber = this.gettopRatedMovies(this.pageSignal())
-            } else if (this.categorySignal() == "Upcoming") {
-                subscriber = this.getUpcomingMovies(this.pageSignal())
-            }
-            subscriber.subscribe(data => {
-                this.current_movies.next(data);
-            });
-        })
+
     }
 
-    getCategory() { return this.categorySignal() };
+    getPage() { return this.page };
 
-    getPage() { return this.pageSignal() };
-
-    PreviousPage() {
-        this.pageSignal.update((page) => (page - 1));
-    };
+    setMovieId(movieId: number): void {
+        this.movieId = movieId;
+        this.fetchSimilarMovies();
+    }
 
     setPage(page: number) {
-        this.pageSignal.set(page);
-    };
+        this.page = page;
+        this.fetchSimilarMovies();
+    }
+
+    PreviousPage() {
+        this.page--;
+        this.fetchSimilarMovies();
+    }
 
     NextPage() {
-        this.pageSignal.update((page) => (page + 1));
-    };
+        this.page++;
+        this.fetchSimilarMovies();
+    }
 
-    setCategory(category: string) {
-        this.categorySignal.set(category);
-        this.pageSignal.set(1); 
-    };
+    private fetchSimilarMovies() {
+        if (!this.movieId || !this.page) {
+            return;
+        }
+        this.getSimilarMovies(this.movieId, this.page).subscribe({
+            next: (data) => {
+                this.current_movies.next(data);
+            },
+            error: (err) => console.error("Error fetching similar movies:", err)
+        });
+    }
 
     getUpcomingMovies(page: number): Observable<MoviesResponse> {
         return this.getMovies(this.upcoming_url + page);
@@ -82,7 +82,7 @@ export class MovieService {
         return this.getMovies(this.popular_url + page);
     };
 
-    gettopRatedMovies(page: number): Observable<MoviesResponse> {
+    getTopRatedMovies(page: number): Observable<MoviesResponse> {
         return this.getMovies(this.topRated_url + page);
     };
 
@@ -90,27 +90,31 @@ export class MovieService {
         return this.getMovies(this.nowPlaying_url + page);
     };
 
-    private getMovies(url: string): Observable<MoviesResponse> {
-        return this.http.get<MoviesResponse>(url, { headers: this.headers })
-          .pipe(
-            map(response => {
-                const data: Movie[] = [];
-                for (let row_data of response.results) {
-                    const movie = row_data;
-                    const genres: string[] = [];
-                    for (let genre of row_data.genre_ids) {
-                        genres.push(this.genreRepository.getGenre(Number(genre)));
-                    }
-                    data.push({ ...movie, genre_ids: genres }); 
-                }
-                return {
-                    page: response.page,
-                    results: data,
-                    total_pages: response.total_pages,
-                    total_results: response.total_results
-                };
-            })
-        );
+    getSimilarMovies(movieId: number, page: number): Observable<MoviesResponse> {
+        let url = this.moviesSimilar_url[0] + String(movieId) + this.moviesSimilar_url[1] + String(page);
+        return this.getMovies(url).pipe(tap(data => console.log(data)));
     };
 
+    private getMovies(url: string): Observable<MoviesResponse> {
+        return this.http.get<MoviesResponse>(url, { headers: this.headers })
+            .pipe(
+                map(response => {
+                    const data: Movie[] = [];
+                    for (let row_data of response.results) {
+                        const movie = row_data;
+                        const genres: string[] = [];
+                        for (let genre of row_data.genre_ids) {
+                            genres.push(this.genreRepository.getGenre(Number(genre)));
+                        }
+                        data.push({ ...movie, genre_ids: genres });
+                    }
+                    return {
+                        page: response.page,
+                        results: data,
+                        total_pages: response.total_pages,
+                        total_results: response.total_results
+                    };
+                })
+            );
+    };
 }

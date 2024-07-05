@@ -1,4 +1,6 @@
-import { Component, computed, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MoviesResponse } from 'src/app/models/movies.response.model';
 import { MovieService } from 'src/app/services/movies.service';
 import { environment } from 'src/environments/environment.development';
@@ -11,36 +13,48 @@ import { environment } from 'src/environments/environment.development';
 })
 export class MoviesComponent implements OnInit {
 
-  image_url = environment.image_url
+  image_url = environment.image_url;
   current_movies: MoviesResponse | null = null;
-  current_title: string = "now_playing";
-  current_movies_page: number = 1;
+  current_title: string;
+  current_movies_page: number;
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
-    this.movieService.current_movies.subscribe((data) => {
-      this.current_movies = data;
-      this.current_movies_page = this.movieService.getPage();
-      console.log(this.current_movies)
+    this.route.params.subscribe(params => {
+      this.current_title = params["category"];
+      this.current_movies_page = params["page"];
+
+      if (!this.current_movies_page) {
+        this.current_movies_page == 1;
+      }
+      this.current_movies_page = +this.current_movies_page
+
+      if (!this.current_title || this.current_title == "nowplaying") {
+        this.current_title = "nowplaying";
+        this.movieService.getNowPlayingMovies(this.current_movies_page).subscribe(movies => {
+          this.current_movies = movies;
+        });
+      } else if (this.current_title == "popular") {
+        this.current_title = "popular";
+        this.movieService.getPopularMovies(this.current_movies_page).subscribe(movies => {
+          this.current_movies = movies;
+        });
+      } else if (this.current_title == "toprated") {
+        this.current_title = "toprated";
+        this.movieService.getTopRatedMovies(this.current_movies_page).subscribe(movies => {
+          this.current_movies = movies;
+        });
+      } else if (this.current_title == "upcoming") {
+        this.current_title = "upcoming";
+        this.movieService.getUpcomingMovies(this.current_movies_page).subscribe(movies => {
+          this.current_movies = movies;
+        });
+      }
     })
-  }
-
-
-  changeFilmList(movie_kind: string): void {
-    if (movie_kind == 'now_playing') {
-      this.movieService.setCategory("now_playing");
-      this.current_title = "now_playing";
-    } else if(movie_kind == 'popular') {
-      this.movieService.setCategory("popular");
-      this.current_title = "popular";
-    } else if(movie_kind == 'top_rated') {
-      this.movieService.setCategory("top_rated");
-      this.current_title = "top_rated";
-    } else if(movie_kind == 'Upcoming') {
-      this.movieService.setCategory("Upcoming");
-      this.current_title = "Upcoming";
-    }
   }
 
   getFloor(average: number): number {
@@ -49,29 +63,19 @@ export class MoviesComponent implements OnInit {
 
   getPagesArray(): number[] {
     let result: number[] = [];
-    let array: number[] = [1,2,3,4, this.current_movies_page-1, this.current_movies_page, this.current_movies_page+1, this.current_movies_page+2, this.current_movies.total_pages-2, this.current_movies.total_pages-1, this.current_movies.total_pages]
+    let total: number = this.current_movies.total_pages;
+    if (total > 500) {
+      total = 500;
+    }
+    let array: number[] = [1,2,3,4, this.current_movies_page-1, this.current_movies_page, this.current_movies_page+1, this.current_movies_page+2, total-2, total-1, total]
 
     for (let i of array) {
-      if ( !result.includes(i) && i != 0 && Math.max(...result) < i && i < this.current_movies.total_pages ) {
+      if ( !result.includes(i) && i != 0 && Math.max(...result) < i && i < total ) {
         result.push(i);
       }
     }
     return result;
   }
 
-  PreviousPage() { 
-    if ( 1 < this.current_movies_page){
-      this.movieService.PreviousPage() 
-    }
-  }
-  
-  GetPage(page: number) { this.movieService.setPage(page) }
-
-  NextPage() {
-    if (this.current_movies.total_pages > this.current_movies_page){
-      this.movieService.NextPage() 
-    }
-  }
-
-
 }
+

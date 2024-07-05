@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
 
@@ -11,6 +11,8 @@
     --pink: #E90074;
     --dark-pink: #D80032;
     --soft-pink: #F78CA2;
+    --blue: #009FBD;
+    --light: #EADBC8;
 }
 
 * {
@@ -35,6 +37,11 @@ li {
 
 a {
     text-decoration: none;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
 }
 
 .bg-dark {
@@ -64,6 +71,15 @@ a {
 .font-pink {
     color: var(--pink);
 }
+
+.font-blue {
+    color: var(--blue);
+}
+
+.font-light {
+    color: var(--light);
+}
+
 
 /* buttons */
 .btn {

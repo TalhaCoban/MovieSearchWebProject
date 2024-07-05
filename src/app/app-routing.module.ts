@@ -4,11 +4,11 @@ import { HomeComponent } from './shared/home/home.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '',  component: HomeComponent },
-  { path: 'movies', loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule) },
-  { path: '**',  component: NotFoundComponent },
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'movies', loadChildren: () => import('./movies/movies.module').then((m) => m.MoviesModule)},
+  { path: '**', component: NotFoundComponent},
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -1,0 +1,51 @@
+<ng-template [ngTemplateOutlet]="related_movies" [ngTemplateOutletContext]="similar_movies"
+    *ngIf="similar_movies && similar_movies.results"></ng-template>
+
+<!-- related-movies-section -->
+<ng-template #related_movies>
+    <section class="related-movies" id="related-movies">
+        <div class="movies">
+            <div *ngFor="let movie of similar_movies.results" class="movie">
+                <a [routerLink]="'/movies/' + movie.id">
+                    <div class="movie-poster-box">
+                        <img [src]="image_url + movie.poster_path" [alt]="movie.title" class="movie-poster">
+                    </div>
+                    <p class="movie-title font-white ellipsis2">{{ movie.title }}</p>
+                    <div class="movie-informations font-yellow">
+                        <i class="fa-solid fa-star"></i>
+                        <p class="vote_average font-yellow">
+                            {{ getFloor(movie.vote_average) }}/10
+                        </p>
+                        <p class="movie-votes font-white">
+                            {{ movie.vote_count }} vote
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="pages">
+            <p class="font-white">
+                Movies per page: 20
+            </p>
+            <span class="pages-side">
+                <p class="font-white">
+                    Page {{ current_movies_page }} of {{ similar_movies.total_pages }}
+                </p>
+                <div class="pages-box">
+                    <a (click)="PreviousPage()" class="page font-white" [class.disabled]="current_movies_page-1<=0">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </a>
+                    <div *ngFor="let page of getPagesArray()">
+                        <a [class.page-btn]="page == similar_movies.page" (click)="GetPage(page)"
+                            class="page font-white">
+                            {{ page }}
+                        </a>
+                    </div>
+                    <a (click)="NextPage()" class="page font-white" [class.disabled]="current_movies_page+1>=similar_movies.total_pages || current_movies_page+1>=500">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </div>
+            </span>
+        </div>
+    </section>
+</ng-template>

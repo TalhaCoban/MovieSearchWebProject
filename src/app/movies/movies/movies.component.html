@@ -15,12 +15,12 @@
             <ul class="movie-kind">
                 <li class="movie-kind-item">
                     <a 
-                    [class.btnify]="current_title=='now_playing'" 
-                    [class.btn-primary]="current_title=='now_playing'" 
+                    [class.btnify]="current_title=='nowplaying'" 
+                    [class.btn-primary]="current_title=='nowplaying'" 
                     class="font-white" 
-                    (click)="changeFilmList('now_playing')">
+                    routerLink="/movies/nowplaying/1">
                         <i class="fa-solid fa-glasses font-yellow"></i> 
-                        Now Playing
+                        Vizyonda
                     </a>
                 </li>
                 <li class="movie-kind-item">
@@ -28,29 +28,29 @@
                     [class.btnify]="current_title=='popular'" 
                     [class.btn-primary]="current_title=='popular'" 
                     class="font-white" 
-                    (click)="changeFilmList('popular')">
+                    routerLink="/movies/popular/1">
                         <i class="fa-solid fa-fire font-yellow"></i>
-                        Popular
+                        Populer
                     </a>
                 </li>
                 <li class="movie-kind-item">
                     <a 
-                    [class.btnify]="current_title=='top_rated'" 
-                    [class.btn-primary]="current_title=='top_rated'" 
+                    [class.btnify]="current_title=='toprated'" 
+                    [class.btn-primary]="current_title=='toprated'" 
                     class="font-white" 
-                    (click)="changeFilmList('top_rated')">
+                    routerLink="/movies/toprated/1">
                     <i class="fa-solid fa-chess-king font-yellow"></i>
-                        Top Rated
+                        Yüksek Puanlı
                     </a>
                 </li>
                 <li class="movie-kind-item">
                     <a 
-                    [class.btnify]="current_title=='Upcoming'" 
-                    [class.btn-primary]="current_title=='Upcoming'" 
+                    [class.btnify]="current_title=='upcoming'" 
+                    [class.btn-primary]="current_title=='upcoming'" 
                     class="font-white" 
-                    (click)="changeFilmList('Upcoming')">
+                    routerLink="/movies/upcoming/1">
                         <i class="fa-solid fa-terminal font-yellow"></i>
-                        Upcoming
+                        Gelmekte olan
                     </a>
                 </li>
             </ul>
@@ -83,15 +83,15 @@
                     Page  {{ current_movies_page }}  of  {{ current_movies.total_pages }}
                 </p>
                 <div class="pages-box">
-                    <a (click)="PreviousPage()" class="page font-white">
+                    <a routerLink="/movies/{{ current_title }}/{{ current_movies_page - 1 }}" class="page font-white" [class.disabled]="current_movies_page-1<=0">
                         <i class="fa-solid fa-chevron-left"></i>
                     </a>
                     <div *ngFor="let page of getPagesArray()">
-                        <a [class.page-btn]="page == current_movies.page" (click)="GetPage(page)" class="page font-white">
+                        <a [class.page-btn]="page == current_movies.page" routerLink="/movies/{{ current_title }}/{{ page }}" class="page font-white">
                             {{ page }}
                         </a>
                     </div>
-                    <a (click)="NextPage()" class="page font-white">
+                    <a routerLink="/movies/{{ current_title }}/{{ current_movies_page + 1 }}" class="page font-white" [class.disabled]="current_movies_page+1>=current_movies.total_pages || current_movies_page+1>=500">
                         <i class="fa-solid fa-angle-right"></i>
                     </a>
                 </div>
