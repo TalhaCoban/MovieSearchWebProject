@@ -1,0 +1,193 @@
+<div *ngIf="!isLoading">
+    <navbar></navbar>
+
+    <!-- movie details -->
+    <section id="movies" class="movies" *ngIf="current_movies">
+        <ng-template [ngTemplateOutlet]="movies" [ngTemplateOutletContext]="current_movies"></ng-template>
+    </section>
+
+
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+
+<!-- movie details -->
+<ng-template #movies>
+    <div class="container">
+        <div class="movie-menu">
+            <ul class="movie-kind">
+                <li class="movie-kind-item">
+                    <a [class.btnify]="current_title=='nowplaying'" [class.btn-primary]="current_title=='nowplaying'"
+                        class="font-white" [routerLink]="'/movies/nowplaying/1'">
+                        <i class="fa-solid fa-glasses font-yellow"></i>
+                        Vizyonda
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a [class.btnify]="current_title=='popular'" [class.btn-primary]="current_title=='popular'"
+                        class="font-white" [routerLink]="'/movies/popular/1'">
+                        <i class="fa-solid fa-fire font-yellow"></i>
+                        Populer
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a [class.btnify]="current_title=='toprated'" [class.btn-primary]="current_title=='toprated'"
+                        class="font-white" [routerLink]="'/movies/toprated/1'">
+                        <i class="fa-solid fa-chess-king font-yellow"></i>
+                        En Yüksek Oy Alanlar
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a [class.btnify]="current_title=='upcoming'" [class.btn-primary]="current_title=='upcoming'"
+                        class="font-white" [routerLink]="'/movies/upcoming/1'">
+                        <i class="fa-solid fa-terminal font-yellow"></i>
+                        Yakında
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a [class.btnify]="current_title=='discover'" [class.btn-primary]="current_title=='discover'"
+                        class="font-white" [routerLink]="'/movies/discover'">
+                        <i class="fa-brands fa-cc-discover font-yellow"></i>
+                        Keşfet
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="movies-page">
+            <div class="filter-section">
+                <h2 class="up-title font-light">
+                    Filtrele
+                </h2>
+                <form>
+                    <div class="filter">
+                        <label for="category" class="filter-label font-light">Kategoriye Göre:</label>
+                        <div class="select-box">
+                            <select name="category" id="category" class="form-select">
+                                <option value=""></option>
+                                <option *ngFor="let genre of genres" value="{{ genre.id }}">
+                                    {{ genre.name }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <label for="country" class="filter-label font-light">Ülkeye Göre:</label>
+                        <div class="select-box">
+                            <select name="country" id="country" class="form-select">
+                                <option value=""></option>
+                                <option *ngFor="let country of countries" value="{{ country.iso_3166_1 }}">
+                                    {{ country.native_name }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <label for="year" class="filter-label font-light">Yılına Göre:</label>
+                        <div class="select-box">
+                            <select name="year" id="year" class="form-select">
+                                <option value=""></option>
+                                <option *ngFor="let year of getYears()" value="{{ year }}">
+                                    {{ year }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <label for="sortby" class="filter-label font-light">Sıralama Ölçütü:</label>
+                        <div class="select-box">
+                            <select name="sortby" id="sortby" class="form-select">
+                                <option value=""></option>
+                                <option value="original_title.desc"> Adına göre</option>
+                                <option value="popularity.desc">Populerliğine göre</option>
+                                <option value="revenue.desc">Hasılata göre</option>
+                                <option value="primary_release_date.desc">Yılına göre</option>
+                                <option value="title.desc">Adına göre</option>
+                                <option value="original_title.desc">Orijinal adına göre</option>
+                                <option value="vote_average.desc">Puanına göre</option>
+                                <option value="vote_count.desc">Oy sayısına göre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Filtrele</button>
+                </form>
+                <h2 class="up-title font-light">
+                    Türüne Göre En iyi Filmler
+                </h2>
+                <div class="kind-buttons-group">
+                    <a class="kind-button font-light" href="#">Bilim Kurgu</a>
+                    <a class="kind-button font-light" href="#">Aile</a>
+                    <a class="kind-button font-light" href="#">Aksiyon</a>
+                    <a class="kind-button font-light" href="#">Dram</a>
+                    <a class="kind-button font-light" href="#">Gerilim</a>
+                    <a class="kind-button font-light" href="#">Gizem</a>
+                    <a class="kind-button font-light" href="#">Komedi</a>
+                    <a class="kind-button font-light" href="#">Korku</a>
+                    <a class="kind-button font-light" href="#">Macera</a>
+                    <a class="kind-button font-light" href="#">Savaş</a>
+                </div>
+                <h2 class="up-title font-light">
+                    Türüne Göre En iyi Filmler
+                </h2>
+                <div class="kind-buttons-group">
+                    <a class="kind-button kind-button-sm font-light" href="#" *ngFor="let year of getYears(12)">{{ year }}</a>
+                </div>
+                <h2 class="up-title font-light">
+                  Ülkeye Göre En iyi Filmler
+                </h2>
+                <div class="kind-buttons-group">
+                    <a class="kind-button font-light" href="#">Amerika</a>
+                    <a class="kind-button font-light" href="#">Türkiye</a>
+                    <a class="kind-button font-light" href="#">Fransa</a>
+                    <a class="kind-button font-light" href="#">İngiltere</a>
+                    <a class="kind-button font-light" href="#">Hindistan</a>
+                    <a class="kind-button font-light" href="#">İran</a>
+                    <a class="kind-button font-light" href="#">Japonya</a>
+                    <a class="kind-button font-light" href="#">Almanya</a>
+                </div>
+            </div>
+            <div class="movies">
+                <div *ngFor="let movie of current_movies.results" class="movie">
+                    <a [routerLink]="'/movies/' + movie.id">
+                        <div class="movie-poster-box">
+                            <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}"
+                                class="movie-poster">
+                        </div>
+                        <p class="movie-title font-white ellipsis2">{{ movie.title }}</p>
+                        <div class="movie-informations font-yellow">
+                            <i class="fa-solid fa-star"></i>
+                            <p class="vote_average font-yellow">
+                                {{ getFloor(movie.vote_average) }}/10
+                            </p>
+                            <p class="movie-votes font-white">
+                                {{ movie.vote_count }} vote
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pages">
+            <div class="pages-box">
+                <a href="/movies/{{ current_title }}/{{ current_movies_page - 1 }}" class="page font-white"
+                    [class.disabled]="current_movies_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == current_movies.page" href="/movies/{{ current_title }}/{{ page }}"
+                        class="page font-white">
+                        {{ page }}
+                    </a>
+                </div>
+                <a href="/movies/{{ current_title }}/{{ current_movies_page + 1 }}" class="page font-white"
+                    [class.disabled]="current_movies_page+1>=current_movies.total_pages || current_movies_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>

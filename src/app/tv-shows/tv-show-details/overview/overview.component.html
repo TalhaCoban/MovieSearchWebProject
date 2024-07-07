@@ -1,0 +1,119 @@
+
+<ng-template [ngTemplateOutlet]="overview" [ngTemplateOutletContext]="details"></ng-template>
+
+
+<!-- overview-section -->
+<ng-template #overview>
+    <section class="overview" id="overview">
+        <div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Orijinal isim:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.original_name }}
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Açıklama:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.overview }}
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Populerlik:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.popularity }}
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Tür:
+                </h2>
+                <p class="overview-content font-light">
+                    <span *ngFor="let genre of details.genres">
+                        {{ genre['name'] }},
+                    </span>
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Çıkış Tarihi:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.first_air_date | date:'d MMMM y' }}
+                </p>
+            </div>
+            <div class="content" *ngIf="details.last_air_date">
+                <h2 class="content-title font-pink">
+                    Son Bölüm Tarihi:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.last_air_date | date:'d MMMM y' }}
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Yapımcı Ülke:
+                </h2>
+                <div class="overview-content font-light">
+                    <div class="overview-content-box">
+                        <span class="overview-image" *ngFor="let country of details.production_countries">
+                            <p class="overview-content-box-text">
+                                {{ country['name'] }}
+                            </p>
+                            <div class="country-flag-box">
+                                <img [src]="country.flag_path" class="content-country-image" *ngIf="country.flag_path">
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Yapımcı Şirket:
+                </h2>
+                <div class="overview-content font-light">
+                    <div class="overview-content-box">
+                        <span class="overview-image" *ngFor="let company of details.production_companies">
+                            <p class="overview-content-box-text">
+                                {{ company['name'] }}
+                            </p>
+                            <div class="company-logo-box">
+                                <img src="{{ image_url }}{{ company.logo_path }}" alt="" class="content-image">
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="content" *ngIf="details.last_air_date">
+                <h2 class="content-title font-pink">
+                    Devam Durumu:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.status }}
+                </p>
+            </div>
+            <div class="content" *ngIf="details.last_air_date">
+                <h2 class="content-title font-pink">
+                    Sezon Sayısı:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.number_of_seasons }}
+                </p>
+            </div>
+            <div class="content" *ngIf="details.last_air_date">
+                <h2 class="content-title font-pink">
+                    Bölüm Sayısı:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.number_of_episodes }}
+                </p>
+            </div>
+        </div>
+    </section>
+</ng-template>

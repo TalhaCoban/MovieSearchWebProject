@@ -17,6 +17,7 @@ export class MoviesComponent implements OnInit {
   current_movies: MoviesResponse | null = null;
   current_title: string;
   current_movies_page: number;
+  isLoading: boolean = true;
 
   constructor(
     private movieService: MovieService,
@@ -25,6 +26,7 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.isLoading = true;
       this.current_title = params["category"];
       this.current_movies_page = params["page"];
 
@@ -37,23 +39,28 @@ export class MoviesComponent implements OnInit {
         this.current_title = "nowplaying";
         this.movieService.getNowPlayingMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
+          this.isLoading = false;
         });
       } else if (this.current_title == "popular") {
         this.current_title = "popular";
         this.movieService.getPopularMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
+          this.isLoading = false;
         });
       } else if (this.current_title == "toprated") {
         this.current_title = "toprated";
         this.movieService.getTopRatedMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
+          this.isLoading = false;
         });
       } else if (this.current_title == "upcoming") {
         this.current_title = "upcoming";
         this.movieService.getUpcomingMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
+          this.isLoading = false;
         });
       }
+
     })
   }
 

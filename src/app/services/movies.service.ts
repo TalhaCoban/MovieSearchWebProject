@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { GenreRepository } from "../models/genres.repository";
+import { MovieGenreRepository } from "../models/genres.repository";
 import { Movie, MoviesResponse } from "../models/movies.response.model";
 import { environment } from "src/environments/environment.development";
 
@@ -11,11 +11,11 @@ import { environment } from "src/environments/environment.development";
 })
 export class MovieService {
 
-    upcoming_url: string = environment.upcoming_url;
-    trending_url: string = environment.trending_url;
-    popular_url: string = environment.popular_url;
-    topRated_url: string = environment.topRated_url;
-    nowPlaying_url: string = environment.nowPlaying_url;
+    moviesupcoming_url: string = environment.moviesupcoming_url;
+    moviestrending_url: string = environment.moviestrending_url;
+    moviespopular_url: string = environment.moviespopular_url;
+    moviestopRated_url: string = environment.moviestopRated_url;
+    moviesnowPlaying_url: string = environment.moviesnowPlaying_url;
     moviesSimilar_url: string[] = environment.moviesSimilar_url;
     api: string = environment.api;
     url: string = "";
@@ -31,7 +31,7 @@ export class MovieService {
 
     constructor(
         private http: HttpClient,
-        private genreRepository: GenreRepository,
+        private genreRepository: MovieGenreRepository,
     ) {
 
     }
@@ -71,23 +71,23 @@ export class MovieService {
     }
 
     getUpcomingMovies(page: number): Observable<MoviesResponse> {
-        return this.getMovies(this.upcoming_url + page);
+        return this.getMovies(this.moviesupcoming_url + page);
     };
 
     getTrendingMovies(): Observable<MoviesResponse> {
-        return this.getMovies(this.trending_url);
+        return this.getMovies(this.moviestrending_url);
     };
 
     getPopularMovies(page: number): Observable<MoviesResponse> {
-        return this.getMovies(this.popular_url + page);
+        return this.getMovies(this.moviespopular_url + page);
     };
 
     getTopRatedMovies(page: number): Observable<MoviesResponse> {
-        return this.getMovies(this.topRated_url + page);
+        return this.getMovies(this.moviestopRated_url + page);
     };
 
     getNowPlayingMovies(page: number): Observable<MoviesResponse> {
-        return this.getMovies(this.nowPlaying_url + page);
+        return this.getMovies(this.moviesnowPlaying_url + page);
     };
 
     getSimilarMovies(movieId: number, page: number): Observable<MoviesResponse> {

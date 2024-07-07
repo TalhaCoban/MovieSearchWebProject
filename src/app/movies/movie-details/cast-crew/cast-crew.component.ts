@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieCasts } from 'src/app/models/movie-casts.response';
+import { CastsCrews } from 'src/app/models/casts-crews.response.model';
 import { MovieCastsService } from 'src/app/services/movie-casts.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.development';
 export class CastCrewComponent implements OnInit {
 
   @Input() movieId: number;
-  movieCastsCrews: MovieCasts | null = null;
+  movieCastsCrews: CastsCrews | null = null;
   image_url = environment.image_url;
 
   constructor(

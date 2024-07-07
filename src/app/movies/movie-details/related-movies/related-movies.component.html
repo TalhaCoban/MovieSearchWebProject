@@ -24,28 +24,20 @@
             </div>
         </div>
         <div class="pages">
-            <p class="font-white">
-                Movies per page: 20
-            </p>
-            <span class="pages-side">
-                <p class="font-white">
-                    Page {{ current_movies_page }} of {{ similar_movies.total_pages }}
-                </p>
-                <div class="pages-box">
-                    <a (click)="PreviousPage()" class="page font-white" [class.disabled]="current_movies_page-1<=0">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </a>
-                    <div *ngFor="let page of getPagesArray()">
-                        <a [class.page-btn]="page == similar_movies.page" (click)="GetPage(page)"
-                            class="page font-white">
-                            {{ page }}
-                        </a>
-                    </div>
-                    <a (click)="NextPage()" class="page font-white" [class.disabled]="current_movies_page+1>=similar_movies.total_pages || current_movies_page+1>=500">
-                        <i class="fa-solid fa-angle-right"></i>
+            <div class="pages-box">
+                <a (click)="PreviousPage()" class="page font-white" [class.disabled]="current_movies_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == similar_movies.page" (click)="GetPage(page)"
+                        class="page font-white">
+                        {{ page }}
                     </a>
                 </div>
-            </span>
+                <a (click)="NextPage()" class="page font-white" [class.disabled]="current_movies_page+1>=similar_movies.total_pages || current_movies_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
         </div>
     </section>
 </ng-template>

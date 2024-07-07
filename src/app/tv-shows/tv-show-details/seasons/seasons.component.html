@@ -1,0 +1,38 @@
+
+
+
+<section id="seasons" class="seasons">
+    <ng-template [ngTemplateOutlet]="seasons_section" [ngTemplateOutletContext]="seasons" ngIf="seasons"></ng-template>
+</section>
+
+
+<ng-template #seasons_section>
+    <div class="seaons-box">
+        <div class="looper" *ngFor="let season of seasons">
+            <div class="season-box">
+                <img src="{{ image_url }}{{ season.poster_path }}" alt="{{ season.name }}" class="poster-image">
+                <div class="season-informations">
+                    <h3 class="seaason-name font-light">
+                        {{ season.name }}
+                    </h3>
+                    <p class="season-info font-light">
+                        <i class="fa-solid fa-calendar-days font-pink"></i>
+                        {{ season.air_date | date:'d MMMM y' }}
+                    </p>
+                    <p class="season-info font-light">
+                        <i class="fa-solid fa-calculator font-pink"></i>
+                        {{ season.episode_count }} bölüm
+                    </p>
+                    <p class="season-info font-light">
+                        <i class="fa-solid fa-star font-pink"></i>
+                        {{ season.vote_average }}/10
+                    </p>
+                    <p class="season-info font-light" *ngIf="season.overview">
+                        <i class="fa-solid fa-pen-to-square font-pink"></i>
+                        {{ season.overview }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

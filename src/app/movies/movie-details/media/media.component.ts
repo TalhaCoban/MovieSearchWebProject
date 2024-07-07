@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieImage } from 'src/app/models/movie-images.response';
-import { MovieVideo } from 'src/app/models/movie-videos.response';
+import { Image } from 'src/app/models/images.response.model';
+import { Video } from 'src/app/models/videos.response.model';
 import { MovieMediaService } from 'src/app/services/movies-media.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.development';
@@ -14,8 +14,8 @@ export class MediaComponent implements OnInit {
 
   @Input() movieId: number;
 
-  images: MovieImage[] | null = null;
-  videos: MovieVideo[] | null = null;
+  images: Image[] | null = null;
+  videos: Video[] | null = null;
   image_url: string = environment.image_url
 
   constructor(

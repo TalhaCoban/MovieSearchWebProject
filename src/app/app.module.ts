@@ -7,20 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { MoviesModule } from './movies/movies.module';
 import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
+import { TvShowsModule } from './tv-shows/tv-shows.module';
 
 
 registerLocaleData(localeTr, 'tr');
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
  imports: [
     BrowserModule,
     HttpClientModule,
     SharedModule,
     MoviesModule,
-    AppRoutingModule,
-
+    TvShowsModule,
+    AppRoutingModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'tr' }],
   bootstrap: [AppComponent]

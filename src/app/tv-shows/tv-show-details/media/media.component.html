@@ -1,0 +1,47 @@
+
+<!-- section media -->
+<section class="media" id="media">
+    <!-- videos -->
+    <ng-template [ngTemplateOutlet]="videos_template" [ngTemplateOutletContext]="videos" *ngIf="videos"></ng-template>
+    
+    <!-- images -->
+    <ng-template [ngTemplateOutlet]="images_template" [ngTemplateOutletContext]="images" *ngIf="images"></ng-template>
+
+</section>
+
+
+
+<!-- videos-section -->
+<ng-template #videos_template>
+    <h2 class="media-title font-pink">
+        VIDEOS
+        <span class="media-length">({{ videos.length }})</span>
+    </h2>
+    <div class="videos-box">
+        <div class="video-box" *ngFor="let video of videos">
+            <iframe 
+                width="256" height="144"
+                [src]="getSafeUrl(video.key)" 
+                title="{{ video.name }}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- images-section -->
+<ng-template #images_template>
+    <h2 class="media-title font-pink">
+        IMAGES
+        <span class="media-length">({{ images.length }})</span>
+    </h2>
+    <div class="images-box">
+        <a class="image-box" href="{{ image_url }}{{ image.file_path }}" target="_blank" *ngFor="let image of images">
+            <img class="image-it" src="{{ image_url }}{{ image.file_path }}" alt="">
+        </a>
+    </div>
+</ng-template>

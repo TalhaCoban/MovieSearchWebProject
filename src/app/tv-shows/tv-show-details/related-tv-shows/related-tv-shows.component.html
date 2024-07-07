@@ -1,0 +1,43 @@
+<ng-template [ngTemplateOutlet]="related_tvshows" [ngTemplateOutletContext]="similar_tvshows"
+    *ngIf="similar_tvshows && similar_tvshows.results"></ng-template>
+
+<!-- related-tv-shows-section -->
+<ng-template #related_tvshows>
+    <section class="related-tv-shows" id="related-tv-shows">
+        <div class="tv-shows">
+            <div *ngFor="let tv_show of similar_tvshows.results" class="tv-show">
+                <a [routerLink]="'/tv-shows/' + tv_show.id">
+                    <div class="tv-show-poster-box">
+                        <img [src]="image_url + tv_show.poster_path" [alt]="tv_show.name" class="tv-show-poster">
+                    </div>
+                    <p class="tv-show-title font-white ellipsis2">{{ tv_show.name }}</p>
+                    <div class="tv-show-informations font-yellow">
+                        <i class="fa-solid fa-star"></i>
+                        <p class="vote_average font-yellow">
+                            {{ getFloor(tv_show.vote_average) }}/10
+                        </p>
+                        <p class="tv-show-votes font-white">
+                            {{ tv_show.vote_count }} vote
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="pages">
+            <div class="pages-box">
+                <a (click)="PreviousPage()" class="page font-white" [class.disabled]="current_tvshows_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == similar_tvshows.page" (click)="GetPage(page)"
+                        class="page font-white">
+                        {{ page }}
+                    </a>
+                </div>
+                <a (click)="NextPage()" class="page font-white" [class.disabled]="current_tvshows_page+1>=similar_tvshows.total_pages || current_tvshows_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+</ng-template>

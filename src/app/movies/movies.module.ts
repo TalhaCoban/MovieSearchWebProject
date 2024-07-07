@@ -10,15 +10,16 @@ import { OverviewComponent } from './movie-details/overview/overview.component';
 import { CastCrewComponent } from './movie-details/cast-crew/cast-crew.component';
 import { MediaComponent } from './movie-details/media/media.component';
 import { RelatedMoviesComponent } from './movie-details/related-movies/related-movies.component';
+import { DiscoverMoviesComponent } from "./movies/discover-movies/discover-movies.component";
 
 
 const routes: Routes = [{
     path: 'movies',
     children: [
         { path: "", component: MoviesComponent },
+        { path: "discover", component: DiscoverMoviesComponent },
         { path: ":category/:page", component: MoviesComponent },
         { path: ":movieId", component: MovieDetailsComponent },
-
     ]
 }]
 
@@ -31,16 +32,15 @@ const routes: Routes = [{
         CastCrewComponent,
         MediaComponent,
         RelatedMoviesComponent,
+        DiscoverMoviesComponent
     ],
     imports: [
         CommonModule,
         HttpClientModule,
         SharedModule,
         RouterModule.forChild(routes),
-
     ],
-    exports: [
-]
+    exports: []
 })
 export class MoviesModule {
 

@@ -1,14 +1,24 @@
-<navbar></navbar>
 
-<!-- movies -->
-<section id="movies" class="movies" *ngIf="current_movies">
-    <ng-template [ngTemplateOutlet]="movies" [ngTemplateOutletContext]="current_movies"></ng-template>
+
+<div *ngIf="!isLoading">
+    <navbar></navbar>
+
+    <!-- movie details -->
+    <section id="movies" class="movies" *ngIf="current_movies">
+        <ng-template [ngTemplateOutlet]="movies" [ngTemplateOutletContext]="current_movies"></ng-template>
+    </section>
+    
+    
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
 </section>
 
 
-<footerr></footerr>
-
-<!-- movies -->
+<!-- movie details -->
 <ng-template #movies>
     <div class="container">
         <div class="movie-menu">
@@ -18,7 +28,7 @@
                     [class.btnify]="current_title=='nowplaying'" 
                     [class.btn-primary]="current_title=='nowplaying'" 
                     class="font-white" 
-                    routerLink="/movies/nowplaying/1">
+                    [routerLink]="'/movies/nowplaying/1'">
                         <i class="fa-solid fa-glasses font-yellow"></i> 
                         Vizyonda
                     </a>
@@ -28,7 +38,7 @@
                     [class.btnify]="current_title=='popular'" 
                     [class.btn-primary]="current_title=='popular'" 
                     class="font-white" 
-                    routerLink="/movies/popular/1">
+                    [routerLink]="'/movies/popular/1'">
                         <i class="fa-solid fa-fire font-yellow"></i>
                         Populer
                     </a>
@@ -38,9 +48,9 @@
                     [class.btnify]="current_title=='toprated'" 
                     [class.btn-primary]="current_title=='toprated'" 
                     class="font-white" 
-                    routerLink="/movies/toprated/1">
+                    [routerLink]="'/movies/toprated/1'">
                     <i class="fa-solid fa-chess-king font-yellow"></i>
-                        Yüksek Puanlı
+                        En Yüksek Oy Alanlar
                     </a>
                 </li>
                 <li class="movie-kind-item">
@@ -48,16 +58,26 @@
                     [class.btnify]="current_title=='upcoming'" 
                     [class.btn-primary]="current_title=='upcoming'" 
                     class="font-white" 
-                    routerLink="/movies/upcoming/1">
+                    [routerLink]="'/movies/upcoming/1'">
                         <i class="fa-solid fa-terminal font-yellow"></i>
-                        Gelmekte olan
+                        Yakında
+                    </a>
+                </li>
+                <li class="movie-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='discover'" 
+                    [class.btn-primary]="current_title=='discover'" 
+                    class="font-white" 
+                    [routerLink]="'/movies/discover'">
+                        <i class="fa-brands fa-cc-discover font-yellow"></i>
+                        Keşfet
                     </a>
                 </li>
             </ul>
         </div>
         <div class="movies">
             <div *ngFor="let movie of current_movies.results" class="movie">
-                <a href="/movies/{{ movie.id }}">
+                <a [routerLink]="'/movies/' + movie.id">
                     <div class="movie-poster-box">
                         <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
                     </div>
@@ -75,27 +95,19 @@
             </div>
         </div>
         <div class="pages">
-            <p class="font-white">
-                Movies per page: 20
-            </p>
-            <span class="pages-side">
-                <p class="font-white">
-                    Page  {{ current_movies_page }}  of  {{ current_movies.total_pages }}
-                </p>
-                <div class="pages-box">
-                    <a routerLink="/movies/{{ current_title }}/{{ current_movies_page - 1 }}" class="page font-white" [class.disabled]="current_movies_page-1<=0">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </a>
-                    <div *ngFor="let page of getPagesArray()">
-                        <a [class.page-btn]="page == current_movies.page" routerLink="/movies/{{ current_title }}/{{ page }}" class="page font-white">
-                            {{ page }}
-                        </a>
-                    </div>
-                    <a routerLink="/movies/{{ current_title }}/{{ current_movies_page + 1 }}" class="page font-white" [class.disabled]="current_movies_page+1>=current_movies.total_pages || current_movies_page+1>=500">
-                        <i class="fa-solid fa-angle-right"></i>
+            <div class="pages-box">
+                <a href="/movies/{{ current_title }}/{{ current_movies_page - 1 }}" class="page font-white" [class.disabled]="current_movies_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == current_movies.page" href="/movies/{{ current_title }}/{{ page }}" class="page font-white">
+                        {{ page }}
                     </a>
                 </div>
-            </span>
+                <a href="/movies/{{ current_title }}/{{ current_movies_page + 1 }}" class="page font-white" [class.disabled]="current_movies_page+1>=current_movies.total_pages || current_movies_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
         </div>
     </div>
 </ng-template>

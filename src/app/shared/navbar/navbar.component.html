@@ -23,9 +23,9 @@
                 </div>
                 <div class="navbar-items">
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/movies/nowplaying/1">Movies</a></li>
-                        <li><a href="#">Tv shows</a></li>
+                        <li><a [routerLink]="'/'">Home</a></li>
+                        <li><a [routerLink]="'/movies/nowplaying/1'">Movies</a></li>
+                        <li><a [routerLink]="'/tv-shows/airingtoday/1'">Tv shows</a></li>
                         <li><a href="#">Celebrities</a></li>
                         <li><a href="#">Top Movies</a></li>
                         <li><a href="#">News</a></li>
@@ -72,9 +72,9 @@
                         <li class="auth"><a href="#"><h2>Register</h2></a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">Tv shows</a></li>
+                        <li><a [routerLink]="'/'">Home</a></li>
+                        <li><a [routerLink]="'/movies/nowplaying/1'">Movies</a></li>
+                        <li><a [routerLink]="'/tv-shows/airingtoday/1'">Tv shows</a></li>
                         <li><a href="#">Celebrities</a></li>
                         <li><a href="#">Top Movies</a></li>
                         <li><a href="#">News</a></li>

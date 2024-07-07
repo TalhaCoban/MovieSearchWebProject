@@ -1,0 +1,89 @@
+<div *ngIf="!isLoading">
+    <navbar></navbar>
+
+    <!-- tvshow details -->
+    <section class="tvshow-details" id="tvshow-details" *ngIf="tvshowDetails">
+        <ng-template [ngTemplateOutlet]="movie_details" [ngTemplateOutletContext]="tvshowDetails"></ng-template>
+    </section>
+    
+    
+    
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+<!-- tvshow-details -->
+<ng-template #movie_details>
+
+    <div class="container">
+        <div class="all-details">
+            <div class="poster-image-box">
+                <img class="poster-image" src="{{ image_url }}{{ tvshowDetails.poster_path }}" alt="{{ tvshowDetails.tagline }}">
+                <button type="button" class="btn btn-primary">
+                    Favorilere Ekle
+                </button>
+            </div>
+            <div class="details">
+                <h1 class="tvshow-title font-white">
+                    {{ tvshowDetails.name }}
+                </h1>
+                <div class="icon-and-text">
+                    <a href="">
+                        <div class="add-favorite-box">
+                            <i class="fa-solid fa-heart font-pink"></i>
+                        </div>
+                    </a>
+                    <a href="" class="add-favorite-text font-pink">
+                        Favorilere Ekle
+                    </a>
+                </div>
+                <div class="icon-and-text">
+                    <i class="fa-solid fa-star font-yellow icon-bg"></i>
+                    <p class="add-favorite-text font-white">
+                        {{ getFloor(tvshowDetails.vote_average) }}/10
+                    </p>
+                </div>
+                <div class="tvshow-details-tab">
+                    <a [class.active-tab]="current_tab == 'overview'" (click)="ChangeTab('overview')" class="tvshow-details-tab-link font-white">
+                        GENEL
+                    </a>
+                    <a [class.active-tab]="current_tab == 'reviews'" (click)="ChangeTab('reviews')" class="tvshow-details-tab-link font-white">
+                        YORUMLAR
+                    </a>
+                    <a [class.active-tab]="current_tab == 'cast-crew'" (click)="ChangeTab('cast-crew')" class="tvshow-details-tab-link font-white">
+                        OYUNCULAR
+                    </a>
+                    <a [class.active-tab]="current_tab == 'media'" (click)="ChangeTab('media')" class="tvshow-details-tab-link font-white">
+                        MEDYA
+                    </a>
+                    <a [class.active-tab]="current_tab == 'seasons'" (click)="ChangeTab('seasons')" class="tvshow-details-tab-link font-white">
+                        SEZONLAR
+                    </a>
+                    <a [class.active-tab]="current_tab == 'related-movies'" (click)="ChangeTab('related-movies')" class="tvshow-details-tab-link font-white">
+                        BENZERLERİ
+                    </a>
+                </div>
+                
+                <!-- overview-section -->
+                <overview [details]="tvshowDetails" *ngIf="current_tab == 'overview'" ></overview>
+                <!-- reviews section -->
+                <reviews [tvshowId]="tvshowDetails.id" *ngIf="current_tab == 'reviews'"></reviews>
+                <!-- cast-crew section -->
+                <cast-crew [tvshowId]="tvshowDetails.id" *ngIf="current_tab == 'cast-crew'"></cast-crew>
+                <!-- media section -->
+                <media [tvshowId]="tvshowDetails.id" *ngIf="current_tab == 'media'"></media>
+                <!-- seasons section -->
+                <seasons [seasons]="tvshowDetails.seasons" *ngIf="current_tab == 'seasons'"></seasons>
+                <!-- related movies section -->
+                <related-tv-shows [tvshowId]="tvshowDetails.id" *ngIf="current_tab == 'related-movies'"></related-tv-shows>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+

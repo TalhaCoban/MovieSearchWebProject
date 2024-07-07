@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieDetailsResponse } from 'src/app/models/movie-details.response';
+import { MovieDetailsResponse } from 'src/app/models/movie-details.response.model';
 import { MovieDetailsService } from 'src/app/services/movie-details.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -14,6 +14,7 @@ export class MovieDetailsComponent implements OnInit {
   image_url = environment.image_url;
   movieDetails: MovieDetailsResponse | null = null;
   current_tab: string = "overview";
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,8 +23,10 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit(): void {
       this.route.params.subscribe(params => {
+        this.isLoading = true;
         this.movieDetailsService.getMovieDetails(params['movieId']).subscribe(data => {
           this.movieDetails = data;
+          this.isLoading = false;
           // console.log("movie_details", data)
         });
       })

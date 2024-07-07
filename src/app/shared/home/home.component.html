@@ -1,22 +1,32 @@
-<navbar></navbar>
 
-<!-- upcoming movies -->
-<section id="upcoming" class="upcoming" *ngIf="upcoming_movies">
-    <ng-template [ngTemplateOutlet]="upcoming" [ngTemplateOutletContext]="upcoming_movies"></ng-template>
+
+<div *ngIf="!isLoading1 && !isLoading2 && !isLoading3">
+    <navbar></navbar>
+
+    <!-- upcoming movies -->
+    <section id="upcoming" class="upcoming" *ngIf="upcoming_movies">
+        <ng-template [ngTemplateOutlet]="upcoming" [ngTemplateOutletContext]="upcoming_movies"></ng-template>
+    </section>
+    
+    <!-- popular movies -->
+    <section id="populars" class="populars" *ngIf="popular_movies">
+        <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="popular_movies"></ng-template>
+    </section>
+    
+    <!-- trending movies -->
+    <section id="trendings" class="trendings" *ngIf="trending_movies">
+        <ng-template [ngTemplateOutlet]="trendings" [ngTemplateOutletContext]="trending_movies"></ng-template>
+    </section>
+    
+    
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading1 || isLoading2 || isLoading3">
+    <img src="/assets/img/bg-404.png">
 </section>
 
-<!-- popular movies -->
-<section id="populars" class="populars" *ngIf="popular_movies">
-    <ng-template [ngTemplateOutlet]="popular" [ngTemplateOutletContext]="popular_movies"></ng-template>
-</section>
-
-<!-- trending movies -->
-<section id="trendings" class="trendings" *ngIf="trending_movies">
-    <ng-template [ngTemplateOutlet]="trendings" [ngTemplateOutletContext]="trending_movies"></ng-template>
-</section>
-
-
-<footerr></footerr>
 
 <!-- upcoming movies -->
 <ng-template #upcoming>

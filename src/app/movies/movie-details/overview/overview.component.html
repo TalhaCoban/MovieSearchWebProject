@@ -68,11 +68,18 @@
                 <h2 class="content-title font-pink">
                     Yapımcı Ülke:
                 </h2>
-                <p class="overview-content font-light">
-                    <span *ngFor="let country of details.production_countries">
-                        {{ country['name'] }},
-                    </span>
-                </p>
+                <div class="overview-content font-light">
+                    <div class="overview-content-box">
+                        <span class="overview-image" *ngFor="let country of details.production_countries">
+                            <p class="overview-content-box-text">
+                                {{ country['name'] }}
+                            </p>
+                            <div class="country-flag-box">
+                                <img [src]="country.flag_path" class="content-country-image" *ngIf="country.flag_path">
+                            </div>
+                        </span>
+                    </div>
+                </div>
             </div>
             <div class="content">
                 <h2 class="content-title font-pink">

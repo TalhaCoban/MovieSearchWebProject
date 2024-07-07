@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-interface Genre {
+export interface Genre {
     id: number,
     name: string
 }
@@ -8,7 +8,7 @@ interface Genre {
 @Injectable({
     providedIn: 'root'
 })
-export class GenreRepository {
+export class MovieGenreRepository {
     genres: Genre[] = [
         { id: 28, name: "Aksiyon" },
         { id: 12, name: "Macera" },
@@ -40,5 +40,42 @@ export class GenreRepository {
         }
         return result;
     }
+
+    getGenres() {
+        return this.genres;
+    }
 }
 
+@Injectable({
+    providedIn: 'root'
+})
+export class TvShowsGenreRepository {
+    genres: Genre[] = [
+        { id: 10759, name: "Aksiyon & Macera" },
+        { id: 16, name: "Animasyon" },
+        { id: 35, name: "Komedi" },
+        { id: 80, name: "Suç" },
+        { id: 99, name: "Belgesel" },
+        { id: 18, name: "Dram" },
+        { id: 10751, name: "Aile" },
+        { id: 10762, name: "Çocuk" },
+        { id: 9648, name: "Gizem" },
+        { id: 10763, name: "Haber" },
+        { id: 10764, name: "Gerçeklik" },
+        { id: 10765, name: "Bilim Kurgu & Fantazi" },
+        { id: 10766, name: "Pembe Dizi" },
+        { id: 10767, name: "Talk" },
+        { id: 10768, name: "Savaş & Politik" },
+        { id: 37, name: "Vahşi Batı" }
+    ]
+
+    getGenre(genreId: number): string {
+        let result: string = "";
+        for (let genre of this.genres) {
+            if(genre.id === genreId) {
+                result = genre.name;
+            }
+        }
+        return result;
+    }
+}

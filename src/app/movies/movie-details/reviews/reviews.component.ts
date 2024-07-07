@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieReviewsResponse } from 'src/app/models/movie-reviews.response';
-import { MovieReviewsService } from 'src/app/services/movie-reviews.servie';
+import { ReviewsResponse } from 'src/app/models/reviews.response.model';
+import { MovieReviewsService } from 'src/app/services/movie-reviews.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -13,7 +13,7 @@ export class ReviewsComponent implements OnInit {
   @Input() movieId: number;
 
   image_url: string = environment.image_url;
-  movie_reviews: MovieReviewsResponse | null = null;
+  movie_reviews: ReviewsResponse | null = null;
 
   constructor(
     private movieReviewsService: MovieReviewsService,

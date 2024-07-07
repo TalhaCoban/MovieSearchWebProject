@@ -1,0 +1,86 @@
+
+<ng-template [ngTemplateOutlet]="cast_crew" [ngTemplateOutletContext]="tvshowCastsCrews" *ngIf="tvshowCastsCrews"></ng-template>
+
+
+<!-- cast-crew-section -->
+<ng-template #cast_crew>
+    <section class="cast-crew" id="cast-crew">
+        <div class="cast-crew-part">
+            <h2 class="up-title font-pink">
+                DIRECTORS
+            </h2>
+            <div class="cast-crew-people" *ngFor="let director of tvshowCastsCrews.directings">
+                <div class="person">
+                    <div class="person-avatar font-blue">
+                        <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="director.gender == 1">
+                        <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="director.gender == 2">
+                    </div>
+                    <h5 class="person-name font-light">
+                        {{ director.name }}
+                    </h5>
+                </div>
+                <div class="role font-blue">
+                    <p>{{ director.job }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="cast-crew-part">
+            <h2 class="up-title font-pink">
+                CASTS
+            </h2>
+            <div class="cast-crew-people" *ngFor="let cast of tvshowCastsCrews.cast">
+                <div class="person">
+                    <div class="person-avatar font-blue">
+                        <img class="person-avatar-image" src="{{ image_url }}{{ cast.profile_path }}" alt="" *ngIf="cast.profile_path">
+                        <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="!cast.profile_path && cast.gender == 1">
+                        <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="!cast.profile_path && cast.gender != 1">
+                    </div>
+                    <h5 class="person-name font-light">
+                        {{ cast.name }}
+                    </h5>
+                </div>
+                <div class="role font-blue">
+                    <p>{{ cast.character }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="cast-crew-part">
+            <h2 class="up-title font-pink">
+                PRODUCERS
+            </h2>
+            <div class="cast-crew-people" *ngFor="let productor of tvshowCastsCrews.productors">
+                <div class="person">
+                    <div class="person-avatar font-blue">
+                        <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="productor.gender == 1 || productor.gender == 0">
+                        <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="productor.gender == 2">
+                    </div>
+                    <h5 class="person-name font-light">
+                        {{ productor.name }}
+                    </h5>
+                </div>
+                <div class="role font-blue">
+                    <p>{{ productor.job }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="cast-crew-part">
+            <h2 class="up-title font-pink">
+                WRITERS
+            </h2>
+            <div class="cast-crew-people" *ngFor="let writer of tvshowCastsCrews.writers">
+                <div class="person">
+                    <div class="person-avatar font-blue">
+                        <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="writer.gender == 1 || writer.gender == 0">
+                        <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="writer.gender == 2">
+                    </div>
+                    <h5 class="person-name font-light">
+                        {{ writer.name }}
+                    </h5>
+                </div>
+                <div class="role font-blue">
+                    <p>{{ writer.job }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

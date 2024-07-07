@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieDetailsResponse } from 'src/app/models/movie-details.response';
+import { MovieDetailsResponse } from 'src/app/models/movie-details.response.model';
 import { environment } from 'src/environments/environment.development';
 
 @Component({

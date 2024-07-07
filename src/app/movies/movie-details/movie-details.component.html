@@ -1,13 +1,21 @@
 
-<navbar></navbar>
+<div *ngIf=" !isLoading">
+    <navbar></navbar>
 
-<!-- movie-details -->
-<section class="movie-details" id="movie-details" *ngIf="movieDetails">
-    <ng-template [ngTemplateOutlet]="movie_details" [ngTemplateOutletContext]="movieDetails"></ng-template>
+    <!-- movie-details -->
+    <section class="movie-details" id="movie-details" *ngIf="movieDetails">
+        <ng-template [ngTemplateOutlet]="movie_details" [ngTemplateOutletContext]="movieDetails"></ng-template>
+    </section>
+    
+    
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
 </section>
 
-
-<footerr></footerr>
 
 
 <!-- movie-details -->
@@ -43,19 +51,19 @@
                 </div>
                 <div class="movie-details-tab">
                     <a [class.active-tab]="current_tab == 'overview'" (click)="ChangeTab('overview')" class="movie-details-tab-link font-white">
-                        OVERVIEW
+                        GENEL
                     </a>
                     <a [class.active-tab]="current_tab == 'reviews'" (click)="ChangeTab('reviews')" class="movie-details-tab-link font-white">
-                        REVIEWS
+                        YORUMLAR
                     </a>
                     <a [class.active-tab]="current_tab == 'cast-crew'" (click)="ChangeTab('cast-crew')" class="movie-details-tab-link font-white">
-                        CAST & CREW
+                        OYUNCULAR
                     </a>
                     <a [class.active-tab]="current_tab == 'media'" (click)="ChangeTab('media')" class="movie-details-tab-link font-white">
-                        MEDIA
+                        MEDYA
                     </a>
                     <a [class.active-tab]="current_tab == 'related-movies'" (click)="ChangeTab('related-movies')" class="movie-details-tab-link font-white">
-                        RELATED MOVIES
+                        BENZERLERİ
                     </a>
                 </div>
                 
@@ -74,3 +82,6 @@
         </div>
     </div>
 </ng-template>
+
+
+

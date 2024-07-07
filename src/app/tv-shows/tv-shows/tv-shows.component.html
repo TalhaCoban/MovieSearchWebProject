@@ -1,0 +1,101 @@
+
+<div *ngIf="!isLoading">
+    <navbar></navbar>
+
+    <!-- tv-shows -->
+    <section id="tv-shows" class="tv-shows" *ngIf="current_tvshows">
+        <ng-template [ngTemplateOutlet]="tv_shows" [ngTemplateOutletContext]="current_tvshows"></ng-template>
+    </section>
+    
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+
+<!-- tv-shows -->
+<ng-template #tv_shows>
+    <div class="container">
+        <div class="tv-show-menu">
+            <ul class="tv-show-kind">
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='airingtoday'" 
+                    [class.btn-primary]="current_title=='airingtoday'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/airingtoday/1'">
+                        <i class="fa-solid fa-glasses font-yellow"></i> 
+                        Bugün Yayınlanıyor
+                    </a>
+                </li>
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='airing'" 
+                    [class.btn-primary]="current_title=='airing'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/airing/1'">
+                        <i class="fa-solid fa-fire font-yellow"></i>
+                        Yayında
+                    </a>
+                </li>
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='toprated'" 
+                    [class.btn-primary]="current_title=='toprated'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/toprated/1'">
+                    <i class="fa-solid fa-chess-king font-yellow"></i>
+                        En Yüksek Oy Alanlar
+                    </a>
+                </li>
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='popular'" 
+                    [class.btn-primary]="current_title=='popular'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/popular/1'">
+                        <i class="fa-solid fa-terminal font-yellow"></i>
+                        Popüler
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tv-shows">
+            <div *ngFor="let tv_show of current_tvshows.results" class="tv-show">
+                <a [routerLink]="'/tv-shows/' + tv_show.id">
+                    <div class="tv-show-poster-box">
+                        <img src="{{ image_url }}{{ tv_show.poster_path }}" alt="{{ tv_show.original_name }}" class="tv-show-poster">
+                    </div>
+                    <p class="tv-show-title font-white ellipsis2">{{ tv_show.original_name }}</p>
+                    <div class="tv-show-informations font-yellow">
+                        <i class="fa-solid fa-star"></i> 
+                        <p class="vote_average font-yellow">
+                            {{ getFloor(tv_show.vote_average) }}/10
+                        </p>
+                        <p class="tv-show-votes font-white">
+                            {{ tv_show.vote_count }} vote 
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="pages">
+            <div class="pages-box">
+                <a href="/tv-shows/{{ current_title }}/{{ current_tvshows_page - 1 }}" class="page font-white" [class.disabled]="current_tvshows_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == current_tvshows.page" href="/tv-shows/{{ current_title }}/{{ page }}" class="page font-white">
+                        {{ page }}
+                    </a>
+                </div>
+                <a href="/tv-shows/{{ current_title }}/{{ current_tvshows_page + 1 }}" class="page font-white" [class.disabled]="current_tvshows_page+1>=current_tvshows.total_pages || current_tvshows_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>

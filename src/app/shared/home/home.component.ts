@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   upcoming_movies: MoviesResponse | null = null;
   popular_movies: MoviesResponse | null = null;
   trending_movies: MoviesResponse | null = null;
+  isLoading1: boolean = true;
+  isLoading2: boolean = true;
+  isLoading3: boolean = true;
+
 
   constructor(
     private movieService: MovieService,
@@ -25,7 +29,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
       this.movieService.getUpcomingMovies(1).subscribe({
         next: (movies) => {
-          this.upcoming_movies = movies
+          this.upcoming_movies = movies;
+          this.isLoading1 = false;
         },
         error: (err) => {
           console.log(err)
@@ -34,7 +39,8 @@ export class HomeComponent implements OnInit {
 
       this.movieService.getPopularMovies(1).subscribe({
         next: (movies) => {
-          this.popular_movies = movies
+          this.popular_movies = movies;
+          this.isLoading2 = false;
         },
         error: (err) => {
           console.log(err)
@@ -43,7 +49,8 @@ export class HomeComponent implements OnInit {
 
       this.movieService.getTrendingMovies().subscribe({
         next: (movies) => {
-          this.trending_movies = movies
+          this.trending_movies = movies;
+          this.isLoading3 = false;
         },
         error: (err) => {
           console.log(err)
