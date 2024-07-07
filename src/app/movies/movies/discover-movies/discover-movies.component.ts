@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Country, CountryRepository } from 'src/app/models/countries.repository';
 import { Genre, MovieGenreRepository } from 'src/app/models/genres.repository';
 import { MoviesResponse } from 'src/app/models/movies.response.model';
@@ -19,6 +20,9 @@ export class DiscoverMoviesComponent implements OnInit {
   current_movies_page: number = 1;
   genres: Genre[] = [];
   countries: Country[] = [];
+  model: any = {
+    sortby: "popularity.desc",
+  };
 
   constructor(
     private discoverMoviesService: DiscoverMoviesService,
@@ -32,6 +36,33 @@ export class DiscoverMoviesComponent implements OnInit {
       this.discoverMoviesService.getMovies().subscribe(data => {
         this.current_movies = data;
       });
+  }
+
+  GetQuery(form: NgForm) {
+    let query = "https://api.themoviedb.org/3/discover/movie?"
+    if (this.model.category) {
+      query = query + "&with_genres=" + this.model.category;
+    }
+    if (this.model.country) {
+      query = query + "&With_origin_country=" + this.model.country;
+    }
+    if (this.model.year) {
+      query = query + "&primary_release_year=" + this.model.year;
+    }
+    if (this.model.sortby) {
+      query = query + "&sort_by=" + this.model.sortby;
+    }
+    if (this.model.min_vote_average) {
+      query = query + "&vote_average.gte=" + this.model.min_vote_average;
+    }
+    if (this.model.max_vote_average) {
+      query = query + "&vote_average.lte=" + this.model.max_vote_average;
+    }
+    query += "&language=tr-tr";
+
+    this.discoverMoviesService.getMovies(query).subscribe(data => {
+      this.current_movies = data;
+    })
   }
 
   getYears(count?: number): number[] {
@@ -61,7 +92,7 @@ export class DiscoverMoviesComponent implements OnInit {
     let array: number[] = [1,2,3,4, this.current_movies_page-1, this.current_movies_page, this.current_movies_page+1, this.current_movies_page+2, total-2, total-1, total]
 
     for (let i of array) {
-      if ( !result.includes(i) && i != 0 && Math.max(...result) < i && i < total ) {
+      if ( !result.includes(i) && i != 0 && Math.max(...result) <= i && i < total ) {
         result.push(i);
       }
     }

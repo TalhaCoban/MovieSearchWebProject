@@ -97,6 +97,21 @@
     min-width: 100px;
 }
 
+.input-text {
+    height: 40px;
+    width: calc(100% - 120px);
+    background-color: transparent;
+    border: 1px solid var(--yellow);
+    border-radius: 6px;
+    font-size: 15px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.text-label {
+    display: inline-block;
+    width: 120px;
+}
 
 .movie {
     margin: 1.5rem;

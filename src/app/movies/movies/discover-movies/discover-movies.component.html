@@ -63,11 +63,12 @@
                 <h2 class="up-title font-light">
                     Filtrele
                 </h2>
-                <form>
+                <form #form="ngForm" (ngSubmit)="GetQuery(form)">
                     <div class="filter">
                         <label for="category" class="filter-label font-light">Kategoriye Göre:</label>
                         <div class="select-box">
-                            <select name="category" id="category" class="form-select">
+                            <select [(ngModel)]="model.category" #category="ngModel" name="category" id="category"
+                                class="form-select">
                                 <option value=""></option>
                                 <option *ngFor="let genre of genres" value="{{ genre.id }}">
                                     {{ genre.name }}
@@ -78,7 +79,8 @@
                     <div class="filter">
                         <label for="country" class="filter-label font-light">Ülkeye Göre:</label>
                         <div class="select-box">
-                            <select name="country" id="country" class="form-select">
+                            <select [(ngModel)]="model.country" #country="ngModel" name="country" id="country"
+                                class="form-select">
                                 <option value=""></option>
                                 <option *ngFor="let country of countries" value="{{ country.iso_3166_1 }}">
                                     {{ country.native_name }}
@@ -89,7 +91,7 @@
                     <div class="filter">
                         <label for="year" class="filter-label font-light">Yılına Göre:</label>
                         <div class="select-box">
-                            <select name="year" id="year" class="form-select">
+                            <select [(ngModel)]="model.year" #year="ngModel" name="year" id="year" class="form-select">
                                 <option value=""></option>
                                 <option *ngFor="let year of getYears()" value="{{ year }}">
                                     {{ year }}
@@ -98,22 +100,32 @@
                         </div>
                     </div>
                     <div class="filter">
+                        <label for="min-vote-average" class="filter-label text-label font-light">Minimum Puan:</label>
+                        <input [(ngModel)]="model.min_vote_average" #min_vote_average="ngModel" id="min-vote-average"
+                            name="min_vote_average" type="number" min="0" max="10" class="input-text font-light">
+                    </div>
+                    <div class="filter">
+                        <label for="max-vote-average" class="filter-label text-label font-light">Maximum Puan:</label>
+                        <input [(ngModel)]="model.max_vote_average" #max_vote_average="ngModel" id="max-vote-average"
+                            name="max_vote_average" type="number" min="0" max="10" class="input-text font-light">
+                    </div>
+                    <div class="filter">
                         <label for="sortby" class="filter-label font-light">Sıralama Ölçütü:</label>
                         <div class="select-box">
-                            <select name="sortby" id="sortby" class="form-select">
-                                <option value=""></option>
+                            <select [(ngModel)]="model.sortby" #sortby="ngModel" name="sortby" id="sortby"
+                                class="form-select">
                                 <option value="original_title.desc"> Adına göre</option>
+                                <option value="original_title.desc">Orijinal adına göre</option>
                                 <option value="popularity.desc">Populerliğine göre</option>
                                 <option value="revenue.desc">Hasılata göre</option>
                                 <option value="primary_release_date.desc">Yılına göre</option>
                                 <option value="title.desc">Adına göre</option>
-                                <option value="original_title.desc">Orijinal adına göre</option>
                                 <option value="vote_average.desc">Puanına göre</option>
                                 <option value="vote_count.desc">Oy sayısına göre</option>
                             </select>
                         </div>
                     </div>
-                    <button class="btn btn-primary">Filtrele</button>
+                    <button type="submit" class="btn btn-primary">Filtrele</button>
                 </form>
                 <h2 class="up-title font-light">
                     Türüne Göre En iyi Filmler
@@ -134,10 +146,11 @@
                     Türüne Göre En iyi Filmler
                 </h2>
                 <div class="kind-buttons-group">
-                    <a class="kind-button kind-button-sm font-light" href="#" *ngFor="let year of getYears(12)">{{ year }}</a>
+                    <a class="kind-button kind-button-sm font-light" href="#" *ngFor="let year of getYears(12)">{{ year
+                        }}</a>
                 </div>
                 <h2 class="up-title font-light">
-                  Ülkeye Göre En iyi Filmler
+                    Ülkeye Göre En iyi Filmler
                 </h2>
                 <div class="kind-buttons-group">
                     <a class="kind-button font-light" href="#">Amerika</a>

@@ -23,8 +23,15 @@ export class DiscoverMoviesService {
         private http: HttpClient,
     ) {}
 
-    getMovies(): Observable<MoviesResponse> {
-        return this.http.get<MoviesResponse>(this.moviesDiscover_url, { headers: this.headers }).pipe(
+    getMovies(query?: string): Observable<MoviesResponse> {
+        let url: string;
+        if (query) {
+            url = query;
+        } else {
+            url = this.moviesDiscover_url;
+        }
+        console.log(url)
+        return this.http.get<MoviesResponse>( url, { headers: this.headers }).pipe(
             tap(data => console.log(data))
         )
     }

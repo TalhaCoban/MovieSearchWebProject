@@ -11,6 +11,7 @@ import { CastCrewComponent } from './movie-details/cast-crew/cast-crew.component
 import { MediaComponent } from './movie-details/media/media.component';
 import { RelatedMoviesComponent } from './movie-details/related-movies/related-movies.component';
 import { DiscoverMoviesComponent } from "./movies/discover-movies/discover-movies.component";
+import { FormsModule } from "@angular/forms";
 
 
 const routes: Routes = [{
@@ -37,6 +38,7 @@ const routes: Routes = [{
     imports: [
         CommonModule,
         HttpClientModule,
+        FormsModule,
         SharedModule,
         RouterModule.forChild(routes),
     ],

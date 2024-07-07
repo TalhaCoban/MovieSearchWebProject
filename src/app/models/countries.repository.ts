@@ -32,6 +32,7 @@ export class CountryRepository {
         { iso_3166_1: "FI", english_name: "Finland", native_name: "Finlandiya" },
         { iso_3166_1: "FR", english_name: "France", native_name: "Fransa" },
         { iso_3166_1: "GB", english_name: "United Kingdom", native_name: "Birleşik Krallık" },
+        { iso_3166_1: "US", english_name: "United States of America", native_name: "Amerika Birleşik Devletleri"},
         { iso_3166_1: "GE", english_name: "Georgia", native_name: "Gürcistan" },
         { iso_3166_1: "GR", english_name: "Greece", native_name: "Yunanistan" },
         { iso_3166_1: "HU", english_name: "Hungary", native_name: "Macaristan" },
