@@ -10,7 +10,9 @@
     <div class="seaons-box">
         <div class="looper" *ngFor="let season of seasons">
             <div class="season-box">
-                <img src="{{ image_url }}{{ season.poster_path }}" alt="{{ season.name }}" class="poster-image">
+                <div class="poster-image-box">
+                    <img src="{{ image_url }}{{ season.poster_path }}" alt="{{ season.name }}" class="poster-image">
+                </div>
                 <div class="season-informations">
                     <h3 class="seaason-name font-light">
                         {{ season.name }}

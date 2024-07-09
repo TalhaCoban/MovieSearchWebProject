@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { MovieGenreRepository } from "../models/genres.repository";
 import { Movie, MoviesResponse } from "../models/movies.response.model";
 import { environment } from "src/environments/environment.development";
@@ -9,10 +9,10 @@ import { environment } from "src/environments/environment.development";
 @Injectable({
     providedIn: 'root'
 })
-export class MovieService {
+export class MoviesService {
 
-    moviesupcoming_url: string = environment.moviesupcoming_url;
     moviestrending_url: string = environment.moviestrending_url;
+    moviesupcoming_url: string = environment.moviesupcoming_url;
     moviespopular_url: string = environment.moviespopular_url;
     moviestopRated_url: string = environment.moviestopRated_url;
     moviesnowPlaying_url: string = environment.moviesnowPlaying_url;
@@ -70,12 +70,12 @@ export class MovieService {
         });
     }
 
-    getUpcomingMovies(page: number): Observable<MoviesResponse> {
-        return this.getMovies(this.moviesupcoming_url + page);
-    };
-
     getTrendingMovies(): Observable<MoviesResponse> {
         return this.getMovies(this.moviestrending_url);
+    };
+
+    getUpcomingMovies(page: number): Observable<MoviesResponse> {
+        return this.getMovies(this.moviesupcoming_url + page);
     };
 
     getPopularMovies(page: number): Observable<MoviesResponse> {
@@ -103,10 +103,12 @@ export class MovieService {
                     for (let row_data of response.results) {
                         const movie = row_data;
                         const genres: string[] = [];
-                        for (let genre of row_data.genre_ids) {
-                            genres.push(this.genreRepository.getGenre(Number(genre)));
+                        if (row_data.backdrop_path) {
+                            for (let genre of row_data.genre_ids) {
+                                genres.push(this.genreRepository.getGenre(Number(genre)));
+                            }
+                            data.push({ ...movie, genre_ids: genres });
                         }
-                        data.push({ ...movie, genre_ids: genres });
                     }
                     return {
                         page: response.page,

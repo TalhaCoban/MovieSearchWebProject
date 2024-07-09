@@ -1,66 +1,76 @@
-<div *ngIf="!isLoading">
 
+<div *ngIf="!isLoading">
     <navbar></navbar>
 
-    <!-- movie details -->
-    <section id="movies" class="movies" *ngIf="current_movies">
-        <ng-template [ngTemplateOutlet]="movies" [ngTemplateOutletContext]="current_movies"></ng-template>
+    <!-- tv-shows -->
+    <section id="tv-shows" class="tv-shows" *ngIf="current_tvshows">
+        <ng-template [ngTemplateOutlet]="tv_shows" [ngTemplateOutletContext]="current_tvshows"></ng-template>
     </section>
-
-
+    
     <footerr></footerr>
-
 </div>
-
 
 <!-- loading -->
 <section id="loading" class="loading" *ngIf="isLoading">
     <img src="/assets/img/bg-404.png">
 </section>
 
-<!-- movie details -->
-<ng-template #movies>
+
+<!-- tv-shows -->
+<ng-template #tv_shows>
     <div class="container">
-        <div class="movie-menu">
-            <ul class="movie-kind">
-                <li class="movie-kind-item">
-                    <a [class.btnify]="current_title=='nowplaying'" [class.btn-primary]="current_title=='nowplaying'"
-                        class="font-white" [routerLink]="'/movies/nowplaying/1'">
-                        <i class="fa-solid fa-glasses font-yellow"></i>
-                        Vizyonda
+        <div class="tv-show-menu">
+            <ul class="tv-show-kind">
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='airingtoday'" 
+                    [class.btn-primary]="current_title=='airingtoday'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/airingtoday/1'">
+                        <i class="fa-solid fa-glasses font-yellow"></i> 
+                        Bugün Yayında
                     </a>
                 </li>
-                <li class="movie-kind-item">
-                    <a [class.btnify]="current_title=='popular'" [class.btn-primary]="current_title=='popular'"
-                        class="font-white" [routerLink]="'/movies/popular/1'">
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='airing'" 
+                    [class.btn-primary]="current_title=='airing'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/airing/1'">
                         <i class="fa-solid fa-fire font-yellow"></i>
-                        Populer
+                        Yayında
                     </a>
                 </li>
-                <li class="movie-kind-item">
-                    <a [class.btnify]="current_title=='toprated'" [class.btn-primary]="current_title=='toprated'"
-                        class="font-white" [routerLink]="'/movies/toprated/1'">
-                        <i class="fa-solid fa-chess-king font-yellow"></i>
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='toprated'" 
+                    [class.btn-primary]="current_title=='toprated'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/toprated/1'">
+                    <i class="fa-solid fa-chess-king font-yellow"></i>
                         En Yüksek Oy Alanlar
                     </a>
                 </li>
-                <li class="movie-kind-item">
-                    <a [class.btnify]="current_title=='upcoming'" [class.btn-primary]="current_title=='upcoming'"
-                        class="font-white" [routerLink]="'/movies/upcoming/1'">
+                <li class="tv-show-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='popular'" 
+                    [class.btn-primary]="current_title=='popular'" 
+                    class="font-white" 
+                    [routerLink]="'/tv-shows/popular/1'">
                         <i class="fa-solid fa-terminal font-yellow"></i>
-                        Yakında
+                        Popüler
                     </a>
                 </li>
-                <li class="movie-kind-item">
+                <li class="tv-show-kind-item">
                     <a [class.btnify]="current_title=='discover'" [class.btn-primary]="current_title=='discover'"
-                        class="font-white" [routerLink]="'/movies/discover'">
+                        class="font-white" [routerLink]="'/tv-shows/discover'">
                         <i class="fa-brands fa-cc-discover font-yellow"></i>
                         Keşfet
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="movies-page">
+        <div class="tv-shows-page">
             <div class="filter-section">
                 <div class="filter-part">
                     <h2 class="up-title font-light">
@@ -113,8 +123,7 @@
                         <div class="filter">
                             <label for="sortby" class="filter-label font-light">Sıralama Ölçütü:</label>
                             <div class="select-box">
-                                <select [(ngModel)]="model.sortby" #sortby="ngModel" name="sortby" id="sortby"
-                                    class="form-select">
+                                <select [(ngModel)]="model.sortby" #sortby="ngModel" name="sortby" id="sortby" class="form-select">
                                     <option value="title.asc"> Adına göre</option>
                                     <option value="original_title.asc">Orijinal adına göre</option>
                                     <option value="popularity.desc">Populerliğine göre</option>
@@ -133,35 +142,35 @@
                         Türüne Göre En iyi Filmler
                     </h2>
                     <div class="kind-buttons-group">
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(878)">Bilim Kurgu</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(10751)">Aile</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(28)">Aksiyon</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(18)">Dram</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(53)">Gerilim</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(9648)">Gizem</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(35)">Komedi</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(27)">Korku</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(12)">Macera</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCategory(10752)">Savaş</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(10765)">Bilim Kurgu</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(10751)">Aile</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(10759)">Aksiyon</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(18)">Dram</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(37)">Talk</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(9648)">Gizem</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(35)">Komedi</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(10764)">Gerçeklik</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(10766)">Pembe Dizi</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCategory(10768)">Savaş</a>
                     </div>
                     <h2 class="up-title font-light">
                         Türüne Göre En iyi Filmler
                     </h2>
                     <div class="kind-buttons-group">
-                        <a class="kind-button-sm font-light" (click)="getMoviesByYear(year)" *ngFor="let year of getYears(12)">{{ year }}</a>
+                        <a class="kind-button-sm font-light" (click)="getTvShowsByYear(year)" *ngFor="let year of getYears(12)">{{ year }}</a>
                     </div>
                     <h2 class="up-title font-light">
                         Ülkeye Göre En iyi Filmler
                     </h2>
                     <div class="kind-buttons-group">
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('US')">Amerika</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('TR')">Türkiye</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('FR')">Fransa</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('GB')">İngiltere</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('IN')">Hindistan</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('IR')">İran</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('JP')">Japonya</a>
-                        <a class="kind-button-md font-light" (click)="getMoviesByCountry('DE')">Almanya</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('US')">Amerika</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('TR')">Türkiye</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('FR')">Fransa</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('GB')">İngiltere</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('IN')">Hindistan</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('IR')">İran</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('JP')">Japonya</a>
+                        <a class="kind-button-md font-light" (click)="getTvShowsByCountry('DE')">Almanya</a>
                     </div>
                     <h2 class="up-title font-light">
                         Platformlara Göre En iyi Filmler
@@ -171,21 +180,20 @@
                     </div>
                 </div>
             </div>
-            <div class="movies">
-                <div *ngFor="let movie of current_movies.results" class="movie">
-                    <a [routerLink]="'/movies/' + movie.id">
-                        <div class="movie-poster-box">
-                            <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}"
-                                class="movie-poster">
+            <div class="tv-shows">
+                <div *ngFor="let tv_show of current_tvshows.results" class="tv-show">
+                    <a [routerLink]="'/tv-shows/' + tv_show.id">
+                        <div class="tv-show-poster-box">
+                            <img src="{{ image_url }}{{ tv_show.poster_path }}" alt="{{ tv_show.original_name }}" class="tv-show-poster">
                         </div>
-                        <p class="movie-title font-white ellipsis2">{{ movie.title }}</p>
-                        <div class="movie-informations font-yellow">
-                            <i class="fa-solid fa-star"></i>
+                        <p class="tv-show-title font-white ellipsis2">{{ tv_show.original_name }}</p>
+                        <div class="tv-show-informations font-yellow">
+                            <i class="fa-solid fa-star"></i> 
                             <p class="vote_average font-yellow">
-                                {{ getFloor(movie.vote_average) }}/10
+                                {{ getFloor(tv_show.vote_average) }}/10
                             </p>
-                            <p class="movie-votes font-white">
-                                {{ movie.vote_count }} vote
+                            <p class="tv-show-votes font-white">
+                                {{ tv_show.vote_count }} vote 
                             </p>
                         </div>
                     </a>
@@ -199,13 +207,13 @@
                     <i class="fa-solid fa-chevron-left"></i>
                 </a>
                 <div *ngFor="let page of getPagesArray()">
-                    <a [class.page-btn]="page == current_movies.page" (click)="GetPage(page)"
+                    <a [class.page-btn]="page == current_tvshows.page" (click)="GetPage(page)"
                         class="page font-white">
                         {{ page }}
                     </a>
                 </div>
                 <a (click)="NextPage()" class="page font-white"
-                    [class.disabled]="current_page+1>=current_movies.total_pages || current_page+1>=500">
+                    [class.disabled]="current_page+1>=current_tvshows.total_pages || current_page+1>=500">
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
             </div>

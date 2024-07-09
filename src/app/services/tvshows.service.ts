@@ -11,6 +11,7 @@ import { TvShowsGenreRepository } from "../models/genres.repository";
 })
 export class TvShowsService {
 
+    tvshowstrending_url: string = environment.tvshowstrending_url;
     tvshowsAiringToday_url: string = environment.tvshowsAiringToday_url;
     tvshowsOntheAir_url: string = environment.tvshowsOntheAir_url;
     tvshowspopular_url: string = environment.tvshowspopular_url;
@@ -69,6 +70,10 @@ export class TvShowsService {
         });
     }
 
+    getTrendingTvShows(): Observable<TvShowsResponse> {
+        return this.getTvShows(this.tvshowstrending_url);
+    };
+
     getAiringTodayTvShows(page: number): Observable<TvShowsResponse> {
         return this.getTvShows(this.tvshowsAiringToday_url + page);
     };
@@ -98,10 +103,12 @@ export class TvShowsService {
                     for (let row_data of response.results) {
                         const tvshow = row_data;
                         const genres: string[] = [];
-                        for (let genre of row_data.genre_ids) {
-                            genres.push(this.genreRepository.getGenre(Number(genre)));
+                        if (row_data.backdrop_path) {
+                            for (let genre of row_data.genre_ids) {
+                                genres.push(this.genreRepository.getGenre(Number(genre)));
+                            }
+                            data.push({ ...tvshow, genre_ids: genres });
                         }
-                        data.push({ ...tvshow, genre_ids: genres });
                     }
                     return {
                         page: response.page,

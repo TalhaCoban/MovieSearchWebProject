@@ -1,4 +1,53 @@
 
+#welcome {
+    display: block;
+    height: 95vh;
+    width: 100%;
+    background: url("/assets/img/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 10rem;
+}   
+
+.welcome {
+    width: 85rem;
+    height: 40%;
+    position: relative;
+    background-color: aliceblue;
+    background-color: var(--white);
+    filter: opacity(0.6);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.welcome h1 {
+    font-size: 60px;
+    text-align: center;
+
+}
+
+.welcome p {
+    font-size: 20px;
+    width: 80%;
+    text-align: center;
+}
+
 #trendings, #upcoming {
     display: block;
     height: 90vh;
@@ -144,6 +193,7 @@
 .change-card-poster:hover {
     font-size: 3rem;
     filter: blur(0.8);
+    cursor: pointer;
 }
 
 .poster-cast-title {
@@ -153,7 +203,7 @@
     font-size: 1.4rem;
 }
 
-#populars {
+#populars, #populars2 {
     background-color: var(--dark);
 }
 
@@ -246,6 +296,12 @@
 
 /* mobile */
 @media (max-width: 566px) {    
+
+    .welcome-area {
+        width: 90%;
+        margin: 0 5%;
+    }   
+
     .card {
         top: 43%;
     }
@@ -266,7 +322,22 @@
 }
 
 
-@media (max-width: 992px) {    
+@media (max-width: 992px) { 
+    
+    #welcome {
+        height: 55vh;
+    }
+
+    .welcome h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+    
+    .welcome p {
+        font-size: 15px;
+        width: 80%;
+        text-align: center;
+    }
 
     #trendings {
         height: 50vh;
@@ -290,6 +361,26 @@
     .movie-title{
         font-size: 2.7rem;
         padding: 1rem 1rem 0.5rem;
+    }
+
+}
+
+
+@media (max-width: 1120px) { 
+    
+    #welcome {
+        height: 65vh;
+    }
+
+    .welcome h1 {
+        font-size: 50px;
+        text-align: center;
+    }
+    
+    .welcome p {
+        font-size: 18px;
+        width: 80%;
+        text-align: center;
     }
 
 }

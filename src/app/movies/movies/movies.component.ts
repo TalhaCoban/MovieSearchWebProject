@@ -2,14 +2,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesResponse } from 'src/app/models/movies.response.model';
-import { MovieService } from 'src/app/services/movies.service';
+import { MoviesService } from 'src/app/services/movies.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
-  providers: [MovieService]
+  providers: [MoviesService]
 })
 export class MoviesComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(
-    private movieService: MovieService,
+    private moviesService: MoviesService,
     private route: ActivatedRoute,
   ) {}
 
@@ -37,25 +37,25 @@ export class MoviesComponent implements OnInit {
 
       if (!this.current_title || this.current_title == "nowplaying") {
         this.current_title = "nowplaying";
-        this.movieService.getNowPlayingMovies(this.current_movies_page).subscribe(movies => {
+        this.moviesService.getNowPlayingMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
           this.isLoading = false;
         });
       } else if (this.current_title == "popular") {
         this.current_title = "popular";
-        this.movieService.getPopularMovies(this.current_movies_page).subscribe(movies => {
+        this.moviesService.getPopularMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
           this.isLoading = false;
         });
       } else if (this.current_title == "toprated") {
         this.current_title = "toprated";
-        this.movieService.getTopRatedMovies(this.current_movies_page).subscribe(movies => {
+        this.moviesService.getTopRatedMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
           this.isLoading = false;
         });
       } else if (this.current_title == "upcoming") {
         this.current_title = "upcoming";
-        this.movieService.getUpcomingMovies(this.current_movies_page).subscribe(movies => {
+        this.moviesService.getUpcomingMovies(this.current_movies_page).subscribe(movies => {
           this.current_movies = movies;
           this.isLoading = false;
         });

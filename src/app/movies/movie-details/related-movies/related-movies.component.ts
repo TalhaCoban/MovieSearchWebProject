@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MoviesResponse } from 'src/app/models/movies.response.model';
-import { MovieService } from 'src/app/services/movies.service';
+import { MoviesService } from 'src/app/services/movies.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -17,7 +17,7 @@ export class RelatedMoviesComponent implements OnInit, OnDestroy, OnChanges {
   current_movies_page: number = 1;
   private subscriptions: Subscription[] = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.loadRelatedMovies();
@@ -34,12 +34,12 @@ export class RelatedMoviesComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private loadRelatedMovies(): void {
-    this.movieService.setMovieId(this.movieId);
-    this.movieService.setPage(this.current_movies_page);
+    this.moviesService.setMovieId(this.movieId);
+    this.moviesService.setPage(this.current_movies_page);
     this.subscriptions.push(
-      this.movieService.current_movies.subscribe((data) => {
+      this.moviesService.current_movies.subscribe((data) => {
         this.similar_movies = data;
-        this.current_movies_page = this.movieService.getPage();
+        this.current_movies_page = this.moviesService.getPage();
       })
     );
   }
@@ -65,17 +65,17 @@ export class RelatedMoviesComponent implements OnInit, OnDestroy, OnChanges {
 
   PreviousPage() {
     if (this.current_movies_page > 1) {
-      this.movieService.PreviousPage();
+      this.moviesService.PreviousPage();
     }
   }
 
   GetPage(page: number) {
-    this.movieService.setPage(page);
+    this.moviesService.setPage(page);
   }
 
   NextPage() {
     if (this.similar_movies && this.similar_movies.total_pages > this.current_movies_page) {
-      this.movieService.NextPage();
+      this.moviesService.NextPage();
     }
   }
 }

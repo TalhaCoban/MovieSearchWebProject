@@ -28,7 +28,7 @@
                     class="font-white" 
                     [routerLink]="'/tv-shows/airingtoday/1'">
                         <i class="fa-solid fa-glasses font-yellow"></i> 
-                        Bugün Yayınlanıyor
+                        Bugün Yayında
                     </a>
                 </li>
                 <li class="tv-show-kind-item">
@@ -59,6 +59,13 @@
                     [routerLink]="'/tv-shows/popular/1'">
                         <i class="fa-solid fa-terminal font-yellow"></i>
                         Popüler
+                    </a>
+                </li>
+                <li class="tv-show-kind-item">
+                    <a [class.btnify]="current_title=='discover'" [class.btn-primary]="current_title=='discover'"
+                        class="font-white" [routerLink]="'/tv-shows/discover'">
+                        <i class="fa-brands fa-cc-discover font-yellow"></i>
+                        Keşfet
                     </a>
                 </li>
             </ul>

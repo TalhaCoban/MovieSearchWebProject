@@ -11,11 +11,14 @@ import { CastCrewComponent } from './tv-show-details/cast-crew/cast-crew.compone
 import { MediaComponent } from './tv-show-details/media/media.component';
 import { RelatedTvShowsComponent } from './tv-show-details/related-tv-shows/related-tv-shows.component';
 import { SeasonsComponent } from './tv-show-details/seasons/seasons.component';
+import { DiscoverTvShowsComponent } from './tv-shows/discover-tv-shows/discover-tv-shows.component';
+import { FormsModule } from "@angular/forms";
 
 const routes: Routes = [{
     path: "tv-shows",
     children : [
         { path: "", component: TvShowsComponent },
+        { path: "discover", component: DiscoverTvShowsComponent },
         { path: ":category/:page", component: TvShowsComponent },
         { path: ":tvshowId", component: TvShowDetailsComponent },
     ]
@@ -31,10 +34,12 @@ const routes: Routes = [{
         MediaComponent,
         RelatedTvShowsComponent,
         SeasonsComponent,
+        DiscoverTvShowsComponent,
     ],
     imports: [
         CommonModule,
         HttpClientModule,
+        FormsModule,
         SharedModule,
         RouterModule.forChild(routes),
     ],

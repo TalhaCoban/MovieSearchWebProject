@@ -3,14 +3,14 @@ import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { environment } from "src/environments/environment.development";
 import { MoviesResponse } from "../models/movies.response.model";
+import { TvShowsResponse } from "../models/tv-shows.response.model";
 
 
 @Injectable({
     providedIn: "root"
 })
-export class DiscoverMoviesService {
+export class DiscoverService {
 
-    moviesDiscover_url: string = environment.moviesDiscover_url;
     api: string = environment.api;
 
 
@@ -23,16 +23,11 @@ export class DiscoverMoviesService {
         private http: HttpClient,
     ) {}
 
-    getMovies(query?: string): Observable<MoviesResponse> {
-        let url: string;
-        if (query) {
-            url = query;
-        } else {
-            url = this.moviesDiscover_url;
-        }
-        console.log(url)
-        return this.http.get<MoviesResponse>( url, { headers: this.headers }).pipe(
-            tap(data => console.log(data))
-        )
+    getMovies(url: string): Observable<MoviesResponse> {
+        return this.http.get<MoviesResponse>( url, { headers: this.headers });
+    }
+
+    getTvShows(url: string): Observable<TvShowsResponse> {
+        return this.http.get<TvShowsResponse>( url, { headers: this.headers });
     }
 }

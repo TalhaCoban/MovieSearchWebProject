@@ -81,7 +81,7 @@
 
 .tv-show-menu {
     border-bottom: 0.2rem solid var(--yellow);
-    height: 40px;
+    padding-bottom: 0.6rem;
 }
 
 .tv-show-kind {
@@ -112,19 +112,19 @@
 
 .pages {
     margin: 1rem 0 4rem 0;
-    height: 4.6rem;
+    height: 46px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--yellow);
     border-top: 1px solid var(--yellow);
-    padding: 1.5rem;
+    padding: 12px;
 }
 
 .pages p,
 .pages a {
-    font-size: 1.5rem;
+    font-size: 17px;
 }
 
 .pages a {
@@ -161,11 +161,22 @@
 
 
 
+
+
 @media (max-width: 566px) {
        
     #tv-shows {
         padding-top: 5vh;
     } 
+
+    .tv-show-kind {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-left: 2rem;
+    }
 }
 
 @media (max-width: 992px) {    

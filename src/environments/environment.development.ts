@@ -1,7 +1,5 @@
 export const environment = {
 
-    url: "https://api.themoviedb.org/3/",
-    
     image_url: "https://image.tmdb.org/t/p/w500",
     
     moviestrending_url: "https://api.themoviedb.org/3/trending/movie/day?language=tr-tr",
@@ -15,9 +13,8 @@ export const environment = {
     movieImages_url: ["https://api.themoviedb.org/3/movie/", "/images"],
     movieVideos_url: ["https://api.themoviedb.org/3/movie/", "/videos"],
     moviesSimilar_url: ["https://api.themoviedb.org/3/movie/", "/similar?language=tr-tr&page="],
-    moviesDiscover_url: "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=tr-tr&page=1&sort_by=popularity.desc",
 
-
+    tvshowstrending_url: "https://api.themoviedb.org/3/trending/tv/day?language=tr-tr",
     tvshowsAiringToday_url : "https://api.themoviedb.org/3/tv/airing_today?language=tr-tr&page=",
     tvshowsOntheAir_url: "https://api.themoviedb.org/3/tv/on_the_air?language=tr-tr&page=",
     tvshowspopular_url: "https://api.themoviedb.org/3/tv/popular?language=tr-tr&page=",

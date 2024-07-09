@@ -78,4 +78,8 @@ export class TvShowsGenreRepository {
         }
         return result;
     }
+
+    getGenres() {
+        return this.genres;
+    }
 }

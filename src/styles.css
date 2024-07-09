@@ -86,11 +86,11 @@ a.disabled {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    border-radius: 1rem;
-    padding: 0.8rem 0;
-    width: 15.5rem;
-    margin: 0.5rem 0;
-    font-size: 1.4rem;
+    border-radius: 6px;
+    padding: 12px 0;
+    width: 180px;
+    margin: 5px 0;
+    font-size: 16px;
     border: 1px solid var(--dark-pink);
 }
 

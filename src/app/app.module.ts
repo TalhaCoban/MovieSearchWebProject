@@ -6,14 +6,15 @@ import { SharedModule } from './shared/shrared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesModule } from './movies/movies.module';
 import { registerLocaleData } from '@angular/common';
-import localeTr from '@angular/common/locales/tr';
 import { TvShowsModule } from './tv-shows/tv-shows.module';
+import { AuthModule } from './Auth/auth.module';
+import localeTr from '@angular/common/locales/tr';
 
 
 registerLocaleData(localeTr, 'tr');
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
  imports: [
     BrowserModule,
@@ -21,6 +22,7 @@ registerLocaleData(localeTr, 'tr');
     SharedModule,
     MoviesModule,
     TvShowsModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'tr' }],

@@ -1,12 +1,12 @@
 
-#movies {
+#tv-shows {
     background-color: var(--dark);
     margin: 0;
     padding-top: 15vh;
     width: 100%;
 }
 
-.movies-page {
+.tv-shows-page {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.movies {
+.tv-shows {
     padding: 2rem 0 2rem 1rem;
     display: flex;
     flex-direction: row;
@@ -162,7 +162,7 @@
     width: 120px;
 }
 
-.movie {
+.tv-show {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -172,19 +172,19 @@
     height: 38rem;
 }
 
-.movie-poster-box {
+.tv-show-poster-box {
     overflow: hidden; 
     position: relative;
     width: 19rem;
     height: 28.5rem;
 }
 
-.movie:hover {
+.tv-show:hover {
     box-shadow: 2px -1px 25px -2px rgba(0,0,0,0.86);
     transition: box-shadow 0.4s ease-in-out 0s;
 }
 
-.movie-poster {
+.tv-show-poster {
     width: 19rem;
     height: 28.5rem;
     align-self: center;
@@ -192,11 +192,11 @@
     transform-origin: center; 
 }
 
-.movie-poster:hover {
+.tv-show-poster:hover {
     transform: scale(1.2); 
 }
 
-.movie-title{
+.tv-show-title{
     font-size: 1.5rem;
     padding: 1rem 1rem 0.5rem;
 }
@@ -209,7 +209,7 @@
     max-width: 23ch;
 }
 
-.movie-informations {
+.tv-show-informations {
     padding: 0.5rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: row;
@@ -221,16 +221,16 @@
     padding-left: 0.5rem;
 }
 
-.movie-votes {
+.tv-show-votes {
     padding-left: 1.2rem;
 }
 
-.movie-menu {
+.tv-show-menu {
     border-bottom: 0.2rem solid var(--yellow);
     padding-bottom: 0.6rem;
 }
 
-.movie-kind {
+.tv-show-kind {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -239,7 +239,7 @@
     margin-right: 2rem;
 }
 
-.movie-kind-item a {
+.tv-show-kind-item a {
     display: inline-block;
     font-size: 14px;
     height: 36px;
@@ -250,7 +250,7 @@
     border-radius: 1rem;
 }
 
-.movie-kind-item a:hover {
+.tv-show-kind-item a:hover {
     cursor: pointer;
     color: var(--pink);
 }
@@ -315,11 +315,11 @@
 
 @media (max-width: 566px) {
        
-    #movies {
+    #tv-shows {
         padding-top: 5vh;
     } 
 
-    .movie-kind {
+    .tv-show-kind {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -333,26 +333,26 @@
 
 @media (max-width: 992px) {    
 
-    #movies {
+    #tv-shows {
         padding-top: 23vh;
     }
 
-    .movie {
+    .tv-show {
         height: 60rem;
     }
 
-    .movie-poster-box {
+    .tv-show-poster-box {
         width: 35rem;
         height: 52.5rem;
     }
 
-    .movie-poster {
+    .tv-show-poster {
         width: 35rem;
         height: 52.5rem;
         align-self: center;
     }
 
-    .movie-title {
+    .tv-show-title {
         font-size: 2.7rem;
         padding: 1rem 1rem 0.5rem;
     }
@@ -363,7 +363,7 @@
         flex-direction: row;
     }
 
-    .movies-page {
+    .tv-shows-page {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -371,7 +371,7 @@
         justify-content: center;
     }
 
-    .movies {
+    .tv-shows {
         padding: 2rem 0 2rem 1rem;
         display: flex;
         flex-direction: row;
