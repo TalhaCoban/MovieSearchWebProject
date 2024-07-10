@@ -1,0 +1,21 @@
+<!-- section media -->
+<section class="media" id="media">
+
+    <!-- images -->
+    <ng-template [ngTemplateOutlet]="images_template" [ngTemplateOutletContext]="credit_images" *ngIf="credit_images"></ng-template>
+
+</section>
+
+
+<!-- images-section -->
+<ng-template #images_template>
+    <h2 class="media-title font-pink">
+        FOTOĞRAFLAR
+        <span class="media-length">({{ credit_images.profiles.length }})</span>
+    </h2>
+    <div class="images-box">
+        <a class="image-box" href="{{ image_url }}{{ image.file_path }}" target="_blank" *ngFor="let image of credit_images.profiles">
+            <img class="image-it" src="{{ image_url }}{{ image.file_path }}" alt="">
+        </a>
+    </div>
+</ng-template>

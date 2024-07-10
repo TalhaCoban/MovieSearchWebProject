@@ -1,0 +1,47 @@
+
+#overview {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.6rem 0;
+    width: 100%;
+}
+
+.content-title {
+    line-height: 30px;
+    font-size: 18px;
+    width: 15rem;
+}
+
+.overview-content {
+    padding-top: 0.13rem;
+    line-height: 30px;
+    font-size: 18px;
+    width: 100%;
+}
+
+@media (max-width: 992px) {    
+
+    .content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .content-title {
+        width: 100%;
+    }
+
+    .overview-content {
+        width: 100%;
+    }
+    
+}
+
+

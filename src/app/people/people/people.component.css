@@ -1,0 +1,187 @@
+#people {
+    background-color: var(--dark);
+    width: 100vw;
+    margin: 0;
+    padding-top: 35vh;
+    padding-bottom: 50px;
+}
+
+.up-title {
+    padding: 2rem 0;
+    font-size: 40px;
+}
+
+.celebrities {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+    border-top: 1px solid var(--yellow);
+}
+
+.person {
+    width: 47.5%;
+    min-width: 450px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 2rem 0;
+    box-shadow: 1px 9px 31px 0px rgba(84, 84, 70, 1);
+    padding-bottom: 1rem;
+}
+
+
+.person-image-box {
+    overflow: hidden;
+    width: 30rem;
+    height: 45rem;
+    min-width: 250px;
+    min-height: 375px;
+}
+
+.person-image {
+    width: 30rem;
+    height: 45rem;
+    min-width: 250px;
+    min-height: 375px;
+}
+
+.person-image:hover {
+    transform: scale(1.2);
+    transition: transform 0.4s ease;
+}
+
+.person-as-known {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.as-known-text {
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.show-image-box {
+    overflow: hidden;
+    width: 20rem;
+    min-width: 150px;
+}
+
+.show-image {
+    width: 20rem;
+    min-width: 150px;
+}
+
+.show-image:hover {
+    transform: scale(1.2);
+    transition: transform 0.4s ease-in-out;
+}
+
+.person-information h1 {
+    font-size: 25px;
+    padding: 0.5rem;
+}
+
+.person-information p {
+    font-size: 16px;
+    padding: 0.6rem 1.2rem;
+}
+
+.show h4 {
+    font-size: 13px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+}
+
+.pages {
+    margin: 1rem 0 4rem 0;
+    height: 46px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+    padding: 12px;
+}
+
+.pages p,
+.pages a {
+    font-size: 17px;
+}
+
+.pages a {
+    cursor: pointer;
+
+}
+
+.pages-box {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages-box div {
+    display: flex;
+    flex-direction: row;
+    padding: 0.4rem;
+}
+
+.page {
+    padding: 0.4rem;
+}
+
+.pages-empty-space {
+    padding: 1rem;
+}
+
+.page-btn {
+    background-color: var(--pink);
+    border-radius: 0.3rem;
+}
+
+
+
+@media (max-width: 566px) {
+
+    .person {
+        width: 90%;
+        min-width: 0;
+        gap: 5x;
+    }
+
+    .person-image-box {
+        overflow: hidden;
+        min-width: 200px;
+        min-height: 300px;
+    }
+    
+    .person-image {
+        min-width: 200px;
+        min-height: 300px;
+    }
+
+    .show-image-box {
+        overflow: hidden;
+        min-width: 135px;
+    }
+    
+    .show-image {
+        min-width: 135px;
+    }
+
+}
+
+
+

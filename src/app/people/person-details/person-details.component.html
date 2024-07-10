@@ -1,0 +1,67 @@
+
+<div *ngIf=" !isLoading">
+    <navbar></navbar>
+
+    <!-- credit-details -->
+    <section class="person-details" id="person-details" *ngIf="credit_detaiils">
+        <ng-template [ngTemplateOutlet]="creditDetaiils" [ngTemplateOutletContext]="credit_detaiils"></ng-template>
+    </section>
+    
+    
+    <footerr></footerr>
+</div>
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+
+<!-- credit-details -->
+<ng-template #creditDetaiils>
+    <div class="container">
+        <div class="all-details">
+            <div class="details">
+                <h1 class="person-title font-white">
+                    {{ credit_detaiils.name }}
+                </h1>
+                <div class="icon-and-text">
+                    <i class="fa-solid fa-star font-yellow icon-bg"></i>
+                    <p class="add-favorite-text font-white">
+                        {{ credit_detaiils.popularity }}
+                    </p>
+                </div>
+                <div class="person-details-tab">
+                    <a [class.active-tab]="current_tab == 'overview'" (click)="ChangeTab('overview')" class="person-details-tab-link font-white">
+                        GENEL BAKIŞ
+                    </a>
+                    <a [class.active-tab]="current_tab == 'media'" (click)="ChangeTab('media')" class="person-details-tab-link font-white">
+                        MEDYA
+                    </a>
+                    <a [class.active-tab]="current_tab == 'filmography'" (click)="ChangeTab('filmography')" class="person-details-tab-link font-white">
+                        FİLMLER
+                    </a>
+                    <a [class.active-tab]="current_tab == 'tvshowraphy'" (click)="ChangeTab('tvshowraphy')" class="person-details-tab-link font-white">
+                        DİZİLER
+                    </a>
+                </div>
+                
+                <!-- overview-section -->
+                <overview [details]="credit_detaiils" *ngIf="current_tab == 'overview'" ></overview>
+                <!-- media section -->
+                <media [personId]="credit_detaiils.id" *ngIf="current_tab == 'media'"></media>
+                <!-- filmography section -->
+                <filmography [personId]="credit_detaiils.id" *ngIf="current_tab == 'filmography'"></filmography>
+                <!-- tvshowraphy section -->
+                <tvshowraphy [personId]="credit_detaiils.id" *ngIf="current_tab == 'tvshowraphy'"></tvshowraphy>
+            </div>
+            <div class="poster-image-box">
+                <img class="poster-image" src="{{ image_url }}{{ credit_detaiils.profile_path }}" alt="{{ credit_detaiils.name }}">
+                <button type="button" class="btn btn-primary">
+                    Favorilere Ekle
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+

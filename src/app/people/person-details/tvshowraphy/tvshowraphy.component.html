@@ -1,0 +1,62 @@
+<!-- section tvshows -->
+<section class="tvshowraphy" id="tvshowraphy">
+
+    <!-- tvshows -->
+    <ng-template [ngTemplateOutlet]="tvshowraphy" [ngTemplateOutletContext]="tvshows" *ngIf="tvshows"></ng-template>
+
+</section>
+
+
+<!-- tvshows-template -->
+ <ng-template #tvshowraphy>
+    <h1 class="cast-title font-pink">
+        Rol Aldığı Diziler({{ tvshows.cast.length }})
+    </h1>
+    <div class="cast">
+        <div *ngFor="let tvshow of tvshows.cast" class="tvshow">
+            <a [routerLink]="'/tv-shows/' + tvshow.id">
+                <div class="tvshow-poster-box">
+                    <img [src]="image_url + tvshow.poster_path" [alt]="tvshow.name" class="tvshow-poster">
+                </div>
+                <p class="tvshow-title font-white ellipsis2">{{ tvshow.name }}</p>
+                <div class="tvshow-informations font-yellow">
+                    <i class="fa-solid fa-star"></i>
+                    <p class="vote_average font-yellow">
+                        {{ getFloor(tvshow.vote_average) }}/10
+                    </p>
+                    <p class="tvshow-votes font-white">
+                        {{ tvshow.vote_count }} vote
+                    </p>
+                </div>
+                <p class="tvshow-character font-white ellipsis2">
+                    <span class="font-pink">Karakter: </span>{{ tvshow.character }}
+                </p>
+            </a>
+        </div>
+    </div>
+    <h1 class="cast-title font-pink">
+        Yönettiği Diziler({{ tvshows.crew.length }})
+    </h1>
+    <div class="crew">
+        <div *ngFor="let tvshow of tvshows.crew" class="tvshow">
+            <a [routerLink]="'/tv-shows/' + tvshow.id">
+                <div class="tvshow-poster-box">
+                    <img [src]="image_url + tvshow.poster_path" [alt]="tvshow.name" class="tvshow-poster">
+                </div>
+                <p class="tvshow-title font-white ellipsis2">{{ tvshow.name }}</p>
+                <div class="tvshow-informations font-yellow">
+                    <i class="fa-solid fa-star"></i>
+                    <p class="vote_average font-yellow">
+                        {{ getFloor(tvshow.vote_average) }}/10
+                    </p>
+                    <p class="tvshow-votes font-white">
+                        {{ tvshow.vote_count }} vote
+                    </p>
+                </div>
+                <p class="tvshow-character font-white ellipsis2">
+                    <span class="font-pink">Görevi: </span>{{ tvshow.job }}
+                </p>
+            </a>
+        </div>
+    </div>
+ </ng-template>

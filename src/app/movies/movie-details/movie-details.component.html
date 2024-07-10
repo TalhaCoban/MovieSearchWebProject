@@ -20,7 +20,6 @@
 
 <!-- movie-details -->
 <ng-template #movie_details>
-
     <div class="container">
         <div class="all-details">
             <div class="poster-image-box">
@@ -79,6 +78,7 @@
                 <related-movies [movieId]="movieDetails.id" *ngIf="current_tab == 'related-movies'"></related-movies>
 
             </div>
+
         </div>
     </div>
 </ng-template>

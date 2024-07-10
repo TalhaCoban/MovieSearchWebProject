@@ -1,0 +1,98 @@
+#tvshowraphy {
+    width: 100%;
+}
+
+.cast,
+.crew {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    min-height: 60vh;
+}
+
+.cast-title {
+    margin: 20px 0 0;
+    font-size: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--pink);
+}
+
+.tvshow {
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    overflow: hidden; 
+    position: relative;
+    height: 430px;
+}
+
+.tvshow-poster-box {
+    overflow: hidden; 
+    position: relative;
+    width: 200px;
+    height: 300px;
+}
+
+.tvshow:hover {
+    box-shadow: 2px -1px 25px -2px rgba(0,0,0,0.86);
+    transition: box-shadow 0.4s ease-in-out 0s;
+}
+
+.tvshow-poster {
+    width: 200px;
+    height: 300px;
+    align-self: center;
+    transition: transform 0.4s ease-in-out;
+    transform-origin: center; 
+}
+
+.tvshow-poster:hover {
+    transform: scale(1.2); 
+}
+
+.tvshow-title{
+    font-size: 18px;
+    padding: 1rem 1rem 0.5rem;
+}
+
+.tvshow-character {
+    font-size: 15px;
+    padding: 1rem 1rem 0.5rem;
+}
+
+.ellipsis2 {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    max-width: 23ch;
+}
+
+.tvshow-informations {
+    padding: 0.5rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.vote_average {
+    font-size: 13px;
+    padding-left: 0.5rem;
+}
+
+.tvshow-votes {
+    font-size: 13px;
+    padding-left: 1.2rem;
+}
+
+
+
+
+
+

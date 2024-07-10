@@ -1,0 +1,50 @@
+
+<ng-template [ngTemplateOutlet]="overview" [ngTemplateOutletContext]="details"></ng-template>
+
+
+<!-- overview-section -->
+<ng-template #overview>
+    <section class="overview" id="overview">
+        <div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Popülerlik:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.popularity }}
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Doğum Tarihi:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.birthday | date:'d MMMM y' }}
+                </p>
+            </div>
+            <div class="content" *ngIf="details.deathday">
+                <h2 class="content-title font-pink">
+                    Ölüm Tarihi:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.deathday | date:'d MMMM y' }}
+                </p>
+            </div>
+            <div class="content">
+                <h2 class="content-title font-pink">
+                    Doğum Yeri:
+                </h2>
+                <p class="overview-content font-light">
+                    {{ details.place_of_birth }}
+                </p>
+            </div>
+            <div class="content" *ngIf="details.biography">
+                <h2 class="content-title font-pink">
+                    Biyoğrafi:
+                </h2>
+                <p class="overview-content font-light" [innerText]=" details.biography"></p>
+            </div>
+        </div>
+    </section>
+</ng-template>
+

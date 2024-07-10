@@ -1,0 +1,79 @@
+
+<div *ngIf=" !isLoading">
+    <navbar></navbar>
+
+    <!-- celebritiesList -->
+    <section class="people" id="people" *ngIf="celebritiesList">
+        <ng-template [ngTemplateOutlet]="credits" [ngTemplateOutletContext]="celebritiesList"></ng-template>
+    </section>
+    
+    
+    <footerr></footerr>
+</div>
+
+<!-- celebritiesList -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+
+<ng-template #credits>
+
+    <div class="container">
+        <h1 class="up-title font-pink">
+            Oyuncu, Yönetmen ve Yazarlar...
+        </h1>
+        <div class="celebrities">
+            <div class="person" *ngFor="let person of celebritiesList.results">
+                <a [routerLink]="'/people/person/' + person.id" class="person-informations">
+                    <div class="person-image-box">
+                        <img src="{{ image_url }}{{ person.profile_path }}" alt="" class="person-image">
+                    </div>
+                    <div class="person-information">
+                        <h1 class="person-name font-light">
+                            {{ person.name }}
+                        </h1>
+                        <p class="job font-light">
+                            {{ person.known_for_department }}
+                        </p>
+                        <p class="popularity font-light">
+                            Popülerlik: {{ person.popularity }}
+                        </p>
+                    </div>
+                </a>
+                <div class="person-as-known">
+                    <h3 class="as-known-text font-pink">
+                        Bu yapımlarla bilinir:
+                    </h3>
+                    <div class="show" *ngFor="let show of person.known_for.slice(0, 3)">
+                        <h4 class="show-title font-light">
+                            {{ show.title }}
+                        </h4>
+                        <div class="show-image-box">
+                            <img [routerLink]="'/movies/' + show.id" src="{{ image_url }}{{ show.backdrop_path }}" alt="{{ show.title }}" class="show-image" *ngIf="show.media_type == 'movie'">
+                        </div>
+                        <div class="show-image-box">
+                            <img [routerLink]="'/tv-shows/' + show.id" src="{{ image_url }}{{ show.backdrop_path }}" alt="{{ show.title }}" class="show-image" *ngIf="show.media_type != 'movie'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pages">
+            <div class="pages-box">
+                <a href="/people/{{ current_page - 1 }}" class="page font-white" [class.disabled]="current_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == celebritiesList.page" href="/people/{{ page }}" class="page font-white">
+                        {{ page }}
+                    </a>
+                </div>
+                <a href="/people/{{ current_page + 1 }}" class="page font-white" [class.disabled]="current_page+1>=celebritiesList.total_pages || current_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

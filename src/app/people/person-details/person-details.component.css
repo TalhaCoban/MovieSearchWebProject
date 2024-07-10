@@ -1,0 +1,179 @@
+
+#person-details {
+    padding-top: 15rem;
+    display: block;
+    width: 100%;
+    background: linear-gradient(to top,rgba(10,0,0,0.9),rgba(50,25,25,0.5)), url("/assets/img/credit-background.jpg");
+    background-position: top;
+    background-size: contain;
+}
+
+.poster-image {
+    width: 35rem;
+    padding-bottom: 1rem;
+}
+
+.poster-image-box {
+    width: 40rem;
+    display: inline-block;
+    text-align: center;
+    padding: 3rem 0;
+    position: sticky;
+    top: 0px;
+}
+
+.details {
+    display: inline-block;
+    width: calc(1200px - 40rem - 2px);
+    vertical-align: top;
+    min-height: 115rem;
+}
+
+.details > * {
+    padding: 2rem 0;
+}
+
+.person-title {
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.icon-and-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.add-favorite-box {
+    width: 5rem;
+    height: 5rem;
+    border: 2px solid var(--pink);
+    border-radius: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-favorite-text {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.icon-bg {
+    font-size: 2.5rem;
+}
+
+.person-details-tab {
+    padding-bottom: 1.4rem;
+    width: max-content;
+    border-bottom: 1px solid var(--yellow);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.person-details-tab-link {
+    margin-right: 2.3rem;
+    padding-bottom: 1.2rem;
+    font-size: 18px;
+}
+
+.person-details-tab-link:last-child {
+    margin-right: 0;
+}
+
+.person-details-tab-link:hover {
+    color: var(--yellow);
+    cursor: pointer;
+}
+
+.active-tab {
+    color: var(--yellow);
+}
+
+
+/* mobile */
+@media (max-width: 566px) {    
+
+    #person-details {
+        padding-top: 40rem;
+    }
+
+    .all-details {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .poster-image {
+        width: 95%;
+    }
+    
+    .poster-image-box {
+        width: 90%;
+        margin: 0 5%;
+        display: inline-block;
+        text-align: center;
+        position: static;
+    }
+
+    .details {
+        width: 90%;
+        margin: 0 5%;
+        padding: 3rem 2.1rem;
+    }
+}
+
+
+
+/* landscape */
+@media (min-width: 566px) and (max-width: 800px) {    
+
+    #person-details {
+        padding-top: 40rem;
+    }
+
+    .details {
+        width: calc(550px - 40rem - 2px);
+    }
+}
+
+@media (min-width: 800px) and (max-width: 992px) {    
+
+    #person-details {
+        padding-top: 40rem;
+    }
+
+    .details {
+        width: calc(740px - 40rem - 2px);
+    }
+
+}
+
+/* desktop */
+@media (min-width: 992px) and (max-width: 1120px) {
+
+    .details {
+        width: calc(750px - 40rem - 2px);
+    }
+}
+
+/* desktop */
+@media (min-width: 1120px) and (max-width: 1400px) {
+
+    .details {
+        width: calc(1000px - 40rem - 2px);
+    }
+}
+
+/* xlarge desktop */
+@media (min-width: 1400px) {
+
+    .details {
+        width: calc(1200px - 40rem - 2px);
+    }
+}

@@ -1,0 +1,62 @@
+<!-- section movies -->
+<section class="filmography" id="filmography">
+
+    <!-- movies -->
+    <ng-template [ngTemplateOutlet]="filmography" [ngTemplateOutletContext]="movies" *ngIf="movies"></ng-template>
+
+</section>
+
+
+<!-- movies-template -->
+ <ng-template #filmography>
+    <h1 class="cast-title font-pink">
+        Rol Aldığı Filmler({{ movies.cast.length }})
+    </h1>
+    <div class="cast">
+        <div *ngFor="let movie of movies.cast" class="movie">
+            <a [routerLink]="'/movies/' + movie.id">
+                <div class="movie-poster-box">
+                    <img [src]="image_url + movie.poster_path" [alt]="movie.title" class="movie-poster">
+                </div>
+                <p class="movie-title font-white ellipsis2">{{ movie.title }}</p>
+                <div class="movie-informations font-yellow">
+                    <i class="fa-solid fa-star"></i>
+                    <p class="vote_average font-yellow">
+                        {{ getFloor(movie.vote_average) }}/10
+                    </p>
+                    <p class="movie-votes font-white">
+                        {{ movie.vote_count }} vote
+                    </p>
+                </div>
+                <p class="movie-character font-white ellipsis2">
+                    <span class="font-pink">Karakter: </span>{{ movie.character }}
+                </p>
+            </a>
+        </div>
+    </div>
+    <h1 class="cast-title font-pink">
+        Yönettiği Filmler({{ movies.crew.length }})
+    </h1>
+    <div class="crew">
+        <div *ngFor="let movie of movies.crew" class="movie">
+            <a [routerLink]="'/movies/' + movie.id">
+                <div class="movie-poster-box">
+                    <img [src]="image_url + movie.poster_path" [alt]="movie.title" class="movie-poster">
+                </div>
+                <p class="movie-title font-white ellipsis2">{{ movie.title }}</p>
+                <div class="movie-informations font-yellow">
+                    <i class="fa-solid fa-star"></i>
+                    <p class="vote_average font-yellow">
+                        {{ getFloor(movie.vote_average) }}/10
+                    </p>
+                    <p class="movie-votes font-white">
+                        {{ movie.vote_count }} vote
+                    </p>
+                </div>
+                <p class="movie-character font-white ellipsis2">
+                    <span class="font-pink">Görevi: </span>{{ movie.job }}
+                </p>
+            </a>
+        </div>
+    </div>
+ </ng-template>

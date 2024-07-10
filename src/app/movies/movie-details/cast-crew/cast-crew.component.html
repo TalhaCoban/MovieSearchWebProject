@@ -10,7 +10,7 @@
                 DIRECTORS
             </h2>
             <div class="cast-crew-people" *ngFor="let director of movieCastsCrews.directings">
-                <div class="person">
+                <a [routerLink]="'/people/person/' + director.id" class="person">
                     <div class="person-avatar font-blue">
                         <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="director.gender == 1">
                         <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="director.gender == 2">
@@ -18,7 +18,7 @@
                     <h5 class="person-name font-light">
                         {{ director.name }}
                     </h5>
-                </div>
+                </a>
                 <div class="role font-blue">
                     <p>{{ director.job }}</p>
                 </div>
@@ -29,7 +29,7 @@
                 CASTS
             </h2>
             <div class="cast-crew-people" *ngFor="let cast of movieCastsCrews.cast">
-                <div class="person">
+                <a [routerLink]="'/people/person/' + cast.id" class="person">
                     <div class="person-avatar font-blue">
                         <img class="person-avatar-image" src="{{ image_url }}{{ cast.profile_path }}" alt="" *ngIf="cast.profile_path">
                         <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="!cast.profile_path && cast.gender == 1">
@@ -38,7 +38,7 @@
                     <h5 class="person-name font-light">
                         {{ cast.name }}
                     </h5>
-                </div>
+                </a>
                 <div class="role font-blue">
                     <p>{{ cast.character }}</p>
                 </div>
@@ -49,7 +49,7 @@
                 PRODUCERS
             </h2>
             <div class="cast-crew-people" *ngFor="let productor of movieCastsCrews.productors">
-                <div class="person">
+                <a [routerLink]="'/people/person/' + productor.id" class="person">
                     <div class="person-avatar font-blue">
                         <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="productor.gender == 1 || productor.gender == 0">
                         <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="productor.gender == 2">
@@ -57,7 +57,7 @@
                     <h5 class="person-name font-light">
                         {{ productor.name }}
                     </h5>
-                </div>
+                </a>
                 <div class="role font-blue">
                     <p>{{ productor.job }}</p>
                 </div>
@@ -68,7 +68,7 @@
                 WRITERS
             </h2>
             <div class="cast-crew-people" *ngFor="let writer of movieCastsCrews.writers">
-                <div class="person">
+                <a [routerLink]="'/people/person/' + writer.id" class="person">
                     <div class="person-avatar font-blue">
                         <img class="person-avatar-image" src="/assets/img/avatar-female.jpg" alt="" *ngIf="writer.gender == 1 || writer.gender == 0">
                         <img class="person-avatar-image" src="/assets/img/avatar-male.jpg" alt="" *ngIf="writer.gender == 2">
@@ -76,7 +76,7 @@
                     <h5 class="person-name font-light">
                         {{ writer.name }}
                     </h5>
-                </div>
+                </a>
                 <div class="role font-blue">
                     <p>{{ writer.job }}</p>
                 </div>
