@@ -86,11 +86,11 @@ a.disabled {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    border-radius: 6px;
-    padding: 12px 0;
-    width: 180px;
-    margin: 5px 0;
-    font-size: 16px;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    width: 13rem;
+    margin: .3rem 0;
+    font-size: 1rem;
     border: 1px solid var(--dark-pink);
 }
 
@@ -103,6 +103,7 @@ a.disabled {
     background-color: var(--soft-pink);
     color: var(--white);
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 #loading {
@@ -127,17 +128,45 @@ a.disabled {
     100% {transform: rotate(360deg);}
 }
 
+.back-to-top {
+    background-color: var(--pink);
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid var(--dark-pink);
+    border-radius: 50%;
+    position: relative;
+    bottom: 30rem;
+    left: calc(100% - 9rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top:hover {
+    background-color: var(--soft-pink);
+    transition: all 0.2s ease-in-out;
+}
+
+.back-to-top i {
+    font-size: 2rem;
+}
+
 
 /* mobile */
 @media (max-width: 566px) {    
 
     html {
-        font-size: 25%;
+        font-size: 70%;
     }
 
     .container {
-        width: 95%;
-        margin: 0 auto;
+        width: 98%;
+        margin: 0 1%;
+    }
+
+    .back-to-top {
+        bottom: 45rem;
     }
 }
 
@@ -146,7 +175,7 @@ a.disabled {
 @media (min-width: 566px) and (max-width: 800px) {    
 
     html {
-        font-size: 35%;
+        font-size: 75%;
     }
 
     .container {
@@ -158,7 +187,7 @@ a.disabled {
 @media (min-width: 800px) and (max-width: 992px) {    
 
     html {
-        font-size: 40%;
+        font-size: 80%;
     }
 
     .container {
@@ -171,7 +200,7 @@ a.disabled {
 @media (min-width: 992px) and (max-width: 1120px) {
 
     html {
-        font-size: 50%;
+        font-size: 85%;
     }
 
     .container {
@@ -184,7 +213,7 @@ a.disabled {
 @media (min-width: 1120px) and (max-width: 1400px) {
 
     html {
-        font-size: 55%;
+        font-size: 90%;
     }
 
     .container {
@@ -197,7 +226,7 @@ a.disabled {
 @media (min-width: 1400px) {
 
     html {
-        font-size: 65%;
+        font-size: 100%;
     }
 
     .container {

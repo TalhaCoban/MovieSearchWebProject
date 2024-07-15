@@ -7,78 +7,104 @@
                     <img src="/assets/img/logo.png" alt="">
                 </a>
             </div>
-            <div class="navbar-group">
+            <div class="search-and-links">
                 <div class="search-area">
-                    <div class="search">
-                        <select name="kind" id="kind" class="search-select-kind" form="carform">
-                            <option value="volvo">Filmler</option>
-                            <option value="saab">Diziler</option>
-                            <option value="opel">Kişiler</option>
-                          </select>
-                        <input class="top-bar-search" type="text">
-                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    </div>
-                    <a [routerLink]="'/auth/login'"><h2>Login</h2></a>
-                    <a [routerLink]="'/auth/register'"><h2>Register</h2></a>
+                    <form >
+                        <select name="" id="">
+                            <option value="movies">Filmler</option>
+                            <option value="tvshows">Diziler</option>
+                            <option value="celebrities">Kişiler</option>
+                        </select>
+                        <input class="font-white" type="text" name="" id="">
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass font-white"></i>
+                        </button>
+                    </form>
                 </div>
-                <div class="navbar-items">
-                    <ul>
-                        <li><a [routerLink]="'/'">Home</a></li>
-                        <li><a [routerLink]="'/movies/nowplaying/1'">Movies</a></li>
-                        <li><a [routerLink]="'/tv-shows/airingtoday/1'">Tv shows</a></li>
-                        <li><a [routerLink]="'/people/1'">Celebrities</a></li>
-                        <li><a href="#">News</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<nav id="navbar-phone">
-    <div class="container">
-        <div class="navbar-phone">
-            <div class="navbar">
-                <div class="logo">
-                    <img src="/assets/img/logo.png" alt="">
-                </div>
-                <div class="phone-navbar-group">
-                    <div class="navbar-group">
-                        <div class="search-area">
-                            <div class="search">
-                                <select name="kind" id="kind" class="search-select-kind" form="carform">
-                                    <option value="volvo">movies</option>
-                                    <option value="saab">Tv shows</option>
-                                    <option value="opel">Celebrities</option>
-                                </select>
-                                <input class="top-bar-search" type="text">
-                                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                            </div>
+                <div class="nav-links">
+                    <ul class="nav-link-items">
+                        <div class="nav-link-group">
+                            <li class="nav-link-item">
+                                <i class="fa-solid fa-house font-white"></i>
+                                <a class="font-white" [routerLink]="'/'">Anasayfa</a>
+                            </li>
                         </div>
-                        <a (click)="toggleMenu()">
-                            <div class="menu">
-                                <i class="fa-solid fa-bars"></i>
-                            </div>
-                        </a>
-                    </div>
+                        <div class="nav-link-group">
+                            <li class="nav-link-item">
+                                <i class="fa-solid fa-film font-white"></i>
+                                <a class="font-white">Fimler</a>
+                            </li>
+                            <ul class="sub-link-items">
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/movies/nowplaying/1'">Vizyonda</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/movies/popular/1'">Populer</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/movies/toprated/1'">En yüksek Oy Alanlar</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/movies/upcoming/1'">Yakında</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/movies/discover'">Keşfet</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="nav-link-group">
+                            <li class="nav-link-item">
+                                <i class="fa-solid fa-video font-white"></i>
+                                <a class="font-white">Diziler</a>
+                            </li>
+                            <ul class="sub-link-items">
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/tv-shows/airingtoday/1'">Bugün Yayında</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/tv-shows/airing/1'">Yayında</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/tv-shows/toprated/1'">En yüksek Oy Alanlar</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/tv-shows/popular/1'">Yakında</a>
+                                </li>
+                                <li class="sub-link-item">
+                                    <a class="font-white" [routerLink]="'/tv-shows/discover'">Keşfet</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="nav-link-group">
+                            <li class="nav-link-item">
+                                <i class="fa-solid fa-users font-white"></i>
+                                <a class="font-white" [routerLink]="'/people/1'">Kişiler</a>
+                            </li>
+                        </div>
+                    </ul>
                 </div>
             </div>
-            <div class="navbar-items" [class.active]="linkitems_clicked">
-                <span class="dropdown-empty-space"></span>
-                <div class="dropdown">
-                    <ul>
-                        <a [routerLink]="'/auth/login'"><h2>Login</h2></a>
-                        <a [routerLink]="'/auth/register'"><h2>Register</h2></a>
-                    </ul>
-                    <ul>
-                        <li><a [routerLink]="'/'">Home</a></li>
-                        <li><a [routerLink]="'/movies/nowplaying/1'">Movies</a></li>
-                        <li><a [routerLink]="'/tv-shows/airingtoday/1'">Tv shows</a></li>
-                        <li><a [routerLink]="'/people/1'">Celebrities</a></li>
-                        <li><a href="#">News</a></li>
+            <div class="account">
+                <div class="nav-link-group">
+                    <li class="nav-link-item">
+                        <i class="fa-solid fa-user-gear font-pink"></i>
+                        <a class="font-pink">Hesap</a>
+                    </li>
+                    <ul class="sub-link-items">
+                        <li class="sub-link-item">
+                            <a class="font-white" [routerLink]="'/auth/register'" *ngIf="!isAuthenticated">Kayıt Ol</a>
+                        </li>
+                        <li class="sub-link-item">
+                            <a class="font-white" [routerLink]="'/auth/login'" *ngIf="!isAuthenticated">Giriş Yap</a>
+                        </li>
+                        <li class="sub-link-item">
+                            <a class="font-white" [routerLink]="'/account/favoritemovies/1'" *ngIf="isAuthenticated">Hesap</a>
+                        </li>
+                        <li class="sub-link-item">
+                            <a class="font-white" (click)="Logout()" *ngIf="isAuthenticated">Çıkış Yap</a>
+                        </li>
                     </ul>
                 </div>
-                <span class="dropdown-empty-space"></span>
             </div>
         </div>
     </div>

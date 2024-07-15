@@ -23,8 +23,11 @@
         <div class="all-details">
             <div class="poster-image-box">
                 <img class="poster-image" src="{{ image_url }}{{ tvshowDetails.poster_path }}" alt="{{ tvshowDetails.tagline }}">
-                <button type="button" class="btn btn-primary">
+                <button (click)="addFavorite(tvshowDetails.id)" type="button" class="btn btn-primary" *ngIf="!isInUserFavorite">
                     Favorilere Ekle
+                </button>
+                <button (click)="RemoveFavorite(tvshowDetails.id)" type="button" class="btn btn-primary" *ngIf="isInUserFavorite">
+                    Favorilere Çıkar
                 </button>
             </div>
             <div class="details">
@@ -32,13 +35,21 @@
                     {{ tvshowDetails.name }}
                 </h1>
                 <div class="icon-and-text">
-                    <a href="">
+                    <a (click)="addFavorite(tvshowDetails.id)" *ngIf="!isInUserFavorite">
                         <div class="add-favorite-box">
                             <i class="fa-solid fa-heart font-pink"></i>
                         </div>
                     </a>
-                    <a href="" class="add-favorite-text font-pink">
+                    <a (click)="RemoveFavorite(tvshowDetails.id)" *ngIf="isInUserFavorite">
+                        <div class="add-favorite-box">
+                            <i class="fa-solid fa-heart font-pink"></i>
+                        </div>
+                    </a>
+                    <a (click)="addFavorite(tvshowDetails.id)" class="add-favorite-text font-pink" *ngIf="!isInUserFavorite">
                         Favorilere Ekle
+                    </a>
+                    <a (click)="RemoveFavorite(tvshowDetails.id)" class="add-favorite-text font-pink" *ngIf="isInUserFavorite">
+                        Favorilerden Çıkar
                     </a>
                 </div>
                 <div class="icon-and-text">

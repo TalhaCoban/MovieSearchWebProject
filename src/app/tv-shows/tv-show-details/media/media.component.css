@@ -32,6 +32,7 @@
     display: inline-block;
     padding: 0.5rem 0;
     width: 23%;
+    min-width: 108px;
 }
 
 .image-it {
@@ -49,6 +50,7 @@
 
     .image-box {
         width: 48%;
-        padding: 2rem 0;
+        padding: 0.7rem 0;
+        min-width: 256px;
     }
 }

@@ -13,14 +13,14 @@
 }
 
 .poster-image-box {
-    width: 25rem;
-    height: 37.5rem;
+    width: 15rem;
+    height: calc(15rem * 1.5);
     background-color: dimgray;
 }
 
 .poster-image {
-    width: 25rem;
-    height: 37.5rem;
+    width: 15rem;
+    height: calc(15rem * 1.5);
 }
 
 .season-informations {
@@ -28,46 +28,44 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    height: 37.5rem;
-    gap: 1.1rem;
-    padding-left: 2rem;
+    height: calc(15rem * 1.5);
+    gap: 0.5rem;
+    padding-left: 1.5rem;
 }
 
 .seaason-name {
-    font-size: 35px;
-    padding-bottom: 2.5rem;
+    font-size: 30px;
+    padding-bottom: 1.5rem;
 }
 
 .season-info {
-    font-size: 16px;
-    line-height: 3rem;
+    font-size: 15px;
+    line-height: 1.7rem;
 }
 
 .season-info i {
     padding-right: 0.5rem;
 }
 
-/* mobile */
-@media (max-width: 566px) {   
+
+
+@media (max-width: 800px) {    
+
+    .season-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 2rem 0;
+    }
 
     .seaason-name {
-        font-size: 20px;
-    }
-    
-    .season-info {
-        font-size: 12px;
+        padding-top: 1rem;
     }
 
-}
-
-/* landscape */
-@media (min-width: 566px) and (max-width: 800px) {    
-    .seaason-name {
-        font-size: 20px;
-    }
-    
-    .season-info {
-        font-size: 12px;
+    .season-informations {
+        align-items: flex-start;
+        justify-self: flex-start;
     }
 
 }

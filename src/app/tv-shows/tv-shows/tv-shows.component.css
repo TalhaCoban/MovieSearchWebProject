@@ -2,11 +2,11 @@
 #tv-shows {
     background-color: var(--dark);
     margin: 0;
-    padding-top: 15vh;
+    padding-top: 255px;
 }
 
 .tv-shows {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,21 +16,21 @@
 }
 
 .tv-show {
-    margin: 1.5rem;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
     overflow: hidden; 
     position: relative;
-    height: 38rem;
+    height: 27rem;
 }
 
 .tv-show-poster-box {
     overflow: hidden; 
     position: relative;
-    width: 20rem;
-    height: 30rem;
+    width: 13rem;
+    height: calc(13rem * 1.5);
 }
 
 .tv-show:hover {
@@ -39,8 +39,8 @@
 }
 
 .tv-show-poster {
-    width: 20rem;
-    height: 30rem;
+    width: 13rem;
+    height: calc(13rem * 1.5);
     align-self: center;
     transition: transform 0.4s ease-in-out;
     transform-origin: center; 
@@ -51,7 +51,7 @@
 }
 
 .tv-show-title{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1rem 1rem 0.5rem;
 }
 
@@ -60,7 +60,7 @@
     -webkit-box-orient: horizontal;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    max-width: 23ch;
+    max-width: 18ch;
 }
 
 .tv-show-informations {
@@ -71,12 +71,18 @@
     justify-content: flex-start;
 }
 
+.tv-show-informations i {
+    font-size: 1rem;
+}
+
 .vote_average {
+    font-size: 1rem;
     padding-left: 0.5rem;
 }
 
 .tv-show-votes {
-    padding-left: 1.2rem;
+    font-size: 1rem;
+    padding-left: 1rem;
 }
 
 .tv-show-menu {
@@ -90,7 +96,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 .tv-show-kind-item a {
@@ -162,11 +168,10 @@
 
 
 
-
 @media (max-width: 566px) {
        
     #tv-shows {
-        padding-top: 5vh;
+        padding-top: 0;
     } 
 
     .tv-show-kind {
@@ -177,32 +182,51 @@
         flex-wrap: wrap;
         margin-left: 2rem;
     }
+
 }
 
 @media (max-width: 992px) {    
 
     #tv-shows {
-        padding-top: 23vh;
+        padding-top: 255px;
     }
 
     .tv-show {
-        height: 60rem;
+        height: 49rem;
     }
 
     .tv-show-poster-box {
-        width: 35rem;
-        height: 52.5rem;
+        width: 25rem;
+        height: calc((25rem * 1.5));
     }
 
     .tv-show-poster {
-        width: 35rem;
-        height: 52.5rem;
+        width: 25rem;
+        height: calc((25rem * 1.5));
         align-self: center;
     }
 
     .tv-show-title{
-        font-size: 2.7rem;
+        font-size: 2rem;
         padding: 1rem 1rem 0.5rem;
+    }
+
+    .tv-show-informations i {
+        font-size: 1.5rem;
+    }
+    
+    .vote_average {
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+    }
+    
+    .tv-show-votes {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    .ellipsis2 {
+        max-width: 25ch;
     }
 
 }

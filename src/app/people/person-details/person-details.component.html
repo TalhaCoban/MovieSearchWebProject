@@ -3,8 +3,8 @@
     <navbar></navbar>
 
     <!-- credit-details -->
-    <section class="person-details" id="person-details" *ngIf="credit_detaiils">
-        <ng-template [ngTemplateOutlet]="creditDetaiils" [ngTemplateOutletContext]="credit_detaiils"></ng-template>
+    <section class="person-details" id="person-details" *ngIf="credit_details">
+        <ng-template [ngTemplateOutlet]="creditDetaiils" [ngTemplateOutletContext]="credit_details"></ng-template>
     </section>
     
     
@@ -23,12 +23,12 @@
         <div class="all-details">
             <div class="details">
                 <h1 class="person-title font-white">
-                    {{ credit_detaiils.name }}
+                    {{ credit_details.name }}
                 </h1>
                 <div class="icon-and-text">
                     <i class="fa-solid fa-star font-yellow icon-bg"></i>
                     <p class="add-favorite-text font-white">
-                        {{ credit_detaiils.popularity }}
+                        {{ credit_details.popularity }}
                     </p>
                 </div>
                 <div class="person-details-tab">
@@ -47,18 +47,21 @@
                 </div>
                 
                 <!-- overview-section -->
-                <overview [details]="credit_detaiils" *ngIf="current_tab == 'overview'" ></overview>
+                <overview [details]="credit_details" *ngIf="current_tab == 'overview'" ></overview>
                 <!-- media section -->
-                <media [personId]="credit_detaiils.id" *ngIf="current_tab == 'media'"></media>
+                <media [personId]="credit_details.id" *ngIf="current_tab == 'media'"></media>
                 <!-- filmography section -->
-                <filmography [personId]="credit_detaiils.id" *ngIf="current_tab == 'filmography'"></filmography>
+                <filmography [personId]="credit_details.id" *ngIf="current_tab == 'filmography'"></filmography>
                 <!-- tvshowraphy section -->
-                <tvshowraphy [personId]="credit_detaiils.id" *ngIf="current_tab == 'tvshowraphy'"></tvshowraphy>
+                <tvshowraphy [personId]="credit_details.id" *ngIf="current_tab == 'tvshowraphy'"></tvshowraphy>
             </div>
             <div class="poster-image-box">
-                <img class="poster-image" src="{{ image_url }}{{ credit_detaiils.profile_path }}" alt="{{ credit_detaiils.name }}">
-                <button type="button" class="btn btn-primary">
+                <img class="poster-image" src="{{ image_url }}{{ credit_details.profile_path }}" alt="{{ credit_details.name }}">
+                <button (click)="addFavorite(credit_details.id)" type="button" class="btn btn-primary" *ngIf="!isInUserFavorite">
                     Favorilere Ekle
+                </button>
+                <button (click)="RemoveFavorite(credit_details.id)" type="button" class="btn btn-primary" *ngIf="isInUserFavorite">
+                    Favorilere Çıkar
                 </button>
             </div>
         </div>

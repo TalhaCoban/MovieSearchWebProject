@@ -21,7 +21,7 @@ export class FilmographyComponent implements OnInit {
   ngOnInit(): void {
       this.creditService.getCreditMovies(this.personId).subscribe(movies => {
         this.movies = movies;
-        console.log("movies", this.movies)
+        // console.log("movies", this.movies)
       })
   }
 

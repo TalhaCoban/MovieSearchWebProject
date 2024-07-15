@@ -2,11 +2,11 @@
 #movies {
     background-color: var(--dark);
     margin: 0;
-    padding-top: 15vh;
+    padding-top: 255px;
 }
 
 .movies {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,21 +16,21 @@
 }
 
 .movie {
-    margin: 1.5rem;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
     overflow: hidden; 
     position: relative;
-    height: 38rem;
+    height: 27rem;
 }
 
 .movie-poster-box {
     overflow: hidden; 
     position: relative;
-    width: 20rem;
-    height: 30rem;
+    width: 13rem;
+    height: calc(13rem * 1.5);
 }
 
 .movie:hover {
@@ -39,8 +39,8 @@
 }
 
 .movie-poster {
-    width: 20rem;
-    height: 30rem;
+    width: 13rem;
+    height: calc(13rem * 1.5);
     align-self: center;
     transition: transform 0.4s ease-in-out;
     transform-origin: center; 
@@ -51,7 +51,7 @@
 }
 
 .movie-title{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1rem 1rem 0.5rem;
 }
 
@@ -60,7 +60,7 @@
     -webkit-box-orient: horizontal;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    max-width: 23ch;
+    max-width: 18ch;
 }
 
 .movie-informations {
@@ -71,12 +71,18 @@
     justify-content: flex-start;
 }
 
+.movie-informations i {
+    font-size: 1rem;
+}
+
 .vote_average {
+    font-size: 1rem;
     padding-left: 0.5rem;
 }
 
 .movie-votes {
-    padding-left: 1.2rem;
+    font-size: 1rem;
+    padding-left: 1rem;
 }
 
 .movie-menu {
@@ -90,7 +96,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 .movie-kind-item a {
@@ -165,7 +171,7 @@
 @media (max-width: 566px) {
        
     #movies {
-        padding-top: 5vh;
+        padding-top: 0;
     } 
 
     .movie-kind {
@@ -182,27 +188,44 @@
 @media (max-width: 992px) {    
 
     #movies {
-        padding-top: 23vh;
+        padding-top: 255px;
     }
 
     .movie {
-        height: 60rem;
+        height: 49rem;
     }
 
     .movie-poster-box {
-        width: 35rem;
-        height: 52.5rem;
+        width: 25rem;
+        height: calc((25rem * 1.5));
     }
 
     .movie-poster {
-        width: 35rem;
-        height: 52.5rem;
+        width: 25rem;
+        height: calc((25rem * 1.5));
         align-self: center;
     }
 
     .movie-title{
-        font-size: 2.7rem;
+        font-size: 2rem;
         padding: 1rem 1rem 0.5rem;
     }
 
+    .movie-informations i {
+        font-size: 1.5rem;
+    }
+    
+    .vote_average {
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+    }
+    
+    .movie-votes {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    .ellipsis2 {
+        max-width: 25ch;
+    }
 }

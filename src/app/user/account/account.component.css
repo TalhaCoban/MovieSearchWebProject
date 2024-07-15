@@ -1,0 +1,236 @@
+#favorites {
+    background-color: var(--dark);
+    width: 100%;
+    margin: 0;
+    padding-top: 255px;
+    padding-bottom: 50px;
+}
+
+
+.favorite-menu {
+    border-bottom: 0.2rem solid var(--yellow);
+    padding-bottom: 0.6rem;
+}
+
+.favorite-kind {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-right: 1rem;
+}
+
+.favorite-kind-item a {
+    display: inline-block;
+    font-size: 14px;
+    height: 36px;
+    padding: 8px 10px 3px 10px;
+}
+
+.btnify {
+    border-radius: 1rem;
+    border: 1px solid var(--dark-pink);
+}
+
+.favorite-kind-item a:hover {
+    cursor: pointer;
+    color: var(--pink);
+}
+
+
+/* content */
+#favorite-movies,
+#favorite-tvshows,
+#favorite-people {
+    width: 100%;
+    min-height: 500px;
+    padding: 1.8rem 4rem;
+}
+
+.movies,
+.tvshows,
+.people {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.movie,
+.tvshow,
+.person {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+}
+
+.poster-img-box {
+    display: inline-block;
+    width: 17rem;
+    height: calc(17rem * 1.5);
+    overflow: hidden;
+}
+
+.poster-image {
+    width: 17rem;
+    height: calc(17rem * 1.5);
+}
+
+.poster-image:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-informations,
+.tvshow-informations,
+.person-informations {
+    width: calc(100% - 17rem - 8rem);
+}
+
+.movie-informations > *:not(h1) {
+    padding: 0.3rem 0;
+}
+
+.tvshow-informations > *:not(h1) {
+    padding: 0.3rem 0;
+}
+
+.person-informations > *:not(h1) {
+    padding: 0.3rem 0;
+}
+
+.title {
+    font-size: 1.9rem;
+    padding-bottom: 1rem;
+}
+
+.text {
+    font-size: 1.3rem;
+}
+
+.text * {
+    padding-right: 0.2rem;
+}
+
+button {
+    line-height: 2rem;
+    margin-top: 1rem;
+}
+
+.ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    max-width: 60ch;
+}
+
+/* pages */
+.pages {
+    margin: 1rem 0 4rem 0;
+    height: 46px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+    padding: 12px;
+}
+
+.pages p,
+.pages a {
+    font-size: 17px;
+}
+
+.pages a {
+    cursor: pointer;
+
+}
+
+.pages-box {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages-box div {
+    display: flex;
+    flex-direction: row;
+    padding: 0.4rem;
+}
+
+.page {
+    padding: 0.4rem;
+}
+
+.pages-empty-space {
+    padding: 1rem;
+}
+
+.page-btn {
+    background-color: var(--pink);
+    border-radius: 0.3rem;
+}
+
+
+@media (max-width: 566px) {
+
+    .favorite-kind {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-left: 2rem;
+    }
+
+    #favorite-movies,
+    #favorite-tvshows,
+    #favorite-people {
+        width: 100%;
+        padding: 1.8rem 0;
+    }
+
+    .movies,
+    .tvshows,
+    .people {
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .movie,
+    .tvshow,
+    .person {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .poster-img-box {
+        width: 90%;
+        height: calc(90% * 1.5);
+    }
+
+    .poster-image {
+        width: 100%;
+        height: calc(100% * 1.5);
+    }
+
+    .movie-informations,
+    .tvshow-informations,
+    .person-informations {
+        width: 90%;
+    }
+
+
+}

@@ -49,10 +49,10 @@
                 </h2>
                 <ul>
                     <li>
-                        <a href="#" class="footer-link font-white">My Account</a>
+                        <a href="#" class="footer-link font-white">Hesabım</a>
                     </li>
                     <li>
-                        <a href="#" class="footer-link font-white">Watchlist</a>
+                        <a href="#" class="footer-link font-white">İzleme Listem</a>
                     </li>
                     <li>
                         <a href="#" class="footer-link font-white">User Guide</a>
@@ -70,16 +70,11 @@
                     <li>
                         <form>
                             <input type="email" class="footer-input" placeholder="Email gir:">
-                            <button type="button" class="btn btn-primary">Üye Ol</button>
+                            <a [routerLink]="'/auth/register'" class="btn btn-primary">Üye Ol</a>
                         </form>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="back-to-top">
-        <a href="#navbar">
-            <i class="fa-solid fa-chevron-up font-white"></i>
-        </a>
     </div>
 </footer>

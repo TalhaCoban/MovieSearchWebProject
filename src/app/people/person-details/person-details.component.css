@@ -1,6 +1,6 @@
 
 #person-details {
-    padding-top: 15rem;
+    padding-top: 255px;
     display: block;
     width: 100%;
     background: linear-gradient(to top,rgba(10,0,0,0.9),rgba(50,25,25,0.5)), url("/assets/img/credit-background.jpg");
@@ -8,13 +8,17 @@
     background-size: contain;
 }
 
+.all-details {
+    width: 100%;
+}
+
 .poster-image {
-    width: 35rem;
+    width: 23rem;
     padding-bottom: 1rem;
 }
 
 .poster-image-box {
-    width: 40rem;
+    width: 25rem;
     display: inline-block;
     text-align: center;
     padding: 3rem 0;
@@ -24,17 +28,19 @@
 
 .details {
     display: inline-block;
-    width: calc(1200px - 40rem - 2px);
+    width: calc(100% - 25rem - 2px);
     vertical-align: top;
-    min-height: 115rem;
+    min-height: 85rem;
+    padding-left: 1rem;
 }
 
 .details > * {
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .person-title {
-    font-size: 60px;
+    padding-top: 2rem!important;
+    font-size: 50px;
     font-weight: 400;
 }
 
@@ -45,11 +51,15 @@
     justify-content: flex-start;
 }
 
+.icon-and-text a {
+    cursor: pointer;
+}
+
 .add-favorite-box {
-    width: 5rem;
-    height: 5rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border: 2px solid var(--pink);
-    border-radius: 2.5rem;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,17 +67,16 @@
 
 .add-favorite-text {
     display: inline-block;
-    margin-left: 1rem;
-    font-size: 18px;
+    margin-left: 0.5rem;
+    font-size: 20px;
     font-weight: 600;
 }
 
 .icon-bg {
-    font-size: 2.5rem;
+    font-size: 20px;
 }
 
 .person-details-tab {
-    padding-bottom: 1.4rem;
     width: max-content;
     border-bottom: 1px solid var(--yellow);
     display: flex;
@@ -78,9 +87,8 @@
 }
 
 .person-details-tab-link {
-    margin-right: 2.3rem;
-    padding-bottom: 1.2rem;
-    font-size: 18px;
+    margin-right: 1.1rem;
+    font-size: 1.3rem;
 }
 
 .person-details-tab-link:last-child {
@@ -101,7 +109,49 @@
 @media (max-width: 566px) {    
 
     #person-details {
-        padding-top: 40rem;
+        padding-top: 26vh;
+    }
+
+    .all-details {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .poster-image {
+        width: 95%;
+    }
+    
+    .poster-image-box {
+        width: 90%;
+        margin: 0 5%;
+        display: inline-block;
+        text-align: center;
+        position: static;
+    }
+
+    .details {
+        width: 90%;
+        margin: 0 5%;
+        padding: 3rem 2.1rem;
+    }
+
+    .person-details-tab {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .person-details-tab-link {
+        padding: 0.5rem 0;
+    }
+
+}
+
+
+/* landscape */
+@media (min-width: 566px) and (max-width: 800px) {    
+
+    #person-details {
+        padding-top: 236px;
     }
 
     .all-details {
@@ -129,36 +179,22 @@
 }
 
 
-
-/* landscape */
-@media (min-width: 566px) and (max-width: 800px) {    
-
-    #person-details {
-        padding-top: 40rem;
-    }
-
-    .details {
-        width: calc(550px - 40rem - 2px);
-    }
-}
-
 @media (min-width: 800px) and (max-width: 992px) {    
 
     #person-details {
-        padding-top: 40rem;
+        padding-top: 255px;
     }
 
     .details {
-        width: calc(740px - 40rem - 2px);
+        width: calc(100% - 25rem - 2px);
     }
-
 }
 
 /* desktop */
 @media (min-width: 992px) and (max-width: 1120px) {
 
     .details {
-        width: calc(750px - 40rem - 2px);
+        width: calc(100% - 25rem - 2px);
     }
 }
 
@@ -166,7 +202,7 @@
 @media (min-width: 1120px) and (max-width: 1400px) {
 
     .details {
-        width: calc(1000px - 40rem - 2px);
+        width: calc(100% - 25rem - 2px);
     }
 }
 
@@ -174,6 +210,6 @@
 @media (min-width: 1400px) {
 
     .details {
-        width: calc(1200px - 40rem - 2px);
+        width: calc(100% - 25rem - 2px);
     }
 }

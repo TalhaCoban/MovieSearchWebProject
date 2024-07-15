@@ -10,9 +10,8 @@
 }
 
 .author-informations {
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
 }
-
 
 .avatar-image-box {
     display: inline-block;
@@ -20,8 +19,7 @@
 }
 
 .avatar-image {
-    width: 12rem;
-    height: 12rem;
+    width: 80%;
 }
 
 .author{
@@ -31,17 +29,17 @@
 }
 
 .author-name {
-    font-size: 22px;
-    padding: 1rem 0;
+    font-size: 1.6rem;
+    padding-bottom: 0.5rem;
 }
 
 .created-date,
 .updated-date {
-    font-size: 12px;
-    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    padding: 0.2rem 0;
 }
 
 .review-context {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 1.2rem;
+    line-height: 25px;
 }

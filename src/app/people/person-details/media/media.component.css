@@ -25,13 +25,14 @@
 
 .image-box {
     display: inline-block;
-    padding: 0.5rem 0;
+    padding: 0.25rem;
     width: 23%;
+    min-width: 120px;
 }
 
 .image-it {
     width: 100%;
-    min-width: 108px;
+    min-width: 120px;
 }
 
 .image-it:hover {
@@ -44,6 +45,6 @@
 
     .image-box {
         width: 48%;
-        padding: 2rem 0;
+        padding: 1rem 0.25rem;
     }
 }

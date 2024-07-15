@@ -24,8 +24,11 @@
         <div class="all-details">
             <div class="poster-image-box">
                 <img class="poster-image" src="{{ image_url }}{{ movieDetails.poster_path }}" alt="{{ movieDetails.tagline }}">
-                <button type="button" class="btn btn-primary">
+                <button (click)="addFavorite(movieDetails.id)" type="button" class="btn btn-primary" *ngIf="!isInUserFavorite">
                     Favorilere Ekle
+                </button>
+                <button (click)="RemoveFavorite(movieDetails.id)" type="button" class="btn btn-primary" *ngIf="isInUserFavorite">
+                    Favorilerden Çıkar
                 </button>
             </div>
             <div class="details">
@@ -33,13 +36,21 @@
                     {{ movieDetails.title }}
                 </h1>
                 <div class="icon-and-text">
-                    <a href="">
+                    <a (click)="addFavorite(movieDetails.id)" *ngIf="!isInUserFavorite">
                         <div class="add-favorite-box">
                             <i class="fa-solid fa-heart font-pink"></i>
                         </div>
                     </a>
-                    <a href="" class="add-favorite-text font-pink">
+                    <a (click)="RemoveFavorite(movieDetails.id)" *ngIf="isInUserFavorite">
+                        <div class="add-favorite-box">
+                            <i class="fa-solid fa-heart font-pink"></i>
+                        </div>
+                    </a>
+                    <a (click)="addFavorite(movieDetails.id)" class="add-favorite-text font-pink" *ngIf="!isInUserFavorite">
                         Favorilere Ekle
+                    </a>
+                    <a (click)="RemoveFavorite(movieDetails.id)" class="add-favorite-text font-pink" *ngIf="isInUserFavorite">
+                        Favorilerden Çıkar
                     </a>
                 </div>
                 <div class="icon-and-text">

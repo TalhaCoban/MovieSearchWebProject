@@ -5,7 +5,7 @@
 }
 
 .tv-shows {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,21 +15,21 @@
 }
 
 .tv-show {
-    margin: 1.5rem;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
     overflow: hidden; 
     position: relative;
-    height: 38rem;
+    height: 27rem;
 }
 
 .tv-show-poster-box {
     overflow: hidden; 
     position: relative;
-    width: 20rem;
-    height: 30rem;
+    width: 14rem;
+    height: calc(14rem * 1.5);
 }
 
 .tv-show:hover {
@@ -38,8 +38,8 @@
 }
 
 .tv-show-poster {
-    width: 20rem;
-    height: 30rem;
+    width: 14rem;
+    height: calc(14rem * 1.5);
     align-self: center;
     transition: transform 0.4s ease-in-out;
     transform-origin: center; 
@@ -50,8 +50,8 @@
 }
 
 .tv-show-title{
-    font-size: 1.5rem;
-    padding: 1rem 1rem 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem 0.25rem;
 }
 
 .ellipsis2 {
@@ -59,23 +59,29 @@
     -webkit-box-orient: horizontal;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    max-width: 23ch;
+    max-width: 30ch;
 }
 
 .tv-show-informations {
-    padding: 0.5rem 1rem 1rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 }
 
+.tv-show-informations i {
+    font-size: 1rem;
+}
+
 .vote_average {
-    padding-left: 0.5rem;
+    padding-left: 0.25rem;
+    font-size: 1rem;
 }
 
 .tv-show-votes {
-    padding-left: 1.2rem;
+    padding-left: 0.6rem;
+    font-size: 1rem;
 }
 
 .pages {

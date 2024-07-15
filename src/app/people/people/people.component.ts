@@ -28,14 +28,10 @@ export class PeopleComponent implements OnInit {
       this.current_page = page;
       this.peopleService.getCelebritiesList(page).subscribe(data => {
         this.celebritiesList = data;
-        console.log(this.celebritiesList)
+        // console.log(this.celebritiesList)
         this.isLoading = false;
       })
     })
-  }
-
-  loadPage() {
-
   }
 
   getFloor(average: number): number {

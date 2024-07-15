@@ -1,1 +1,44 @@
-<p>register works!</p>
+<navbar></navbar>
+
+<!-- register page -->
+<ng-template [ngTemplateOutlet]="register"></ng-template>
+
+    
+
+<!-- register page -->
+<ng-template #register>
+    <div class="bg-img">
+        <div class="content">
+            <header>Kayıt Ol</header>
+            <form #form="ngForm" (ngSubmit)="Register(form)">
+                <div class="field">
+                    <span class="fa-solid fa-signature"></span>
+                    <input type="text" required ngModel name="name" id="name" placeholder="İsim">
+                </div>
+                <div class="field">
+                    <span class="fa-solid fa-signature"></span>
+                    <input type="text" required ngModel name="surname" id="surname" placeholder="Soyisim">
+                </div>
+                <div class="field">
+                    <span class="fa fa-user"></span>
+                    <input type="text" required ngModel name="email" id="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <span class="fa fa-lock"></span>
+                    <input type="password" class="pass-key" required minlength="6" ngModel name="password" id="password" placeholder="Şifre">
+                </div>
+                <div class="field">
+                    <span class="fa fa-lock"></span>
+                    <input type="password" class="pass-key" required minlength="8" ngModel name="password_again" id="password_again" placeholder="Şifreni tekrarla">
+                </div>
+                <div class="field">
+                    <input type="submit" value="KAYIT OL" [disabled]="form.invalid">
+                </div>
+            </form>
+            <div class="signup">
+                Zaten üye misin?
+                <a [routerLink]="'/auth/login'"> Giriş yap</a>
+            </div>
+        </div>
+    </div>
+</ng-template>

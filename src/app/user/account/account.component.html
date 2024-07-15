@@ -1,0 +1,236 @@
+
+<div *ngIf=" !isLoading">
+    <navbar></navbar>
+
+    <!-- user favorites -->
+    <main id="favorites" class="favorites">
+        <ng-template [ngTemplateOutlet]="user_favorites"></ng-template>
+    </main>
+    
+    
+    <footerr></footerr>
+</div>
+
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+
+<!-- user favorites -->
+<ng-template #user_favorites>
+    <div class="container">
+        <div class="favorite-menu">
+            <ul class="favorite-kind">
+                <li class="favorite-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='favoritemovies'" 
+                    [class.btn-primary]="current_title=='favoritemovies'" 
+                    class="font-white" 
+                    [routerLink]="'/account/favoritemovies/1'">
+                        <i class="fa-solid fa-glasses font-yellow"></i> 
+                        Favori Filmler
+                    </a>
+                </li>
+                <li class="favorite-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='favoritetvshows'" 
+                    [class.btn-primary]="current_title=='favoritetvshows'" 
+                    class="font-white" 
+                    [routerLink]="'/account/favoritetvshows/1'">
+                        <i class="fa-solid fa-fire font-yellow"></i>
+                        Favori Diziler
+                    </a>
+                </li>
+                <li class="favorite-kind-item">
+                    <a 
+                    [class.btnify]="current_title=='favoritepeople'" 
+                    [class.btn-primary]="current_title=='favoritepeople'" 
+                    class="font-white" 
+                    [routerLink]="'/account/favoritepeople/1'">
+                    <i class="fa-solid fa-chess-king font-yellow"></i>
+                        Favori Oyuncular
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- favorite-movies -->
+        <section id="favorite-movies" class="favorite-movies" *ngIf="movieDetails && current_title == 'favoritemovies'">
+            <ng-template [ngTemplateOutlet]="favorite_movies" [ngTemplateOutletContext]="movieDetails"></ng-template>
+        </section>
+
+        <!-- favorite-tvshows -->
+        <section id="favorite-tvshows" class="favorite-tvshows" *ngIf="tvshowDetails && current_title == 'favoritetvshows'">
+            <ng-template [ngTemplateOutlet]="favorite_tvshows" [ngTemplateOutletContext]="tvshowDetails"></ng-template>
+        </section>
+
+        <!-- favorite-celebrities -->
+        <section id="favorite-people" class="favorite-poeple" *ngIf="CelebrityDetails && current_title == 'favoritepeople'">
+            <ng-template [ngTemplateOutlet]="favorite_people" [ngTemplateOutletContext]="CelebrityDetails"></ng-template>
+        </section>
+
+        
+        <div class="pages">
+            <div class="pages-box">
+                <a href="/account/{{ current_title }}/{{ current_page - 1 }}" class="page font-white" [class.disabled]="current_page-1<=0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <div *ngFor="let page of getPagesArray()">
+                    <a [class.page-btn]="page == current_page" href="/account/{{ current_title }}/{{ page }}" class="page font-white">
+                        {{ page }}
+                    </a>
+                </div>
+                <a href="/account/{{ current_title }}/{{ current_page + 1 }}" class="page font-white" [class.disabled]="current_page>=total_pages || current_page+1>=500">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+<!-- favorite-movies -->
+<ng-template #favorite_movies>
+    <div class="movies">
+        <div class="movie" *ngFor="let movie of movieDetails">
+            <a [routerLink]="'/movies/' + movie.id" class="poster-img-box">
+                <img src="{{ image_url }}{{ movie.poster_path }}" alt="" class="poster-image">
+            </a>
+            <div class="movie-informations">
+                <h1 class="title font-pink">
+                    {{ movie.title }}
+                </h1>
+                <div class="text">
+                    <i class="fa-solid fa-star font-yellow"></i>
+                    <span class="vote-average font-light">
+                        {{ getFloor(movie.vote_average) }}/10
+                    </span>
+                </div>
+                <div class="text">
+                    <p class="font-light ellipsis">
+                        {{ movie.overview }}
+                    </p>
+                </div>
+                <div class="text">
+                    <p class="font-light">
+                        <i class="fa-solid fa-genderless font-yellow"></i>
+                        <span *ngFor="let genre of movie.genres">
+                            {{ genre.name }},
+                        </span>
+                    </p>
+                </div>
+                <div class="text">
+                    <i class="fa-solid fa-calendar-days font-yellow"></i>
+                    <span class="font-light">
+                        {{ movie.release_date | date: 'd MMM y' }}
+                    </span>
+                </div>
+                <div class="text">
+                    <i class="fa-solid fa-clock font-yellow"></i>
+                    <span class="font-light">
+                        {{ movie.runtime }} dk
+                    </span>
+                </div>
+                <button (click)="RemoveFromFavoriteList(movie.id)" type="button" class="btn btn-primary">Favorilerinden Çıkar</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+
+<!-- favorite-tvshows -->
+<ng-template #favorite_tvshows>
+    <div class="tvshows">
+        <div class="tvshow" *ngFor="let tvshow of tvshowDetails">
+            <a [routerLink]="'/tv-shows/' + tvshow.id" class="poster-img-box">
+                <img src="{{ image_url }}{{ tvshow.poster_path }}" alt="" class="poster-image">
+            </a>
+            <div class="tvshow-informations">
+                <h1 class="title font-pink">
+                    {{ tvshow.name }}
+                </h1>
+                <div class="text">
+                    <i class="fa-solid fa-star font-yellow"></i>
+                    <span class="vote-average font-light">
+                        {{ getFloor(tvshow.vote_average) }}/10
+                    </span>
+                </div>
+                <div class="text">
+                    <p class="font-light ellipsis">
+                        {{ tvshow.overview }}
+                    </p>
+                </div>
+                <div class="text">
+                    <p class="font-light">
+                        <i class="fa-solid fa-genderless font-yellow"></i>
+                        <span *ngFor="let genre of tvshow.genres">
+                            {{ genre.name }},
+                        </span>
+                    </p>
+                </div>
+                <div class="text">
+                    <i class="fa-solid fa-calendar-days font-yellow"></i>
+                    <span class="font-light">
+                        {{ tvshow.first_air_date | date: 'd MMM y' }}
+                    </span>
+                </div>
+                <div class="text">
+                    <i class="fa-solid fa-signal font-yellow"></i>
+                    <span class="font-light">
+                        {{ tvshow.status }}
+                    </span>
+                </div>
+                <button (click)="RemoveFromFavoriteList(tvshow.id)" type="button" class="btn btn-primary">Favorilerinden Çıkar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- favorite-people -->
+<ng-template #favorite_people>
+    <div class="people">
+        <div class="person" *ngFor="let person of CelebrityDetails">
+            <a [routerLink]="'/people/person/' + person.id" class="poster-img-box">
+                <img src="{{ image_url }}{{ person.profile_path }}" alt="" class="poster-image">
+            </a>
+            <div class="person-informations">
+                <h1 class="title font-pink">
+                    {{ person.name }}
+                </h1>
+                <div class="text">
+                    <i class="fa-solid fa-star font-yellow"></i>
+                    <span class="vote-average font-light">
+                        {{ person.popularity }}
+                    </span>
+                </div>
+                <div class="text">
+                    <p [innerText]="person.biography" class="font-light ellipsis">
+                        
+                    </p>
+                </div>
+                <div class="text">
+                    <i class="fa-solid fa-calendar-days font-yellow"></i>
+                    <span class="font-light">
+                        {{ person.birthday | date: 'd MMM y' }}
+                    </span>
+                </div>
+                <div class="text">
+                    <i class="fa-solid fa-location-crosshairs font-yellow"></i>
+                    <span class="vote-average font-light">
+                        {{ person.place_of_birth }}
+                    </span>
+                </div>
+                <div class="text">
+                    <i class="fa-regular fa-building font-yellow"></i>
+                    <span class="vote-average font-light">
+                        {{ person.known_for_department }}
+                    </span>
+                </div>
+                <button (click)="RemoveFromFavoriteList(person.id)" type="button" class="btn btn-primary">Favorilerinden Çıkar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

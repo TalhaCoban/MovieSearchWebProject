@@ -21,7 +21,7 @@ export class TvshowraphyComponent implements OnInit {
   ngOnInit(): void {
     this.creditService.getCreditTvShows(this.personId).subscribe(tvshows => {
       this.tvshows = tvshows;
-      console.log("tvshows", this.tvshows)
+      // console.log("tvshows", this.tvshows)
     })
   }
 

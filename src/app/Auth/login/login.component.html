@@ -1,1 +1,37 @@
-<p>login works!</p>
+<navbar></navbar>
+
+<!-- login page -->
+<ng-template [ngTemplateOutlet]="login"></ng-template>
+
+    
+
+
+<!-- login page -->
+<ng-template #login>
+    <div class="bg-img">
+        <div class="content">
+            <header>Giriş Yap</header>
+            <form #form="ngForm" (ngSubmit)="Login(form)">
+                <div class="field">
+                    <span class="fa fa-user"></span>
+                    <input type="text" required ngModel name="email" id="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <span class="fa fa-lock"></span>
+                    <input type="password" class="pass-key" required minlength="6" ngModel name="password" id="password" placeholder="Şifre">
+                </div>
+                <div class="pass">
+                    <a href="#">Şifremi unuttum?</a>
+                </div>
+                <div class="field">
+                    <input type="submit" value="GİRİŞ YAP" [disabled]="form.invalid">
+                </div>
+            </form>
+            <div class="signup">
+                Henüz hesabın yok mu?
+                <a [routerLink]="'/auth/register'"> Hemen kaydol</a>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

@@ -27,6 +27,7 @@ const routes: Routes = [{
         SharedModule,
         FormsModule,
         HttpClientModule,
+        SharedModule,
         RouterModule.forChild(routes)
     ],
     exports: []

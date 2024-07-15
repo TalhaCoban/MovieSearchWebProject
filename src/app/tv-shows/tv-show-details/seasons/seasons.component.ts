@@ -15,7 +15,6 @@ export class SeasonsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.seasons.splice(0,1);
     // console.log(this.seasons)
   }
 

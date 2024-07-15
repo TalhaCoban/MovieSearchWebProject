@@ -4,7 +4,7 @@
 
 .cast,
 .crew {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,7 +21,7 @@
 }
 
 .movie {
-    margin: 1.5rem;
+    margin: 0.8rem;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -57,12 +57,12 @@
 
 .movie-title{
     font-size: 18px;
-    padding: 1rem 1rem 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem;
 }
 
 .movie-character {
     font-size: 15px;
-    padding: 1rem 1rem 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem;
 }
 
 .ellipsis2 {
@@ -74,11 +74,15 @@
 }
 
 .movie-informations {
-    padding: 0.5rem 1rem 0 1rem;
+    padding: 0.25rem 0.5rem 0 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+}
+
+.movie-informations i {
+    font-size: 13px;
 }
 
 .vote_average {

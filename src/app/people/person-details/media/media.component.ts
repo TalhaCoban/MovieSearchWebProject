@@ -21,7 +21,7 @@ export class MediaComponent implements OnInit {
   ngOnInit(): void {
     this.creditService.getCreditImages(this.personId).subscribe(images => {
       this.credit_images = images;
-      console.log(this.credit_images)
+      // console.log(this.credit_images);
     })
   }
 }
