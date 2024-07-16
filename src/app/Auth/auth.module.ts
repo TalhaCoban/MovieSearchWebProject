@@ -6,13 +6,15 @@ import { SharedModule } from "../shared/shrared.module";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule, Routes } from "@angular/router";
+import { PwResetComponent } from './pw-reset/pw-reset.component';
 
 
 const routes: Routes = [{
     path: "auth",
     children: [
         { path: "login", component: LoginComponent },
-        { path: "register", component: RegisterComponent }
+        { path: "register", component: RegisterComponent },
+        { path: "pw-reset", component: PwResetComponent }
     ]
 }]
 
@@ -21,6 +23,7 @@ const routes: Routes = [{
     declarations: [
         LoginComponent,
         RegisterComponent,
+        PwResetComponent,
     ],
     imports: [
         CommonModule,

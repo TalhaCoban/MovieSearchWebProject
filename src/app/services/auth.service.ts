@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { effect, Injectable } from "@angular/core";
 import { AuthResponse } from "../models/auth.response";
 import { catchError, Observable, tap, throwError } from "rxjs";
@@ -133,6 +133,21 @@ export class AuthService {
         localStorage.setItem("user", JSON.stringify(user));
 
         this.router.navigate(['/home'])
+    }
+
+    sendPasswordResetEmail(email: string): Observable<any> {
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json'
+        });
+        
+        const body = {
+          requestType: 'PASSWORD_RESET',
+          email: email
+        };
+    
+        return this.http.post<any>("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + this.api_key, body, { headers: headers }).pipe(
+            tap(data => {console.log("password reset", data)})
+        );
     }
 
     private handleError(err: HttpErrorResponse) {

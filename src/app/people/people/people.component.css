@@ -50,11 +50,11 @@
     width: 20rem;
     min-width: 250px;
     min-height: 375px;
+    transition: all 0.4s ease;
 }
 
 .person-image:hover {
     transform: scale(1.2);
-    transition: transform 0.4s ease;
 }
 
 .person-as-known {
@@ -78,11 +78,11 @@
 .show-image {
     width: 12rem;
     min-width: 150px;
+    transition: transform 0.4s ease-in-out;
 }
 
 .show-image:hover {
     transform: scale(1.2);
-    transition: transform 0.4s ease-in-out;
     cursor: pointer;
 }
 

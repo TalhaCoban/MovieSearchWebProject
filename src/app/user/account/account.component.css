@@ -79,11 +79,11 @@
 .poster-image {
     width: 17rem;
     height: calc(17rem * 1.5);
+    transition: transform 0.3s ease-in-out;
 }
 
 .poster-image:hover {
     transform: scale(1.2);
-    transition: transform 0.3s ease-in-out;
 }
 
 .movie-informations,

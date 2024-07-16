@@ -1,0 +1,26 @@
+<navbar></navbar>
+
+<!-- login page -->
+<ng-template [ngTemplateOutlet]="login"></ng-template>
+
+    
+
+
+<!-- login page -->
+<ng-template #login>
+    <div class="bg-img">
+        <div class="content">
+            <header>Giriş Yap</header>
+            <form #form="ngForm" (ngSubmit)="passwordReset(form)">
+                <div class="field">
+                    <span class="fa fa-user"></span>
+                    <input type="text" required ngModel name="email" id="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <input type="submit" value="ŞİFREMİ YENİLE" [disabled]="form.invalid">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</ng-template>

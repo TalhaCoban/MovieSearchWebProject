@@ -21,7 +21,7 @@
                     <input type="password" class="pass-key" required minlength="6" ngModel name="password" id="password" placeholder="Şifre">
                 </div>
                 <div class="pass">
-                    <a href="#">Şifremi unuttum?</a>
+                    <a [routerLink]="'/auth/pw-reset'">Şifremi unuttum?</a>
                 </div>
                 <div class="field">
                     <input type="submit" value="GİRİŞ YAP" [disabled]="form.invalid">
