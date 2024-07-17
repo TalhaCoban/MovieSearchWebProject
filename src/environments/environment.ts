@@ -33,5 +33,6 @@ export const environment = {
     creditMovies_url: ["https://api.themoviedb.org/3/person/", "/movie_credits?language=tr-tr"],
     creditTvShows_url: ["https://api.themoviedb.org/3/person/", "/tv_credits?language=tr-tr"],
 
-
+    api: "",
+    api_key: "",
 };
