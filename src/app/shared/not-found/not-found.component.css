@@ -4,12 +4,13 @@
     background-image: url("/assets/img/error-bg.jpg");
     background-size: cover;
     background-position: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .not-found {
@@ -34,13 +35,34 @@
 
 .logo-box {
     position: absolute;
-    top: 4rem;
+    top: 1rem;
 }
 
 .logo {
-    width: 15rem;
+    width: 8rem;
 }
 
 .not-found-image-box img {
     width: 30rem;
+}
+
+@media (max-width: 566px) {
+
+    .not-found-four h1 {
+        font-size: 12rem;
+        font-weight: 100;
+    }
+
+    .logo {
+        width: 5rem;
+    }
+
+    .not-found-image-box img {
+        width: 15rem;
+    }
+
+    .not-found {
+        gap: .5rem;
+    }
+    
 }

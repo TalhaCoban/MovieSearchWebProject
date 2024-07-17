@@ -1,0 +1,162 @@
+<div *ngIf="!isLoading">
+    <navbar></navbar>
+
+    <!-- movie details -->
+    <section id="result" *ngIf="movies && current_title == 'movie'">
+        <ng-template [ngTemplateOutlet]="movies_template" [ngTemplateOutletContext]="movies"></ng-template>
+    </section>
+
+    <!-- tvshows details -->
+    <section id="result" *ngIf="tvshows && current_title == 'tv'">
+        <ng-template [ngTemplateOutlet]="tvshows_template" [ngTemplateOutletContext]="tvshows"></ng-template>
+    </section>
+
+    <!-- people details -->
+    <section id="result" *ngIf="people && current_title == 'person'">
+        <ng-template [ngTemplateOutlet]="people_template" [ngTemplateOutletContext]="people"></ng-template>
+    </section>
+
+    <footerr></footerr>
+</div>
+
+
+<!-- loading -->
+<section id="loading" class="loading" *ngIf="isLoading">
+    <img src="/assets/img/bg-404.png">
+</section>
+
+
+<!-- movie details -->
+<ng-template #movies_template>
+    <div class="container">
+        <h1 class="up-title font-yellow">
+            Arama Sonuçları:
+        </h1>
+        <div class="movies">
+            <div class="movie" *ngFor="let movie of movies.results">
+                <a [routerLink]="'/movies/' + movie.id" class="poster-img-box">
+                    <img src="{{ image_url }}{{ movie.poster_path }}" alt="" class="poster-image">
+                </a>
+                <div class="movie-informations">
+                    <h1 class="title font-pink">
+                        {{ movie.title }}
+                    </h1>
+                    <div class="text">
+                        <i class="fa-solid fa-star font-yellow"></i>
+                        <span class="vote-average font-light">
+                            {{ getFloor(movie.vote_average) }}/10
+                        </span>
+                    </div>
+                    <div class="text">
+                        <p class="font-light ellipsis">
+                            {{ movie.overview }}
+                        </p>
+                    </div>
+                    <div class="text">
+                        <p class="font-light">
+                            <i class="fa-solid fa-genderless font-yellow"></i>
+                            <span *ngFor="let genre of movie.genre_ids">
+                                {{ genre }},
+                            </span>
+                        </p>
+                    </div>
+                    <div class="text">
+                        <i class="fa-solid fa-calendar-days font-yellow"></i>
+                        <span class="font-light">
+                            {{ movie.release_date | date: 'd MMM y' }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- tvshows details -->
+<ng-template #tvshows_template>
+    <div class="container">
+        <h1 class="up-title font-yellow">
+            Arama Sonuçları:
+        </h1>
+        <div class="tvshows">
+            <div class="tvshow" *ngFor="let tvshow of tvshows.results">
+                <a [routerLink]="'/tv-shows/' + tvshow.id" class="poster-img-box">
+                    <img src="{{ image_url }}{{ tvshow.poster_path }}" alt="" class="poster-image">
+                </a>
+                <div class="tvshow-informations">
+                    <h1 class="title font-pink">
+                        {{ tvshow.name }}
+                    </h1>
+                    <div class="text">
+                        <i class="fa-solid fa-star font-yellow"></i>
+                        <span class="vote-average font-light">
+                            {{ getFloor(tvshow.vote_average) }}/10
+                        </span>
+                    </div>
+                    <div class="text">
+                        <p class="font-light ellipsis">
+                            {{ tvshow.overview }}
+                        </p>
+                    </div>
+                    <div class="text">
+                        <p class="font-light">
+                            <i class="fa-solid fa-genderless font-yellow"></i>
+                            <span *ngFor="let genre of tvshow.genre_ids">
+                                {{ genre }},
+                            </span>
+                        </p>
+                    </div>
+                    <div class="text">
+                        <i class="fa-solid fa-calendar-days font-yellow"></i>
+                        <span class="font-light">
+                            {{ tvshow.first_air_date | date: 'd MMM y' }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- people details -->
+<ng-template #people_template>
+    <div class="container">
+        <h1 class="up-title font-yellow">
+            Arama Sonuçları:
+        </h1>
+        <div class="person" *ngFor="let person of people.results">
+            <a [routerLink]="'/people/person/' + person.id" class="person-informations">
+                <div class="person-image-box">
+                    <img src="{{ image_url }}{{ person.profile_path }}" alt="" class="person-image">
+                </div>
+                <div class="person-information">
+                    <h1 class="person-name font-light">
+                        {{ person.name }}
+                    </h1>
+                    <p class="job font-light">
+                        {{ person.known_for_department }}
+                    </p>
+                    <p class="popularity font-light">
+                        Popülerlik: {{ person.popularity }}
+                    </p>
+                </div>
+            </a>
+            <div class="person-as-known">
+                <h3 class="as-known-text font-pink">
+                    Bu yapımlarla bilinir:
+                </h3>
+                <div class="show" *ngFor="let show of person.known_for.slice(0, 3)">
+                    <h4 class="show-title font-light">
+                        {{ show.title }}
+                    </h4>
+                    <div class="show-image-box">
+                        <img [routerLink]="'/movies/' + show.id" src="{{ image_url }}{{ show.backdrop_path }}" alt="{{ show.title }}" class="show-image" *ngIf="show.media_type == 'movie'">
+                    </div>
+                    <div class="show-image-box">
+                        <img [routerLink]="'/tv-shows/' + show.id" src="{{ image_url }}{{ show.backdrop_path }}" alt="{{ show.title }}" class="show-image" *ngIf="show.media_type != 'movie'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -9,13 +9,13 @@
             </div>
             <div class="search-and-links">
                 <div class="search-area">
-                    <form >
-                        <select name="" id="">
-                            <option value="movies">Filmler</option>
-                            <option value="tvshows">Diziler</option>
-                            <option value="celebrities">Kişiler</option>
+                    <form #form="ngForm" (ngSubmit)="Search(form)">
+                        <select name="search_in" id="search-in" required [(ngModel)]="formModel.search_in">
+                            <option value="movie">Filmler</option>
+                            <option value="tv">Diziler</option>
+                            <option value="person">Kişiler</option>
                         </select>
-                        <input class="font-white" type="text" name="" id="">
+                        <input class="font-white" type="text" name="search_key" id="search-key" [(ngModel)]="formModel.search_key">
                         <button type="submit">
                             <i class="fa-solid fa-magnifying-glass font-white"></i>
                         </button>

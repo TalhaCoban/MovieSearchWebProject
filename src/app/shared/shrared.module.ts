@@ -4,18 +4,30 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { SearchResultComponent } from './search-result/search-result.component';
+
+
+const routes: Routes = [{
+    path: "search",
+    children: [
+        { path: ":search_in/:search_key", component: SearchResultComponent }
+    ]
+}]
 
 @NgModule({
     declarations: [
         NavbarComponent,
         HomeComponent,
         FooterComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        SearchResultComponent
     ],
     imports: [
         CommonModule,
-        RouterModule
+        FormsModule,
+        RouterModule.forChild(routes)
     ],
     exports: [
         NavbarComponent,

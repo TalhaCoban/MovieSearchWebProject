@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'people', loadChildren: () => import('./people/people.module').then((m) => m.Peoplemodule)},
   { path: 'auth', loadChildren: () => import('./Auth/auth.module').then((m) => m.AuthModule)},
   { path: 'account', loadChildren: () => import('./user/user.module').then((m) => m.UserModule)},
+  { path: 'search', loadChildren: () => import('./shared/shrared.module').then((m) => m.SharedModule)},
   { path: '**', component: NotFoundComponent},
 ];
 @NgModule({

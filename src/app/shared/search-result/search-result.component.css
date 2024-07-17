@@ -1,0 +1,274 @@
+#result {
+    background-color: var(--dark);
+    width: 100%;
+    margin: 0;
+    padding-top: 255px;
+    padding-bottom: 50px;
+}
+
+.up-title {
+    padding: 1.2rem 0;
+    font-size: 2.4rem;
+    border-bottom: 2px solid var(--pink);
+    margin: 2rem 2rem;
+}
+
+/* content */
+.movies,
+.tvshows,
+.people {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.movie,
+.tvshow,
+.person {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
+    width: 100%;
+}
+
+.poster-img-box {
+    display: inline-block;
+    width: 17rem;
+    height: calc(17rem * 1.5);
+    overflow: hidden;
+}
+
+.poster-image {
+    width: 17rem;
+    height: calc(17rem * 1.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.poster-image:hover {
+    transform: scale(1.2);
+}
+
+.movie-informations,
+.tvshow-informations {
+    width: calc(100% - 17rem - 8rem);
+}
+
+.movie-informations>*:not(h1) {
+    padding: 0.3rem 0;
+}
+
+.tvshow-informations>*:not(h1) {
+    padding: 0.3rem 0;
+}
+
+.title {
+    font-size: 1.9rem;
+    padding-bottom: 1rem;
+}
+
+.text {
+    font-size: 1.3rem;
+}
+
+.text * {
+    padding-right: 0.2rem;
+}
+
+/* people */
+.person {
+    width: 75%;
+    min-width: 420px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 1.1rem auto;
+    box-shadow: 1px 9px 31px 0px rgba(84, 84, 70, 1);
+    padding: 1rem;
+}
+
+.person-image-box {
+    overflow: hidden;
+    width: 30rem;
+    height: fit-content;
+    min-width: 250px;
+    min-height: 375px;
+}
+
+.person-image {
+    width: 30rem;
+    min-width: 250px;
+    min-height: 375px;
+    transition: all 0.4s ease;
+}
+
+.person-image:hover {
+    transform: scale(1.2);
+}
+
+.person-as-known {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.as-known-text {
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.show-image-box {
+    overflow: hidden;
+    width: 18rem;
+    min-width: 150px;
+}
+
+.show-image {
+    width: 18rem;
+    min-width: 150px;
+    transition: transform 0.4s ease-in-out;
+}
+
+.show-image:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.person-information h1 {
+    font-size: 25px;
+    padding: 0.5rem;
+}
+
+.person-information p {
+    font-size: 16px;
+    padding: 0.3rem 0.5rem;
+}
+
+.show h4 {
+    font-size: 13px;
+    padding: 0.5rem 0;
+}
+
+
+
+.ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    max-width: 60ch;
+}
+
+
+@media (max-width: 566px) {
+
+    .movies,
+    .tvshows,
+    .people {
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .movie,
+    .tvshow {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .poster-img-box {
+        width: 90%;
+        height: calc(90% * 1.5);
+    }
+
+    .poster-image {
+        width: 100%;
+        height: calc(100% * 1.5);
+    }
+
+    .movie-informations,
+    .tvshow-informations {
+        width: 90%;
+    }
+
+    .person {
+        width: 90%;
+        min-width: 0;
+        gap: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .person-image-box {
+        overflow: hidden;
+        width: 100%;
+        height: fit-content;
+        min-width: 250px;
+        min-height: 375px;
+    }
+
+    .person-image {
+        width: 100%;
+        min-width: 250px;
+        min-height: 375px;
+    }
+
+    .show-image-box {
+        overflow: hidden;
+        width: 200px;
+    }
+
+    .show-image {
+        width: 200px;
+    }
+
+    .as-known-text {
+        font-size: 18px;
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media (min-width: 566px) and (max-width: 800px) {
+
+    .person {
+        padding: 0 0 0.5rem 0;
+    }
+    
+
+    .person-image-box {
+        width: 20rem;
+    }
+
+    .person-image {
+        width: 20rem;
+    }
+
+
+    .show-image-box {
+        width: 12rem;
+    }
+
+    .show-image {
+        width: 12rem;
+    }
+
+}
+
+@media (min-width: 800px) and (max-width: 1120px) {
+    
+    .person {
+        width: 95%;
+    }
+}

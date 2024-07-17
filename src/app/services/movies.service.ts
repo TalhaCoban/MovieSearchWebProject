@@ -92,7 +92,7 @@ export class MoviesService {
 
     getSimilarMovies(movieId: number, page: number): Observable<MoviesResponse> {
         let url = this.moviesSimilar_url[0] + String(movieId) + this.moviesSimilar_url[1] + String(page);
-        return this.getMovies(url).pipe(tap(data => console.log(data)));
+        return this.getMovies(url);
     };
 
     private getMovies(url: string): Observable<MoviesResponse> {

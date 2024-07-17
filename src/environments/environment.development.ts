@@ -1,6 +1,7 @@
 export const environment = {
 
     image_url: "https://image.tmdb.org/t/p/w500",
+    search_url: ["https://api.themoviedb.org/3/search/", "&include_adult=false&language=tr-tr&page=1"],
     
     moviestrending_url: "https://api.themoviedb.org/3/trending/movie/day?language=tr-tr",
     moviesupcoming_url: "https://api.themoviedb.org/3/movie/upcoming?language=tr-tr&page=",
