@@ -33,6 +33,6 @@ export const environment = {
     creditMovies_url: ["https://api.themoviedb.org/3/person/", "/movie_credits?language=tr-tr"],
     creditTvShows_url: ["https://api.themoviedb.org/3/person/", "/tv_credits?language=tr-tr"],
 
-    api: "",
-    api_key: "",
+    api: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTM0NGUxZmFiNDM2OGY4MmI1MjVkMjNlNDgzYTUwZiIsIm5iZiI6MTcxOTY4NDI4Ni42MTg2MTQsInN1YiI6IjY1Y2Y5N2M5NjBjNzUxMDE3YjY5ZDM1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.760HsQJfRRmMOtx9-pASInGBI8JhrLtbpJutcvVi3BQ",
+    api_key: "AIzaSyD2oiajSWtF1Oh_ywAuanKMdoq3IsZmVMQ",
 };

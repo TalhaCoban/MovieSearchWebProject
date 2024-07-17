@@ -24,7 +24,7 @@ export class AuthService {
         private router: Router
     ) {
         effect(() => {
-            console.log("Current user: ", this.usersubject.user());
+            // console.log("Current user: ", this.usersubject.user());
         })
     }
 
@@ -53,6 +53,18 @@ export class AuthService {
             password: password,
             returnSecureToken: true
         }).pipe(
+            tap(response => {
+                this.usersubject.user.set(new User(
+                    null,
+                    response.email,
+                    null,
+                    null,
+                    response.localId,
+                    response.idToken,
+                    new Date(new Date().getTime() + (Number(response.expiresIn) * 1000))
+                ))
+                console.log(this.usersubject.user(), "user")
+            }),
             tap(response => {
                 const user: UserModel = {
                     id: response.localId,
@@ -110,6 +122,21 @@ export class AuthService {
         this.router.navigate(["/home"]);
     }
 
+    sendPasswordResetEmail(email: string): Observable<any> {
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json'
+        });
+        
+        const body = {
+          requestType: 'PASSWORD_RESET',
+          email: email
+        };
+    
+        return this.http.post<any>("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + this.api_key, body, { headers: headers }).pipe(
+            tap(data => {console.log("password reset", data)})
+        );
+    }
+
     private handleUser(
         id: string,
         email: string,
@@ -135,21 +162,6 @@ export class AuthService {
         this.router.navigate(['/home'])
     }
 
-    sendPasswordResetEmail(email: string): Observable<any> {
-        const headers = new HttpHeaders({
-          'Content-Type': 'application/json'
-        });
-        
-        const body = {
-          requestType: 'PASSWORD_RESET',
-          email: email
-        };
-    
-        return this.http.post<any>("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + this.api_key, body, { headers: headers }).pipe(
-            tap(data => {console.log("password reset", data)})
-        );
-    }
-
     private handleError(err: HttpErrorResponse) {
         let message: string = "hata oluştu";
 
@@ -171,7 +183,7 @@ export class AuthService {
                     message = "Hesabınız Pasifleştirildi.";
                     break;
                 case "INVALID_LOGIN_CREDENTIALS":
-                    message = "Zaten giriş yaptınız";
+                    message = "arola yanlış";
                     break;
             }
         }

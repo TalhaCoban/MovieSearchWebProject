@@ -18,8 +18,8 @@ export class FirebaseService {
     ) {}
 
     AddUser(user: UserModel): Observable<UserModel> {
-        console.log(user)
-        return this.http.post<UserModel>( this.url + "users.json", user);
+        let currentuser: User = this.usersubject.user();
+        return this.http.post<UserModel>( this.url + ".json?auth=" + currentuser?.token, user);
     }
 
     GetUser(userId: string): Observable<UserModel> {
@@ -66,7 +66,7 @@ export class FirebaseService {
                 return movies;
             }),
             exhaustMap(moviesList => {
-                return this.http.patch<UserModel[]>( this.url + "users/" + user.id + ".json", { movies: moviesList  } ).pipe(
+                return this.http.patch<UserModel[]>( this.url + "users/" + user.id + ".json?auth=" + user?.token, { movies: moviesList  } ).pipe(
                     // tap(data => {console.log(data)})
                 )
             })
@@ -92,7 +92,7 @@ export class FirebaseService {
                 return tvshows;
             }),
             exhaustMap(tvshowsList => {
-                return this.http.patch<UserModel[]>( this.url + "users/" + user.id + ".json", { tvshows: tvshowsList  } ).pipe(
+                return this.http.patch<UserModel[]>( this.url + "users/" + user.id + ".json?auth=" + user?.token, { tvshows: tvshowsList  } ).pipe(
                     // tap(data => {console.log(data)})
                 )
             })
@@ -118,7 +118,7 @@ export class FirebaseService {
                 return people;
             }),
             exhaustMap(peopleList => {
-                return this.http.patch<UserModel[]>( this.url + "users/" + user.id + ".json", { celebrities: peopleList  } ).pipe(
+                return this.http.patch<UserModel[]>( this.url + "users/" + user.id + ".json?auth=" + user?.token, { celebrities: peopleList  } ).pipe(
                     // tap(data => {console.log(data)})
                 )
             })
