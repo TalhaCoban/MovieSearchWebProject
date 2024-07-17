@@ -19,7 +19,7 @@ export class FirebaseService {
 
     AddUser(user: UserModel): Observable<UserModel> {
         let currentuser: User = this.usersubject.user();
-        return this.http.post<UserModel>( this.url + ".json?auth=" + currentuser?.token, user);
+        return this.http.post<UserModel>( this.url + "users.json?auth=" + currentuser?.token, user);
     }
 
     GetUser(userId: string): Observable<UserModel> {
