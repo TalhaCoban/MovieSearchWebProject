@@ -24,7 +24,7 @@ export class AuthService {
         private router: Router
     ) {
         effect(() => {
-            // console.log("Current user: ", this.usersubject.user());
+            console.log("Current user: ", this.usersubject.user());
         })
     }
 
@@ -163,7 +163,7 @@ export class AuthService {
     }
 
     private handleError(err: HttpErrorResponse) {
-        let message: string = "hata oluştu";
+        let message: string = err.error.error.message;
 
         if (err.error.error) {
             switch (err.error.error.message) {
@@ -183,7 +183,10 @@ export class AuthService {
                     message = "Hesabınız Pasifleştirildi.";
                     break;
                 case "INVALID_LOGIN_CREDENTIALS":
-                    message = "arola yanlış";
+                    message = "parola yanlış";
+                    break;
+                case "WEAK_PASSWORD":
+                    message = "Zayıf paralo hatası. Güçlü bir şifre oluşturunuz."
                     break;
             }
         }
